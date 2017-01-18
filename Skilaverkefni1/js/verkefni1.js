@@ -12,7 +12,35 @@ $(document).ready(function () {
         shapes: []
     };
 
+    // ----------------------------------------------
+  	//								Change color
+  	// ----------------------------------------------
+  	$("#redColor").click(function() {
+  		settings.nextColor = "red";
+  	});
 
+  	// ----------------------------------------------
+  	//								Change shapes
+  	// ----------------------------------------------
+  	$("#pen").click(function() {
+  		settings.nextObject = "Pen";
+  	});
+
+  	$("#line").click(function() {
+  		settings.nextObject = "Line";
+  	});
+
+  	$("#rectangle").click(function() {
+  		settings.nextObject = "Rectangle";
+  	});
+
+  	$("#circle").click(function() {
+  		settings.nextObject = "Circle";
+  	});
+
+  	// ----------------------------------------------
+  	//								Drawing shapes
+  	// ----------------------------------------------
     $("#myCanvas").mousedown(function (e) {
         var x = e.pageX - this.offsetLeft;
         var y = e.pageY - this.offsetTop;
