@@ -16,7 +16,7 @@ $(document).ready(function () {
   	//								Change color
   	// ----------------------------------------------
   	$("#redColor").click(function() {
-  		settings.nextColor = "red";
+  		settings.nextShape = "red";
   	});
 
   	// ----------------------------------------------
