@@ -16,26 +16,26 @@ $(document).ready(function () {
   	//								Change color
   	// ----------------------------------------------
   	$("#redColor").click(function() {
-  		settings.nextColor = "red";
+  		settings.nextShape = "red";
   	});
 
   	// ----------------------------------------------
   	//								Change shapes
   	// ----------------------------------------------
   	$("#pen").click(function() {
-  		settings.nextObject = "Pen";
+  		settings.nextShape = "Pen";
   	});
 
   	$("#line").click(function() {
-  		settings.nextObject = "Line";
+  		settings.nextShape = "Line";
   	});
 
   	$("#rectangle").click(function() {
-  		settings.nextObject = "Rectangle";
+  		settings.nextShape = "Rectangle";
   	});
 
   	$("#circle").click(function() {
-  		settings.nextObject = "Circle";
+  		settings.nextShape = "Circle";
   	});
 
   	// ----------------------------------------------
