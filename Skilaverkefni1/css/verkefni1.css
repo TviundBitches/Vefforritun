@@ -12,3 +12,16 @@ h1{
     border: 1px solid grey;
     background-color: white;
 }
+
+.button{
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    background-color: grey;
+    color: black;
+    border: 2px solid grey;
+    border-radius: 4px;
+}
+
+.button:hover{
+    background-color: lightgrey;
+}
