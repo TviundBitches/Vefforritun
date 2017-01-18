@@ -23,19 +23,19 @@ $(document).ready(function () {
   	//								Change shapes
   	// ----------------------------------------------
   	$("#pen").click(function() {
-  		settings.nextObject = "Pen";
+  		settings.nextShape = "Pen";
   	});
 
   	$("#line").click(function() {
-  		settings.nextObject = "Line";
+  		settings.nextShape = "Line";
   	});
 
   	$("#rectangle").click(function() {
-  		settings.nextObject = "Rectangle";
+  		settings.nextShape = "Rectangle";
   	});
 
   	$("#circle").click(function() {
-  		settings.nextObject = "Circle";
+  		settings.nextShape = "Circle";
   	});
 
   	// ----------------------------------------------
@@ -54,31 +54,61 @@ $(document).ready(function () {
             shape = new Text(x, y);
         }
         else if(settings.nextShape === "Circle") {
-            shape = new Circle(x, y);
+            shape = new Circle(x, y, settings.nextColor);
         }
         else if(settings.nextShape === "Rectangle") {
-            shape = new Rectangle(x, y);
+            shape = new Rectangle(x, y, settings.nextColor);
         }
         else if(settings.nextShape === "Line") {
-            shape = new Line(x, y);
+            shape = new Line(x, y, settings.nextColor);
         }
         else{
-            shape = new Pen(x, y);
+            shape = new Pen(x, y, settings.nextColor);
+            shape.points.push({x: x, y: y});
+            shape.draw(context);
         }
         settings.currentShape = shape;
-        settings.shapes.push(shape);
 
-        shape.draw(context);
+
     });
 
 
     $("#myCanvas").mousemove(function (e) {
         var context = settings.canvas.getContext("2d");
+        var x = e.pageX - this.offsetLeft;
+        var y = e.pageY - this.offsetTop;
         if(settings.isDrawing === true){ //vera med tvo current/nest shape if currentShape !== undefined
-            var x = e.pageX - this.offsetLeft;
-            var y = e.pageY - this.offsetTop;
 
-            drawAll(x,y ); //eitthvad fall sem teiknar oll objectin a medan verid er ad teikna
+          if(settings.nextShape === "Text") {
+
+          }
+          else if(settings.nextShape === "Circle") {
+              context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+              settings.currentShape.setEnd(x, y);
+              settings.currentShape.draw(context);
+              drawAll();
+
+          }
+          else if(settings.nextShape === "Rectangle") {
+              context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+              settings.currentShape.setEnd(x, y);
+              settings.currentShape.draw(context);
+              drawAll();
+          }
+          else if(settings.nextShape === "Line") {
+              context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+              settings.currentShape.setEnd(x, y);
+              settings.currentShape.draw(context);
+              drawAll();
+          }
+          else{
+              context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+              settings.currentShape.points.push({x: x, y: y});;
+              settings.currentShape.draw(context);
+              drawAll();
+          }
+
+            //drawAll(x,y ); //eitthvad fall sem teiknar oll objectin a medan verid er ad teikna
 
             // context.beginPath();
             // context.arc(x, y, 50, 0, 2 * Math.PI, false);
@@ -89,17 +119,19 @@ $(document).ready(function () {
             // context.stroke();
 
         }
+    });
+
+    $("#myCanvas").mouseup(function (e) {
+        settings.isDrawing = false;
+        settings.shapes.push(settings.currentShape);
 
     });
 
     function drawAll(x,y) {
         var context = settings.canvas.getContext("2d");
         settings.shapes.forEach(function (item) {
-            item.draw(context,x,y);
+            item.draw(context);
         })
     }
 
-    $("#myCanvas").mouseup(function (e) {
-        settings.isDrawing = false;
-    });
 });

@@ -7,6 +7,8 @@ class Shape {
         //x, y eru hnit upphafsstadsetningar
         this.x = x;
         this.y = y;
+        this.endX = x;
+        this.endY = y;
         this.color = color;
     }
 
@@ -20,9 +22,13 @@ class Rectangle extends Shape {
     constructor(x, y, color){
         super(x, y, color);
     }
-    draw(context, x, y) {
-        context.fillStyle = this.color;
-        context.fillRect(this.x, this.y, x, y);
+    draw(context) {
+        var x = Math.min(this.x), //þarf að finna eitthvað hér
+  					y = Math.min(this.y),
+  				  w = Math.abs(this.endX - this.x),
+  					h = Math.abs(this.endY - this.y);
+        context.strokeStyle = this.color;
+        context.strokeRect(x, y, w, h);
     }
 }
 
@@ -30,13 +36,11 @@ class Circle extends Shape {
     constructor(x, y, color){
         super(x, y, color);
     }
-    draw(context,x,y) {
+    draw(context) {
         context.beginPath();
-        context.arc(this.x, this.y, this.computeRadius(x,y), 0, 2 * Math.PI, false);
-        context.fillStyle = "#8ED6FF";
-        context.fill();
-        context.lineWidth = 5;
-        context.strokeStyle = "black";
+        context.arc(this.x, this.y, this.computeRadius(this.endX, this.endY), 0, 2 * Math.PI, false);
+        //context.lineWidth = 2;
+        context.strokeStyle = this.color;
         context.stroke();
     }
 
@@ -51,9 +55,10 @@ class Line extends Shape {
     }
     draw(context) {
         context.beginPath();
-        context.moveTo(0, 0);
-        context.lineTo(this.x, this.y);
+        context.moveTo(this.x, this.y);
+        context.lineTo(this.endX, this.endY);
         context.stroke();
+				context.closePath();
     }
 }
 
@@ -71,13 +76,16 @@ class Pen extends Shape {
         super(x, y, color);
         this.points = [];
     }
-    setEnd(x,y) {
-        this.points.push({x: this.x, y: this.y});
-    }
+    // setEnd(x,y) {
+    //     this.points.push({x: this.x, y: this.y});
+    // }
     draw(context) {
         context.beginPath();
         context.moveTo(this.x, this.y);
-        context.lineTo(this.x, this.y);
-        context.stroke();
+        this.points.forEach(function (item) {
+          context.lineTo(item.x, item.y);
+          context.stroke();
+        })
+
     }
 }
