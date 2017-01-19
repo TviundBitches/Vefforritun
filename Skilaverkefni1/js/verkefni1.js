@@ -57,6 +57,10 @@ $(document).ready(function () {
         settings.nextShape = "Text";
     });
 
+    $("#eraser").click(function() {
+        settings.nextShape = "Eraser";
+    });
+
   	// --------------------------------------------------------------------------------------------
   	//							        	Drawing shapes
   	// --------------------------------------------------------------------------------------------
@@ -83,6 +87,11 @@ $(document).ready(function () {
         else if(settings.nextShape === "Line") {
             shape = new Line(x, y, settings.nextColor);
         }
+        else if(settings.nextShape === "Eraser") {
+            shape = new Eraser(x, y, "white");
+            shape.points.push({x: x, y: y});
+            shape.draw(context);
+        }
         else{
             shape = new Pen(x, y, settings.nextColor);
             shape.points.push({x: x, y: y});
@@ -100,34 +109,40 @@ $(document).ready(function () {
         var y = e.pageY - this.offsetTop;
         if(settings.isDrawing === true){ //vera med tvo current/nest shape if currentShape !== undefined
 
-          if(settings.nextShape === "Text") {
+            if(settings.nextShape === "Text") {
 
-          }
-          else if(settings.nextShape === "Circle") {
-              context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
-              settings.currentShape.setEnd(x, y);
-              settings.currentShape.draw(context);
-              drawAll();
+            }
+            else if(settings.nextShape === "Circle") {
+                context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+                settings.currentShape.setEnd(x, y);
+                settings.currentShape.draw(context);
+                drawAll();
 
-          }
-          else if(settings.nextShape === "Rectangle") {
-              context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
-              settings.currentShape.setEnd(x, y);
-              settings.currentShape.draw(context);
-              drawAll();
-          }
-          else if(settings.nextShape === "Line") {
-              context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
-              settings.currentShape.setEnd(x, y);
-              settings.currentShape.draw(context);
-              drawAll();
-          }
-           else{
-              context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
-              settings.currentShape.points.push({x: x, y: y});
-              settings.currentShape.draw(context);
-              drawAll();
-          }
+            }
+            else if(settings.nextShape === "Rectangle") {
+                context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+                settings.currentShape.setEnd(x, y);
+                settings.currentShape.draw(context);
+                drawAll();
+            }
+            else if(settings.nextShape === "Line") {
+                context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+                settings.currentShape.setEnd(x, y);
+                settings.currentShape.draw(context);
+                drawAll();
+            }
+            else if(settings.nextShape === "Eraser") {
+                context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+                settings.currentShape.points.push({x: x, y: y});;
+                settings.currentShape.draw(context);
+                drawAll();
+            }
+            else{
+                context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+                settings.currentShape.points.push({x: x, y: y});
+                settings.currentShape.draw(context);
+                drawAll();
+            }
 
         }
     });
