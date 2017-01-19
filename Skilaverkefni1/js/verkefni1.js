@@ -13,6 +13,7 @@ $(document).ready(function () {
         shapes: [],
         redoShapes: [],
         nextFont: "Arial",
+        nextTextSize: "16px ",
         textY: 0,
         textX: 0
     };
@@ -185,7 +186,7 @@ $(document).ready(function () {
         if(key == 13){
             var text = $("#inputText").val();
             console.log(text);
-            shape = new Text(settings.textX, settings.textY, settings.nextColor, text, settings.nextFont);
+            shape = new Text(settings.textX, settings.textY, settings.nextColor, text, settings.nextFont, settings.nextTextSize);
             settings.shapes.push(shape);
             drawAll();
             $("#inputText").val("");

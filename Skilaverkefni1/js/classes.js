@@ -66,14 +66,15 @@ class Line extends Shape {
 }
 
 class Text extends Shape {
-    constructor(x, y, color, text, font){
+    constructor(x, y, color, text, font, size){
         super(x, y, color);
         this.text = text;
         this.font = font;
+        this.size = size;
     }
 
     draw(context) {
-        context.font = this.font;
+        context.font = this.size + this.font;
         context.fillText(this.text, this.x, this.y);
     }
 }
