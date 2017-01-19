@@ -134,4 +134,11 @@ $(document).ready(function () {
         })
     }
 
+    $("#undo").click(function () {
+        var context = settings.canvas.getContext("2d");
+        settings.shapes.pop();
+        context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+        drawAll();
+    })
+
 });
