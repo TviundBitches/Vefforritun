@@ -4,16 +4,26 @@
     <meta charset="UTF-8">
     <title>Drawing Canvas</title>
     <link rel="stylesheet" href="css/verkefni1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
 </head>
 <body>
     <h1>The most awesome canvas in the world</h1>
 	<hr/>
 
-    <div class="upperBar">
-        <button id="redColor" class="redButton" type="button"></button>
-        <button id="blueColor" class="blueButton" type="line"></button>
-        <button id="greenColor" class="greenButton" type="button"></button>
-        <button id="blackColor" class="blackButton" type="button"></button>
+    <div class="container">
+        <div class="row">
+            <div class="col s6">
+                <div class="upperBar">
+                    <button id="redColor" class="redButton" type="button"></button>
+                    <button id="blueColor" class="blueButton" type="line"></button>
+                    <button id="greenColor" class="greenButton" type="button"></button>
+                    <button id="blackColor" class="blackButton" type="button"></button>
+                </div>
+            </div>
+            <div class="col s6">
+                <button>hello</button>
+            </div>
+        </div>
     </div>
 
     <canvas id="myCanvas" width="700" height="500">
@@ -33,5 +43,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
     <script src="js/classes.js"></script>
     <script src="js/verkefni1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 </body>
 </html>

@@ -1,16 +1,20 @@
 body{
-    background-color: lightblue;
+    background-color: #f48fb1;
     text-align: center;
 }
 
 h1{
     font-family: sans-serif;
-    color: dimgrey;
+    color: #455a64;
 }
 
 #myCanvas{
     border: 1px solid grey;
     background-color: white;
+}
+
+.row{
+    border: 2px solid black;
 }
 
 .upperBar button{
