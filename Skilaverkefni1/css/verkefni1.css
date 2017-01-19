@@ -13,9 +13,43 @@ h1{
     background-color: white;
 }
 
-.button{
-    -webkit-transition-duration: 0.4s;
-    transition-duration: 0.4s;
+.upperBar button{
+    color: white;
+    border: 2px solid;
+    border-radius: 4px;
+}
+
+.upperBar .redButton{
+    border: 2px solid red;
+    border-radius: 4px;
+    background-color: red;
+}
+
+.upperBar button:hover{
+    border-color: white;
+}
+
+.upperBar .blueButton{
+    border: 2px solid blue;
+    border-radius: 4px;
+    background-color: blue;
+}
+
+.upperBar .blackButton{
+    border: 2px solid black;
+    border-radius: 4px;
+    background-color: black;
+}
+
+.upperBar .greenButton{
+    border: 2px solid green;
+    border-radius: 4px;
+    background-color: green;
+}
+
+.lowerBar .button{
+    -webkit-transition-duration: 1s;
+    transition-duration: 1s;
     background-color: grey;
     color: black;
     border: 2px solid grey;
