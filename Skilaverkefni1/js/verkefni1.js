@@ -73,10 +73,12 @@ $(document).ready(function () {
         settings.isDrawing = true;
         console.log(settings.nextColor);
         var shape = undefined;
+
         if(settings.nextShape === "Text") {
-            //shape = new Text(x, y);
             $("#inputText").show();
             settings.isDrawing = false;
+            settings.textX = x;
+            settings.textY = y;
         }
         else if(settings.nextShape === "Circle") {
             shape = new Circle(x, y, settings.nextColor);
@@ -115,33 +117,33 @@ $(document).ready(function () {
             else if(settings.nextShape === "Circle") {
                 context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
                 settings.currentShape.setEnd(x, y);
-                settings.currentShape.draw(context);
                 drawAll();
-
+                settings.currentShape.draw(context);
             }
             else if(settings.nextShape === "Rectangle") {
                 context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
                 settings.currentShape.setEnd(x, y);
-                settings.currentShape.draw(context);
                 drawAll();
+                settings.currentShape.draw(context);
             }
             else if(settings.nextShape === "Line") {
                 context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
                 settings.currentShape.setEnd(x, y);
-                settings.currentShape.draw(context);
                 drawAll();
+                settings.currentShape.draw(context);
             }
             else if(settings.nextShape === "Eraser") {
                 context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
                 settings.currentShape.points.push({x: x, y: y});;
-                settings.currentShape.draw(context);
                 drawAll();
+                settings.currentShape.draw(context);
             }
             else{
                 context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
                 settings.currentShape.points.push({x: x, y: y});
-                settings.currentShape.draw(context);
                 drawAll();
+                settings.currentShape.draw(context);
+
             }
 
         }
@@ -174,9 +176,10 @@ $(document).ready(function () {
         if(key == 13){
             var text = $("#inputText").val();
             console.log(text);
-            shape = new Text(30, 50, settings.nextColor, text, settings.nextFont);
+            shape = new Text(settings.textX, settings.textY, settings.nextColor, text, settings.nextFont);
             settings.shapes.push(shape);
             drawAll();
+            $("#inputText").val("");
         }
     });
 
