@@ -50,6 +50,10 @@ $(document).ready(function () {
   		settings.nextShape = "Circle";
   	});
 
+    $("#eraser").click(function() {
+  		settings.nextShape = "Eraser";
+  	});
+
   	// --------------------------------------------------------------------------------------------
   	//							        	Drawing shapes
   	// --------------------------------------------------------------------------------------------
@@ -72,6 +76,12 @@ $(document).ready(function () {
         }
         else if(settings.nextShape === "Line") {
             shape = new Line(x, y, settings.nextColor);
+        }
+        //Eraser ætti að vera í lagi þegar pen kemur í lag (hægt að nota sama fall og pen þá)
+        else if(settings.nextShape === "Eraser") {
+            shape = new Eraser(x, y, "white");
+            shape.points.push({x: x, y: y});
+            shape.draw(context);
         }
         else{
             shape = new Pen(x, y, settings.nextColor);
@@ -109,6 +119,12 @@ $(document).ready(function () {
           else if(settings.nextShape === "Line") {
               context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
               settings.currentShape.setEnd(x, y);
+              settings.currentShape.draw(context);
+              drawAll();
+          }
+          else if(settings.nextShape === "Eraser") {
+              context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+              settings.currentShape.points.push({x: x, y: y});;
               settings.currentShape.draw(context);
               drawAll();
           }
