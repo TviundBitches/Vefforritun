@@ -74,7 +74,7 @@ class Text extends Shape {
 
     draw(context) {
         context.font = this.font;
-        context.fillText(text, this.x, this.y);
+        context.fillText(this.text, this.x, this.y);
     }
 }
 

@@ -5,10 +5,13 @@
 $(document).ready(function () {
     var settings = {
         canvas: document.getElementById("myCanvas"),
-        nextShape: "Rectangle",
+        nextShape: "Pen",
         nextColor: "black",
+        nextFont: "Arial",
         isDrawing: false,
         currentShape: undefined,
+        textY: 0,
+        textX: 0,
         shapes: []
     };
 
@@ -50,6 +53,9 @@ $(document).ready(function () {
   		settings.nextShape = "Circle";
   	});
 
+    $("#text").click(function() {
+        settings.nextShape = "Text";
+    });
 
   	// --------------------------------------------------------------------------------------------
   	//							        	Drawing shapes
@@ -58,12 +64,15 @@ $(document).ready(function () {
         var x = e.pageX - this.offsetLeft;
         var y = e.pageY - this.offsetTop;
         var context = settings.canvas.getContext("2d");
+        $("#inputText").hide();
 
         settings.isDrawing = true;
         console.log(settings.nextColor);
         var shape = undefined;
         if(settings.nextShape === "Text") {
-            shape = new Text(x, y);
+            //shape = new Text(x, y);
+            $("#inputText").show();
+            settings.isDrawing = false;
         }
         else if(settings.nextShape === "Circle") {
             shape = new Circle(x, y, settings.nextColor);
@@ -79,8 +88,8 @@ $(document).ready(function () {
             shape.points.push({x: x, y: y});
             shape.draw(context);
         }
-        settings.currentShape = shape;
 
+        settings.currentShape = shape;
 
     });
 
@@ -115,7 +124,7 @@ $(document).ready(function () {
           }
           else{
               context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
-              settings.currentShape.points.push({x: x, y: y});;
+              settings.currentShape.points.push({x: x, y: y});
               settings.currentShape.draw(context);
               drawAll();
           }
@@ -125,7 +134,8 @@ $(document).ready(function () {
 
     $("#myCanvas").mouseup(function (e) {
         settings.isDrawing = false;
-        settings.shapes.push(settings.currentShape);
+        if(settings.currentShape !== undefined)
+            settings.shapes.push(settings.currentShape);
 
     });
 
@@ -142,5 +152,17 @@ $(document).ready(function () {
         context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
         drawAll();
     })
+
+    $("#inputText").keypress(function(e) {
+        var key = e.which;
+        var shape = undefined;
+        if(key == 13){
+            var text = $("#inputText").val();
+            console.log(text);
+            shape = new Text(30, 50, settings.nextColor, text, settings.nextFont);
+            settings.shapes.push(shape);
+            drawAll();
+        }
+    });
 
 });
