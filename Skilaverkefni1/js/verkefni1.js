@@ -63,7 +63,7 @@ $(document).ready(function () {
         var context = settings.canvas.getContext("2d");
 
         settings.isDrawing = true;
-
+        console.log(settings.nextColor);
         var shape = undefined;
         if(settings.nextShape === "Text") {
             shape = new Text(x, y);
