@@ -61,7 +61,7 @@ class Line extends Shape {
         context.moveTo(this.x, this.y);
         context.lineTo(this.endX, this.endY);
         context.stroke();
-				context.closePath();
+		context.closePath();
     }
 }
 
@@ -92,6 +92,22 @@ class Pen extends Shape {
             context.lineTo(item.x, item.y);
             context.stroke();
         })
+    }
+}
 
+class Eraser extends Shape {
+    constructor(x, y, color){
+        super(x, y, color);
+        this.points = [];
+    }
+
+    draw(context) {
+        context.beginPath();
+        context.strokeStyle = this.color;
+        context.moveTo(this.x, this.y);
+        this.points.forEach(function (item) {
+            context.lineTo(item.x, item.y);
+            context.stroke();
+        })
     }
 }

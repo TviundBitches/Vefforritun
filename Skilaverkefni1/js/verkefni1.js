@@ -1,5 +1,5 @@
 /**
- * Created by jojo on 15.1.2017.
+ * Created by jojo, sigga, usi
  */
 //Bua til constructor function fyrir Point med x og y hnt
 $(document).ready(function () {
@@ -122,7 +122,7 @@ $(document).ready(function () {
               settings.currentShape.draw(context);
               drawAll();
           }
-          else{
+           else{
               context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
               settings.currentShape.points.push({x: x, y: y});
               settings.currentShape.draw(context);
