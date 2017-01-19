@@ -36,6 +36,7 @@ class Circle extends Shape {
     constructor(x, y, color){
         super(x, y, color);
     }
+
     draw(context) {
         context.beginPath();
         context.arc(this.x, this.y, this.computeRadius(this.endX, this.endY), 0, 2 * Math.PI, false);
@@ -53,8 +54,10 @@ class Line extends Shape {
     constructor(x, y, color){
         super(x, y, color);
     }
+
     draw(context) {
         context.beginPath();
+        context.strokeStyle = this.color;
         context.moveTo(this.x, this.y);
         context.lineTo(this.endX, this.endY);
         context.stroke();
@@ -68,6 +71,7 @@ class Text extends Shape {
         this.text = text;
         this.font = font;
     }
+
     draw(context) {
         context.font = this.font;
         context.fillText(text, this.x, this.y);
@@ -79,11 +83,10 @@ class Pen extends Shape {
         super(x, y, color);
         this.points = [];
     }
-    // setEnd(x,y) {
-    //     this.points.push({x: this.x, y: this.y});
-    // }
+
     draw(context) {
         context.beginPath();
+        context.strokeStyle = this.color;
         context.moveTo(this.x, this.y);
         this.points.forEach(function (item) {
             context.lineTo(item.x, item.y);
