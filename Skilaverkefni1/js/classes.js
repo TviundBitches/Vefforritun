@@ -23,10 +23,10 @@ class Rectangle extends Shape {
         super(x, y, color);
     }
     draw(context) {
-        var x = Math.min(this.x), //þarf að finna eitthvað hér
-  					y = Math.min(this.y),
-  				  w = Math.abs(this.endX - this.x),
-  					h = Math.abs(this.endY - this.y);
+        var x = Math.min(this.endX, this.x),
+  		    y = Math.min(this.endY, this.y),
+  		    w = Math.abs(this.endX - this.x),
+  			h = Math.abs(this.endY - this.y);
         context.strokeStyle = this.color;
         context.strokeRect(x, y, w, h);
     }
@@ -83,8 +83,8 @@ class Pen extends Shape {
         context.beginPath();
         context.moveTo(this.x, this.y);
         this.points.forEach(function (item) {
-          context.lineTo(item.x, item.y);
-          context.stroke();
+            context.lineTo(item.x, item.y);
+            context.stroke();
         })
 
     }
