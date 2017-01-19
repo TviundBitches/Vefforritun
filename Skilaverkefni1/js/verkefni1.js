@@ -12,16 +12,28 @@ $(document).ready(function () {
         shapes: []
     };
 
-    // ----------------------------------------------
-  	//								Change color
-  	// ----------------------------------------------
+    // --------------------------------------------------------------------------------------------
+  	//								         Change color
+  	// --------------------------------------------------------------------------------------------
   	$("#redColor").click(function() {
-  		settings.nextShape = "red";
+  		settings.nextColor = "red";
   	});
 
-  	// ----------------------------------------------
-  	//								Change shapes
-  	// ----------------------------------------------
+    $("#blueColor").click(function() {
+        settings.nextColor = "blue";
+    });
+
+    $("#greenColor").click(function() {
+        settings.nextColor = "green";
+    });
+
+    $("#blackColor").click(function() {
+        settings.nextColor = "black";
+    });
+
+  	// --------------------------------------------------------------------------------------------
+  	//							            Change shapes
+  	// --------------------------------------------------------------------------------------------
   	$("#pen").click(function() {
   		settings.nextShape = "Pen";
   	});
@@ -38,14 +50,13 @@ $(document).ready(function () {
   		settings.nextShape = "Circle";
   	});
 
-  	// ----------------------------------------------
-  	//								Drawing shapes
-  	// ----------------------------------------------
+  	// --------------------------------------------------------------------------------------------
+  	//							        	Drawing shapes
+  	// --------------------------------------------------------------------------------------------
     $("#myCanvas").mousedown(function (e) {
         var x = e.pageX - this.offsetLeft;
         var y = e.pageY - this.offsetTop;
         var context = settings.canvas.getContext("2d");
-        //var eitthvad = finna ut hvernig a ad na i lit ur e
 
         settings.isDrawing = true;
 
@@ -107,16 +118,6 @@ $(document).ready(function () {
               settings.currentShape.draw(context);
               drawAll();
           }
-
-            //drawAll(x,y ); //eitthvad fall sem teiknar oll objectin a medan verid er ad teikna
-
-            // context.beginPath();
-            // context.arc(x, y, 50, 0, 2 * Math.PI, false);
-            // context.fillStyle = "#8ED6FF";
-            // context.fill();
-            // context.lineWidth = 5;
-            // context.strokeStyle = "black";
-            // context.stroke();
 
         }
     });
