@@ -1,17 +1,20 @@
 /**
- * Created by jojo on 15.1.2017.
+ * Created by jojo, sigga, usi
  */
 //Bua til constructor function fyrir Point med x og y hnt
 $(document).ready(function () {
     var settings = {
         canvas: document.getElementById("myCanvas"),
-        nextShape: "Rectangle",
+        nextShape: "Pen",
         nextColor: "black",
         eraser: "white",
         isDrawing: false,
         currentShape: undefined,
         shapes: [],
-        redoShapes: []
+        redoShapes: [],
+        nextFont: "Arial",
+        textY: 0,
+        textX: 0
     };
 
     // --------------------------------------------------------------------------------------------
@@ -52,9 +55,13 @@ $(document).ready(function () {
   		settings.nextShape = "Circle";
   	});
 
+    $("#text").click(function() {
+        settings.nextShape = "Text";
+    });
+
     $("#eraser").click(function() {
-  		settings.nextShape = "Eraser";
-  	});
+        settings.nextShape = "Eraser";
+    });
 
   	// --------------------------------------------------------------------------------------------
   	//							        	Drawing shapes
@@ -63,12 +70,15 @@ $(document).ready(function () {
         var x = e.pageX - this.offsetLeft;
         var y = e.pageY - this.offsetTop;
         var context = settings.canvas.getContext("2d");
+        $("#inputText").hide();
 
         settings.isDrawing = true;
         console.log(settings.nextColor);
         var shape = undefined;
         if(settings.nextShape === "Text") {
-            shape = new Text(x, y);
+            //shape = new Text(x, y);
+            $("#inputText").show();
+            settings.isDrawing = false;
         }
         else if(settings.nextShape === "Circle") {
             shape = new Circle(x, y, settings.nextColor);
@@ -79,7 +89,6 @@ $(document).ready(function () {
         else if(settings.nextShape === "Line") {
             shape = new Line(x, y, settings.nextColor);
         }
-        //Eraser ætti að vera í lagi þegar pen kemur í lag (hægt að nota sama fall og pen þá)
         else if(settings.nextShape === "Eraser") {
             shape = new Eraser(x, y, settings.eraser);
             shape.points.push({x: x, y: y});
@@ -90,8 +99,8 @@ $(document).ready(function () {
             shape.points.push({x: x, y: y});
             shape.draw(context);
         }
-        settings.currentShape = shape;
 
+        settings.currentShape = shape;
 
     });
 
@@ -102,47 +111,48 @@ $(document).ready(function () {
         var y = e.pageY - this.offsetTop;
         if(settings.isDrawing === true){ //vera med tvo current/nest shape if currentShape !== undefined
 
-          if(settings.nextShape === "Text") {
+            if(settings.nextShape === "Text") {
 
-          }
-          else if(settings.nextShape === "Circle") {
-              context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
-              settings.currentShape.setEnd(x, y);
-              settings.currentShape.draw(context);
-              drawAll();
+            }
+            else if(settings.nextShape === "Circle") {
+                context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+                settings.currentShape.setEnd(x, y);
+                settings.currentShape.draw(context);
+                drawAll();
 
-          }
-          else if(settings.nextShape === "Rectangle") {
-              context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
-              settings.currentShape.setEnd(x, y);
-              settings.currentShape.draw(context);
-              drawAll();
-          }
-          else if(settings.nextShape === "Line") {
-              context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
-              settings.currentShape.setEnd(x, y);
-              settings.currentShape.draw(context);
-              drawAll();
-          }
-          else if(settings.nextShape === "Eraser") {
-              context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
-              settings.currentShape.points.push({x: x, y: y});;
-              settings.currentShape.draw(context);
-              drawAll();
-          }
-          else{
-              context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
-              settings.currentShape.points.push({x: x, y: y});;
-              settings.currentShape.draw(context);
-              drawAll();
-          }
+            }
+            else if(settings.nextShape === "Rectangle") {
+                context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+                settings.currentShape.setEnd(x, y);
+                settings.currentShape.draw(context);
+                drawAll();
+            }
+            else if(settings.nextShape === "Line") {
+                context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+                settings.currentShape.setEnd(x, y);
+                settings.currentShape.draw(context);
+                drawAll();
+            }
+            else if(settings.nextShape === "Eraser") {
+                context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+                settings.currentShape.points.push({x: x, y: y});;
+                settings.currentShape.draw(context);
+                drawAll();
+            }
+            else{
+                context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+                settings.currentShape.points.push({x: x, y: y});
+                settings.currentShape.draw(context);
+                drawAll();
+            }
 
         }
     });
 
     $("#myCanvas").mouseup(function (e) {
         settings.isDrawing = false;
-        settings.shapes.push(settings.currentShape);
+        if(settings.currentShape !== undefined)
+            settings.shapes.push(settings.currentShape);
 
     });
 
@@ -158,13 +168,25 @@ $(document).ready(function () {
         settings.redoShapes.push(settings.shapes.pop());
         context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
         drawAll();
-    })
+    });
 
     $("#redo").click(function () {
         var context = settings.canvas.getContext("2d");
         settings.shapes.push(settings.redoShapes.pop());
         context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
         drawAll();
+    });
+
+    $("#inputText").keypress(function(e) {
+        var key = e.which;
+        var shape = undefined;
+        if(key == 13){
+            var text = $("#inputText").val();
+            console.log(text);
+            shape = new Text(30, 50, settings.nextColor, text, settings.nextFont);
+            settings.shapes.push(shape);
+            drawAll();
+        }
     });
 
 });
