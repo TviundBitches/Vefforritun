@@ -7,12 +7,14 @@ $(document).ready(function () {
         canvas: document.getElementById("myCanvas"),
         nextShape: "Pen",
         nextColor: "black",
-        nextFont: "Arial",
+        eraser: "white",
         isDrawing: false,
         currentShape: undefined,
+        shapes: [],
+        redoShapes: [],
+        nextFont: "Arial",
         textY: 0,
-        textX: 0,
-        shapes: []
+        textX: 0
     };
 
     // --------------------------------------------------------------------------------------------
@@ -90,7 +92,7 @@ $(document).ready(function () {
             shape = new Line(x, y, settings.nextColor);
         }
         else if(settings.nextShape === "Eraser") {
-            shape = new Eraser(x, y, "white");
+            shape = new Eraser(x, y, settings.eraser);
             shape.points.push({x: x, y: y});
             shape.draw(context);
         }
@@ -165,10 +167,17 @@ $(document).ready(function () {
 
     $("#undo").click(function () {
         var context = settings.canvas.getContext("2d");
-        settings.shapes.pop();
+        settings.redoShapes.push(settings.shapes.pop());
         context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
         drawAll();
-    })
+    });
+
+    $("#redo").click(function () {
+        var context = settings.canvas.getContext("2d");
+        settings.shapes.push(settings.redoShapes.pop());
+        context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+        drawAll();
+    });
 
     $("#inputText").keypress(function(e) {
         var key = e.which;
