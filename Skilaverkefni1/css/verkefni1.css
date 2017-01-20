@@ -1,5 +1,6 @@
 body{
     text-align: center;
+    background-color: #ffcdd2;
 }
 
 @font-face {
@@ -8,18 +9,18 @@ body{
 }
 
 #myCanvas{
-    border: 1px solid grey;
+    border: 1px solid #ee6e73;
     background-color: white;
 
 }
 
 .widthOp i{
     margin: 8px;
-    color: grey;
+    color: #ee6e73;
 }
 
 .widthOp i:hover{
-    color: black;
+    color: grey;
 }
 
 .head{
@@ -68,14 +69,14 @@ body{
 .lowerBar .button{
     -webkit-transition-duration: 1s;
     transition-duration: 1s;
-    background-color: darkgrey;
-    color: black;
-    border: 2px solid darkgrey;
+    background-color: #ee6e73;
+    color: white;
+    border: 2px solid #ee6e73;
     border-radius: 4px;
 }
 
 .button:hover{
-    background-color: lightgrey;
+    background-color: grey;
 }
 
 #pen{
