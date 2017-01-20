@@ -1,16 +1,11 @@
-html{
-    font-family: GillSans, Calibri, Trebuchet, sans-serif;
-}
-
 body{
     background-color: #f48fb1;
     text-align: center;
 }
 
-.header{
-    font-size: 40px;
-    font-weight: 300;
-    color: #455a64;
+@font-face {
+    font-family: myFirstFont;
+    src: url(./font/Roboto-Thin.ttf);
 }
 
 #myCanvas{
@@ -25,6 +20,12 @@ body{
 
 .widthOp i:hover{
     color: black;
+}
+
+.head{
+    font-family: myFirstFont;
+    background-color: #ee6e73;
+    color: white;
 }
 
 .colors button{

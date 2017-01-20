@@ -8,30 +8,30 @@
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-    <p class="header">The most awesome canvas in the world</p>
-	<hr/>
-
-    <div class="container">
-        <div class="row">
-            <div class="col s6 colors">
-                <button id="redColor" class="redButton" type="button"></button>
-                <button id="blueColor" class="blueButton" type="line"></button>
-                <button id="greenColor" class="greenButton" type="button"></button>
-                <button id="blackColor" class="blackButton" type="button"></button>
-            </div>
-            <div class="col s6 widthOp">
-                <i class="fa fa-circle" aria-hidden="true" style="font-size: 70%;"></i>
-                <i class="fa fa-circle" aria-hidden="true" style="font-size: 100%;"></i>
-                <i class="fa fa-circle" aria-hidden="true" style="font-size: 130%;"></i>
-                <i class="fa fa-circle" aria-hidden="true" style="font-size: 160%;"></i>
-            </div>
-        </div>
+    <div class = "row head">
+    <div class="grid-example col s12"><span class="flow-text"><h3>The most awesome canvas in the world</h3></span></div>
     </div>
 
-    <canvas id="myCanvas" width="700" height="500">
-        <p>Unfortunetly your browser does not support this functionality.</p>
-    </canvas>
-    <div class="lowerBar">
+    <div class="row container">
+        <div class="col s6 colors">
+            <button id="redColor" class="redButton" type="button"></button>
+            <button id="blueColor" class="blueButton" type="line"></button>
+            <button id="greenColor" class="greenButton" type="button"></button>
+            <button id="blackColor" class="blackButton" type="button"></button>
+        </div>
+        <div class="col s6 widthOp">
+            <i class="fa fa-circle" aria-hidden="true" style="font-size: 70%;"></i>
+            <i class="fa fa-circle" aria-hidden="true" style="font-size: 100%;"></i>
+            <i class="fa fa-circle" aria-hidden="true" style="font-size: 130%;"></i>
+            <i class="fa fa-circle" aria-hidden="true" style="font-size: 160%;"></i>
+        </div>
+    </div>
+    <div class="row">
+        <canvas id="myCanvas" width="700" height="500" >
+            <p>Unfortunetly your browser does not support this functionality.</p>
+        </canvas>
+    </div>
+    <div class="row lowerBar">
         <button id="pen" class="button" type="button">Pen</button>
         <button id="line" class="button" type="line">Line</button>
         <button id="rectangle" class="button" type="button">Rectangle</button>
@@ -42,6 +42,35 @@
         <button id="eraser" class="button" type="button">Eraser</button>
     </div>
     <input type="text" style="display: none" id="inputText" name="name"/><br/>
+    <div class = "row">
+        <input type="textarea" style="display: none" id="inputText" name="name"/><br/>
+    </div>
+
+
+    <footer class="page-footer">
+              <div class="container">
+                <div class="row">
+                  <div class="col l6 s12">
+                    <h5 class="white-text">Footer Content</h5>
+                    <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                  </div>
+                  <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Höfundar</h5>
+                    <ul>
+                      <li><a class="grey-text text-lighten-3" href="mailto:johannas15@ru.is?Subject=You%20are%20awesome">Jóhanna María Svövudóttir</a></li>
+                      <li><a class="grey-text text-lighten-3" href="mailto:sigrung15@ru.is?Subject=You%20are%20awesome">Sigrún Tinna Gissurardóttir</a></li>
+                      <li><a class="grey-text text-lighten-3" href="mailto:unnuri15@ru.is?Subject=You%20are%20awesome">Unnur Sól Ingimarsdóttir</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="footer-copyright">
+                <div class="container">
+                © 2014 Copyright Text
+                <!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
+                </div>
+              </div>
+    </footer>
     <script src="https://use.fontawesome.com/91e5a23c24.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
     <script src="js/classes.js"></script>
