@@ -1,8 +1,11 @@
 body{
-    background-color: #f48fb1;
+
     text-align: center;
 }
 
+.head{
+    background-color: #f48fb1;
+}
 h1{
     font-family: sans-serif;
     color: #455a64;
@@ -13,9 +16,9 @@ h1{
     background-color: white;
 }
 
-.row{
+/*.row{
     border: 2px solid black;
-}
+}*/
 
 .upperBar button{
     color: white;

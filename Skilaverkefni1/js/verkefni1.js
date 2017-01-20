@@ -42,22 +42,27 @@ $(document).ready(function () {
   	// --------------------------------------------------------------------------------------------
   	$("#pen").click(function() {
   		settings.nextShape = "Pen";
+        document.getElementById("myCanvas").style.cursor = "default";
   	});
 
   	$("#line").click(function() {
   		settings.nextShape = "Line";
+        document.getElementById("myCanvas").style.cursor = "default";
   	});
 
   	$("#rectangle").click(function() {
   		settings.nextShape = "Rectangle";
+        document.getElementById("myCanvas").style.cursor = "crosshair";
   	});
 
   	$("#circle").click(function() {
   		settings.nextShape = "Circle";
+        document.getElementById("myCanvas").style.cursor = "default";
   	});
 
     $("#text").click(function() {
         settings.nextShape = "Text";
+        document.getElementById("myCanvas").style.cursor = "text";
     });
 
     $("#eraser").click(function() {
@@ -71,10 +76,10 @@ $(document).ready(function () {
         var x = e.pageX - this.offsetLeft;
         var y = e.pageY - this.offsetTop;
         var context = settings.canvas.getContext("2d");
-        $("#inputText").hide();
 
+        $("#inputText").hide();
+        settings.redoShapes = [];
         settings.isDrawing = true;
-        console.log(settings.nextColor);
         var shape = undefined;
 
         if(settings.nextShape === "Text") {
@@ -82,6 +87,7 @@ $(document).ready(function () {
             settings.isDrawing = false;
             settings.textX = x;
             settings.textY = y;
+            console.log("hello");
         }
         else if(settings.nextShape === "Circle") {
             shape = new Circle(x, y, settings.nextColor);
@@ -103,7 +109,9 @@ $(document).ready(function () {
             shape.draw(context);
         }
 
-        settings.currentShape = shape;
+        if(shape !== undefined){
+            settings.currentShape = shape;
+        }
 
     });
 
@@ -146,9 +154,7 @@ $(document).ready(function () {
                 settings.currentShape.points.push({x: x, y: y});
                 drawAll();
                 settings.currentShape.draw(context);
-
             }
-
         }
     });
 
@@ -175,9 +181,11 @@ $(document).ready(function () {
 
     $("#redo").click(function () {
         var context = settings.canvas.getContext("2d");
-        settings.shapes.push(settings.redoShapes.pop());
-        context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
-        drawAll();
+        if(settings.redoShapes.length !== 0){
+            settings.shapes.push(settings.redoShapes.pop());
+            context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+            drawAll();
+        }
     });
 
     $("#inputText").keypress(function(e) {
@@ -186,10 +194,12 @@ $(document).ready(function () {
         if(key == 13){
             var text = $("#inputText").val();
             console.log(text);
-            shape = new Text(settings.textX, settings.textY, settings.nextColor, text, settings.nextFont, settings.nextTextSize);
-            settings.shapes.push(shape);
-            drawAll();
-            $("#inputText").val("");
+            if(text !== ""){
+                shape = new Text(settings.textX, settings.textY, settings.nextColor, text, settings.nextFont, settings.nextTextSize);
+                settings.shapes.push(shape);
+                drawAll();
+                $("#inputText").val("");
+            }
         }
     });
 
