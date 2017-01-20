@@ -1,10 +1,15 @@
+html{
+    font-family: GillSans, Calibri, Trebuchet, sans-serif;
+}
+
 body{
     background-color: #f48fb1;
     text-align: center;
 }
 
-h1{
-    font-family: sans-serif;
+.header{
+    font-size: 40px;
+    font-weight: 300;
     color: #455a64;
 }
 
@@ -13,42 +18,47 @@ h1{
     background-color: white;
 }
 
-.row{
-    border: 2px solid black;
+.widthOp i{
+    margin: 8px;
+    color: grey;
 }
 
-.upperBar button{
-    color: white;
+.widthOp i:hover{
+    color: black;
+}
+
+.colors button{
     border: 2px solid;
     border-radius: 4px;
-    height: 20px;
-    width: 20px;
+    height: 25px;
+    width: 25px;
+    margin-top: 8px;
     margin-bottom: 8px;
 }
 
-.upperBar .redButton{
+.colors .redButton{
     border: 2px solid red;
     border-radius: 4px;
     background-color: red;
 }
 
-.upperBar button:hover{
+.colors button:hover{
     border-color: white;
 }
 
-.upperBar .blueButton{
+.colors .blueButton{
     border: 2px solid blue;
     border-radius: 4px;
     background-color: blue;
 }
 
-.upperBar .blackButton{
+.colors .blackButton{
     border: 2px solid black;
     border-radius: 4px;
     background-color: black;
 }
 
-.upperBar .greenButton{
+.colors .greenButton{
     border: 2px solid green;
     border-radius: 4px;
     background-color: green;
@@ -57,9 +67,9 @@ h1{
 .lowerBar .button{
     -webkit-transition-duration: 1s;
     transition-duration: 1s;
-    background-color: grey;
+    background-color: darkgrey;
     color: black;
-    border: 2px solid grey;
+    border: 2px solid darkgrey;
     border-radius: 4px;
 }
 
