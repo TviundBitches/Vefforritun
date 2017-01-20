@@ -10,6 +10,7 @@ body{
 #myCanvas{
     border: 1px solid grey;
     background-color: white;
+
 }
 
 .head{
@@ -70,4 +71,8 @@ body{
 
 .button:hover{
     background-color: lightgrey;
+}
+
+#pen{
+    background-image: url(./logos/pen.png);
 }

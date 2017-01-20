@@ -7,6 +7,7 @@ $(document).ready(function () {
         canvas: document.getElementById("myCanvas"),
         nextShape: "Pen",
         nextColor: "black",
+        nextWidth: 2,
         eraser: "white",
         isDrawing: false,
         currentShape: undefined,
@@ -90,13 +91,13 @@ $(document).ready(function () {
             console.log("hello");
         }
         else if(settings.nextShape === "Circle") {
-            shape = new Circle(x, y, settings.nextColor);
+            shape = new Circle(x, y, settings.nextColor, settings.nextWidth);
         }
         else if(settings.nextShape === "Rectangle") {
-            shape = new Rectangle(x, y, settings.nextColor);
+            shape = new Rectangle(x, y, settings.nextColor, settings.nextWidth);
         }
         else if(settings.nextShape === "Line") {
-            shape = new Line(x, y, settings.nextColor);
+            shape = new Line(x, y, settings.nextColor, settings.nextWidth);
         }
         else if(settings.nextShape === "Eraser") {
             shape = new Eraser(x, y, settings.eraser);
@@ -104,7 +105,7 @@ $(document).ready(function () {
             shape.draw(context);
         }
         else{
-            shape = new Pen(x, y, settings.nextColor);
+            shape = new Pen(x, y, settings.nextColor, settings.nextWidth);
             shape.points.push({x: x, y: y});
             shape.draw(context);
         }

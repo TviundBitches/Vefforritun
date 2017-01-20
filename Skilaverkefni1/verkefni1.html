@@ -12,26 +12,8 @@
     <div class="grid-example col s12"><span class="flow-text"><h3>The most awesome canvas in the world</h3></span></div>
     </div>
 
-    <div class="row container">
-        <div class="col s6">
-            <div class="upperBar">
-                <button id="redColor" class="redButton" type="button"></button>
-                <button id="blueColor" class="blueButton" type="line"></button>
-                <button id="greenColor" class="greenButton" type="button"></button>
-                <button id="blackColor" class="blackButton" type="button"></button>
-            </div>
-        </div>
-        <div class="col s6">
-            <button>hello</button>
-        </div>
-    </div>
-    <div class="row">
-        <canvas id="myCanvas" width="700" height="500" >
-            <p>Unfortunetly your browser does not support this functionality.</p>
-        </canvas>
-    </div>
-    <div class="row lowerBar">
-        <button id="pen" class="button" type="button">Pen</button>
+    <div class="row container lowerBar">
+        <button id="pen" class="button" type="button"><img></button>
         <button id="line" class="button" type="line">Line</button>
         <button id="rectangle" class="button" type="button">Rectangle</button>
         <button id="circle" class="button" type="button">Circle</button>
@@ -39,6 +21,30 @@
         <button id="undo" class="button" type="button">Undo!</button>
         <button id="redo" class="button" type="button">Redo!</button>
         <button id="eraser" class="button" type="button">Eraser</button>
+    </div>
+
+
+    <div class="row">
+        <div class="col s3">
+        </div>
+        <div class="col s6">
+            <canvas id="myCanvas" width="700" height="500" >
+                <p>Unfortunetly your browser does not support this functionality.</p>
+            </canvas>
+        </div>
+        <div class="col s3">
+            <div class="upperBar">
+                <button id="redColor" class="redButton" type="button"></button>
+                <button id="blueColor" class="blueButton" type="line"></button>
+                <button id="greenColor" class="greenButton" type="button"></button>
+                <button id="blackColor" class="blackButton" type="button"></button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="">
+
     </div>
     <div class = "row">
         <input type="textarea" style="display: none" id="inputText" name="name"/><br/>
