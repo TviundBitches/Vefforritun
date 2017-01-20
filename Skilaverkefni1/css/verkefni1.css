@@ -1,19 +1,21 @@
+@font-face {
+    font-family: myFirstFont;
+    src: url(./font/Roboto-Thin.ttf);
+}
+
 body{
-
-    text-align: center;
-}
-
-.head{
-    background-color: #f48fb1;
-}
-h1{
-    font-family: sans-serif;
-    color: #455a64;
+    text-align: center;*/
 }
 
 #myCanvas{
     border: 1px solid grey;
     background-color: white;
+}
+
+.head{
+    font-family: myFirstFont;
+    background-color: #ee6e73;
+    color: white;
 }
 
 /*.row{

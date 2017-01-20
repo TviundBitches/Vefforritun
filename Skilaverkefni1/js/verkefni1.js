@@ -42,7 +42,7 @@ $(document).ready(function () {
   	// --------------------------------------------------------------------------------------------
   	$("#pen").click(function() {
   		settings.nextShape = "Pen";
-        document.getElementById("myCanvas").style.cursor = "default";
+        document.getElementById("myCanvas").style.cursor ="url(pen.png), auto";
   	});
 
   	$("#line").click(function() {
