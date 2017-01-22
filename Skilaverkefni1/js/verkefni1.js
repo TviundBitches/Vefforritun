@@ -11,8 +11,10 @@ $(document).ready(function () {
         eraser: "white",
         isDrawing: false,
         currentShape: undefined,
+        moveOutline: undefined,
         shapes: [],
         redoShapes: [],
+        // -- Text stuff  --
         nextFont: "Arial",
         nextTextSize: "16px ",
         textY: 0,
@@ -20,7 +22,7 @@ $(document).ready(function () {
     };
 
     // --------------------------------------------------------------------------------------------
-  	//								         Change color
+  	//								                      Change color
   	// --------------------------------------------------------------------------------------------
   	$("#redColor").click(function() {
   		settings.nextColor = "red";
@@ -39,7 +41,7 @@ $(document).ready(function () {
     });
 
   	// --------------------------------------------------------------------------------------------
-  	//							            Change shapes
+  	//							                         Change shapes
   	// --------------------------------------------------------------------------------------------
   	$("#pen").click(function() {
   		settings.nextShape = "Pen";
@@ -70,8 +72,12 @@ $(document).ready(function () {
         settings.nextShape = "Eraser";
     });
 
+    $("#move").click(function() {
+        settings.nextShape = "Move";
+    });
+
     // --------------------------------------------------------------------------------------------
-  	//							            Change Width
+  	//							                        Change Width
   	// --------------------------------------------------------------------------------------------
 
     $("#small").click(function() {
@@ -92,7 +98,7 @@ $(document).ready(function () {
 
 
   	// --------------------------------------------------------------------------------------------
-  	//							        	Drawing shapes
+  	//							        	        Drawing and do stuff on canvas
   	// --------------------------------------------------------------------------------------------
     $("#myCanvas").mousedown(function (e) {
         var x = e.pageX - this.offsetLeft;
@@ -125,13 +131,16 @@ $(document).ready(function () {
             shape.points.push({x: x, y: y});
             shape.draw(context);
         }
-        else{
+        else if(settings.nextShape === "Pen") {
             shape = new Pen(x, y, settings.nextColor, settings.nextWidth);
             shape.points.push({x: x, y: y});
             shape.draw(context);
         }
+        else {
+            settings.moveOutline = new Rectangle(x, y, "black", 1);
+        }
 
-        if(shape !== undefined){
+        if(shape !== undefined) {
             settings.currentShape = shape;
         }
 
@@ -171,20 +180,31 @@ $(document).ready(function () {
                 drawAll();
                 settings.currentShape.draw(context);
             }
-            else{
+            else if(settings.nextShape === "Pen") {
                 context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
                 settings.currentShape.points.push({x: x, y: y});
                 drawAll();
                 settings.currentShape.draw(context);
             }
+            else {
+                context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+                settings.moveOutline.setEnd(x, y);
+                drawAll();
+                context.setLineDash([5, 15]);
+                settings.moveOutline.draw(context);
+                context.setLineDash([0]);
+            }
         }
     });
 
     $("#myCanvas").mouseup(function (e) {
+        var context = settings.canvas.getContext("2d");
         settings.isDrawing = false;
         if(settings.currentShape !== undefined)
             settings.shapes.push(settings.currentShape);
-
+            settings.currentShape = undefined;
+        context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+        drawAll();
     });
 
     function drawAll(x,y) {
@@ -203,7 +223,7 @@ $(document).ready(function () {
 
     $("#redo").click(function () {
         var context = settings.canvas.getContext("2d");
-        if(settings.redoShapes.length !== 0){
+        if(settings.redoShapes.length !== 0) {
             settings.shapes.push(settings.redoShapes.pop());
             context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
             drawAll();
@@ -216,7 +236,7 @@ $(document).ready(function () {
         if(key == 13){
             var text = $("#inputText").val();
             console.log(text);
-            if(text !== ""){
+            if(text !== "") {
                 shape = new Text(settings.textX, settings.textY, settings.nextColor, text, settings.nextFont, settings.nextTextSize);
                 settings.shapes.push(shape);
                 drawAll();
