@@ -112,7 +112,7 @@ $(document).ready(function () {
 
         if(settings.nextShape === "Text") {
             console.log(y + " " + x);
-            $("#inputText").css({"top":  y+245, "left": x}).show();
+            $("#inputText").css({"top":  e.pageY, "left": e.pageX}).show();
             settings.isDrawing = false;
             settings.textX = x;
             settings.textY = y;
@@ -144,7 +144,6 @@ $(document).ready(function () {
         if(shape !== undefined) {
             settings.currentShape = shape;
         }
-
     });
 
 
@@ -157,24 +156,24 @@ $(document).ready(function () {
             if(settings.nextShape === "Text") {
 
             }
-            else if(settings.nextShape === "Circle") {
+            else if(settings.nextShape === "Circle" || settings.nextShape === "Rectangle" || settings.nextShape === "Line") {
                 context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
                 settings.currentShape.setEnd(x, y);
                 drawAll();
                 settings.currentShape.draw(context);
             }
-            else if(settings.nextShape === "Rectangle") {
-                context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
-                settings.currentShape.setEnd(x, y);
-                drawAll();
-                settings.currentShape.draw(context);
-            }
-            else if(settings.nextShape === "Line") {
-                context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
-                settings.currentShape.setEnd(x, y);
-                drawAll();
-                settings.currentShape.draw(context);
-            }
+            // else if(settings.nextShape === "Rectangle") {
+            //     context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+            //     settings.currentShape.setEnd(x, y);
+            //     drawAll();
+            //     settings.currentShape.draw(context);
+            // }
+            // else if(settings.nextShape === "Line") {
+            //     context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+            //     settings.currentShape.setEnd(x, y);
+            //     drawAll();
+            //     settings.currentShape.draw(context);
+            // }
             else if(settings.nextShape === "Eraser") {
                 context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
                 settings.currentShape.points.push({x: x, y: y});;
@@ -245,5 +244,4 @@ $(document).ready(function () {
             }
         }
     });
-
 });

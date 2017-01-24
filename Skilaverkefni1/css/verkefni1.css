@@ -87,3 +87,8 @@ body{
   position: absolute;
   z-index: 99;
 }
+
+#canvasContainer{
+  width: 700;
+  height: 500;
+}
