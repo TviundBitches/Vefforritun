@@ -82,3 +82,8 @@ body{
 #pen{
     background-image: url();
 }
+
+#inputText{
+  position: absolute;
+  z-index: 99;
+}

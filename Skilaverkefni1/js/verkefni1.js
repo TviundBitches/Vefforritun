@@ -111,7 +111,8 @@ $(document).ready(function () {
         var shape = undefined;
 
         if(settings.nextShape === "Text") {
-            $("#inputText").show();
+            console.log(y + " " + x);
+            $("#inputText").css({"top":  y+245, "left": x}).show();
             settings.isDrawing = false;
             settings.textX = x;
             settings.textY = y;
@@ -240,7 +241,7 @@ $(document).ready(function () {
                 shape = new Text(settings.textX, settings.textY, settings.nextColor, text, settings.nextFont, settings.nextTextSize);
                 settings.shapes.push(shape);
                 drawAll();
-                $("#inputText").val("");
+                $("#inputText").hide().val("");
             }
         }
     });
