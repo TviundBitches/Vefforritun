@@ -79,6 +79,18 @@ body{
     background-color: grey;
 }
 
+.active {
+    background-color: grey !important;
+}
+
+.colorActive{
+    border-color: white !important;
+}
+
+.sizeActive{
+    color: grey !important;
+}
+
 #pen{
     background-image: url();
 }

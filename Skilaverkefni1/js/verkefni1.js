@@ -25,18 +25,26 @@ $(document).ready(function () {
   	//								                      Change color
   	// --------------------------------------------------------------------------------------------
   	$("#redColor").click(function() {
+        $(".colorBtn").removeClass("colorActive");
+        $("#redColor").addClass("colorActive");
   		settings.nextColor = "red";
   	});
 
     $("#blueColor").click(function() {
+        $(".colorBtn").removeClass("colorActive");
+        $("#blueColor").addClass("colorActive");
         settings.nextColor = "blue";
     });
 
     $("#greenColor").click(function() {
+        $(".colorBtn").removeClass("colorActive");
+        $("#greenColor").addClass("colorActive");
         settings.nextColor = "green";
     });
 
     $("#blackColor").click(function() {
+        $(".colorBtn").removeClass("colorActive");
+        $("#blackColor").addClass("colorActive");
         settings.nextColor = "black";
     });
 
@@ -44,36 +52,50 @@ $(document).ready(function () {
   	//							                         Change shapes
   	// --------------------------------------------------------------------------------------------
   	$("#pen").click(function() {
-  		settings.nextShape = "Pen";
+        $(".button").removeClass("active");
+        $("#pen").addClass("active");
+        settings.nextShape = "Pen";
         document.getElementById("myCanvas").style.cursor ="url(./logos/pen.png), auto";
   	});
 
   	$("#line").click(function() {
-  		settings.nextShape = "Line";
+        $(".button").removeClass("active");
+        $("#line").addClass("active");
+        settings.nextShape = "Line";
         document.getElementById("myCanvas").style.cursor = "default";
   	});
 
   	$("#rectangle").click(function() {
-  		settings.nextShape = "Rectangle";
+        $(".button").removeClass("active");
+        $("#rectangle").addClass("active");
+        settings.nextShape = "Rectangle";
         document.getElementById("myCanvas").style.cursor = "crosshair";
   	});
 
   	$("#circle").click(function() {
-  		settings.nextShape = "Circle";
+        $(".button").removeClass("active");
+        $("#circle").addClass("active");
+        settings.nextShape = "Circle";
         document.getElementById("myCanvas").style.cursor = "default";
   	});
 
     $("#text").click(function() {
+        $(".button").removeClass("active");
+        $("#text").addClass("active");
         settings.nextShape = "Text";
         document.getElementById("myCanvas").style.cursor = "text";
     });
 
     $("#eraser").click(function() {
+        $(".button").removeClass("active");
+        $("#eraser").addClass("active");
         settings.nextShape = "Eraser";
         document.getElementById("myCanvas").style.cursor ="url(pen.png), auto";
     });
 
     $("#move").click(function() {
+        $(".button").removeClass("active");
+        $("#move").addClass("active");
         settings.nextShape = "Move";
     });
 
@@ -82,18 +104,26 @@ $(document).ready(function () {
   	// --------------------------------------------------------------------------------------------
 
     $("#small").click(function() {
+        $(".fa-circle").removeClass("sizeActive");
+        $("#small").addClass("sizeActive");
         settings.nextWidth = 2;
     });
 
     $("#medium").click(function() {
+        $(".fa-circle").removeClass("sizeActive");
+        $("#medium").addClass("sizeActive");
         settings.nextWidth = 6;
     });
 
     $("#large").click(function() {
+        $(".fa-circle").removeClass("sizeActive");
+        $("#large").addClass("sizeActive");
         settings.nextWidth = 10;
     });
 
     $("#xlarge").click(function() {
+        $(".fa-circle").removeClass("sizeActive");
+        $("#xlarge").addClass("sizeActive");
         settings.nextWidth = 14;
     });
 
