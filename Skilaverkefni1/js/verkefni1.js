@@ -99,6 +99,12 @@ $(document).ready(function () {
         settings.nextShape = "Move";
     });
 
+    $("#bucket").click(function() {
+        $(".button").removeClass("active");
+        $("#bucket").addClass("active");
+        settings.nextShape = "Bucket";
+    });
+
     // --------------------------------------------------------------------------------------------
   	//							                        Change Width
   	// --------------------------------------------------------------------------------------------
@@ -167,6 +173,9 @@ $(document).ready(function () {
             shape = new Pen(x, y, settings.nextColor, settings.nextWidth);
             shape.points.push({x: x, y: y});
             shape.draw(context);
+        }
+        else if(settings.nextShape === "Bucket") {
+            $("#myCanvas").css('background-color', settings.nextColor);
         }
         else {
             settings.moveOutline = new Rectangle(x, y, "black", 1);
