@@ -18,7 +18,9 @@ $(document).ready(function () {
         nextFont: "Arial",
         nextTextSize: "16px ",
         textY: 0,
-        textX: 0
+        textX: 0,
+        // -- Moving --
+        dragging: false
     };
 
     // --------------------------------------------------------------------------------------------
@@ -140,6 +142,13 @@ $(document).ready(function () {
         }
         else {
             settings.moveOutline = new Rectangle(x, y, "black", 1);
+            settings.dragging = true;
+            for (var i = settings.shapes.length - 1; i >= 0; i--) {
+                if(settings.shapes[i] === Circle) {
+                    console.log("woohooo");
+                }
+            }
+
         }
 
         if(shape !== undefined) {
@@ -183,6 +192,7 @@ $(document).ready(function () {
     $("#myCanvas").mouseup(function (e) {
         var context = settings.canvas.getContext("2d");
         settings.isDrawing = false;
+        settings.dragging = false;
         if(settings.currentShape !== undefined)
             settings.shapes.push(settings.currentShape);
             settings.currentShape = undefined;
