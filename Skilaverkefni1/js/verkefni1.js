@@ -45,7 +45,7 @@ $(document).ready(function () {
   	// --------------------------------------------------------------------------------------------
   	$("#pen").click(function() {
   		settings.nextShape = "Pen";
-        document.getElementById("myCanvas").style.cursor ="url(pen.png), auto";
+        document.getElementById("myCanvas").style.cursor ="url(./logos/pen.png), auto";
   	});
 
   	$("#line").click(function() {
@@ -70,6 +70,7 @@ $(document).ready(function () {
 
     $("#eraser").click(function() {
         settings.nextShape = "Eraser";
+        document.getElementById("myCanvas").style.cursor ="url(pen.png), auto";
     });
 
     $("#move").click(function() {
@@ -162,27 +163,9 @@ $(document).ready(function () {
                 drawAll();
                 settings.currentShape.draw(context);
             }
-            // else if(settings.nextShape === "Rectangle") {
-            //     context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
-            //     settings.currentShape.setEnd(x, y);
-            //     drawAll();
-            //     settings.currentShape.draw(context);
-            // }
-            // else if(settings.nextShape === "Line") {
-            //     context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
-            //     settings.currentShape.setEnd(x, y);
-            //     drawAll();
-            //     settings.currentShape.draw(context);
-            // }
-            else if(settings.nextShape === "Eraser") {
+            else if(settings.nextShape === "Eraser" || settings.nextShape === "Pen") {
                 context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
                 settings.currentShape.points.push({x: x, y: y});;
-                drawAll();
-                settings.currentShape.draw(context);
-            }
-            else if(settings.nextShape === "Pen") {
-                context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
-                settings.currentShape.points.push({x: x, y: y});
                 drawAll();
                 settings.currentShape.draw(context);
             }
@@ -206,13 +189,6 @@ $(document).ready(function () {
         context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
         drawAll();
     });
-
-    function drawAll(x,y) {
-        var context = settings.canvas.getContext("2d");
-        settings.shapes.forEach(function (item) {
-            item.draw(context);
-        })
-    }
 
     $("#undo").click(function () {
         var context = settings.canvas.getContext("2d");
@@ -244,4 +220,15 @@ $(document).ready(function () {
             }
         }
     });
+
+
+    // --------------------------------------------------------------------------------------------
+    //							        	        Helper functions
+    // --------------------------------------------------------------------------------------------
+    function drawAll(x,y) {
+        var context = settings.canvas.getContext("2d");
+        settings.shapes.forEach(function (item) {
+            item.draw(context);
+        })
+    }
 });
