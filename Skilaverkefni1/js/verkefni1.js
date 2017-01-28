@@ -259,6 +259,14 @@ $(document).ready(function () {
         }
     });
 
+    /*$("#saveButton").click(function () {
+        var context = settings.canvas.getContext("2d");
+
+        settings.redoShapes.push(settings.shapes.pop());
+        context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+        drawAll();
+    });*/
+
     $("#inputText").keypress(function(e) {
         var key = e.which;
         var shape = undefined;
