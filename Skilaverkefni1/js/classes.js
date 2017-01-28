@@ -33,8 +33,10 @@ class Rectangle extends Shape {
     }
 
     contains(x, y) {
-        return  (this.x <= x) && (this.x + Math.abs(this.endX - this.x) >= x) &&
-                (this.y <= y) && (this.y + Math.abs(this.endY - this.y) >= y);
+        return  ((this.x <= x) && (this.x + Math.abs(this.endX - this.x) >= x) &&
+                (this.y <= y) && (this.y + Math.abs(this.endY - this.y) >= y)) ||
+                ((this.endX <= x) && (this.endX + Math.abs(this.x - this.endX) >= x) &&
+                (this.endY <= y) && (this.endY + Math.abs(this.y - this.endY) >= y));
     }
 }
 
@@ -77,7 +79,9 @@ class Line extends Shape {
     }
 
     contains(x, y) {
-
+        var slope = ((this.endY - this.y)/(this.endX - this.x));
+        var yZero = (this.y - (slope * this.x));
+        return (((slope * x) + yZero) === y);
     }
 }
 

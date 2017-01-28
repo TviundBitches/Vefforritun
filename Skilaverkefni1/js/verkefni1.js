@@ -242,7 +242,7 @@ $(document).ready(function () {
             else {
 
                 if(settings.dragging === true && settings.dragShape) {
-                    if(settings.dragShape.className == "Rectangle") {
+                    if(settings.dragShape.className == "Rectangle" || settings.dragShape.className == "Line") {
                         context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
                         settings.dragShape.x = x - settings.dragOffx;
                         settings.dragShape.y = y - settings.dragOffy;
