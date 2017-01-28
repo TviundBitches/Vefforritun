@@ -292,11 +292,19 @@ $(document).ready(function () {
     });
 
     /*$("#saveButton").click(function () {
-        var context = settings.canvas.getContext("2d");
+        db.drawings.push(settings.shapes);
+    });
 
-        settings.redoShapes.push(settings.shapes.pop());
-        context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
-        drawAll();
+    function () {
+        var saved = document.getElementById("save"),
+            df = document.createDocumentFragment();
+        for(var i = 1; i <= db.drawings.length; i++) {
+            var option = document.createElement("option");
+            option.value = i;
+            option.appendChild(document.createTextNode("save #" + i));
+            df.appendChild(option);
+        }
+        saved.appendChild(df);
     });*/
 
     $("#inputText").keypress(function(e) {
