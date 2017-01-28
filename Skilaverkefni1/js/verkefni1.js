@@ -187,7 +187,6 @@ $(document).ready(function () {
                     console.log("woohooo");
                 }
             }
-
         }
 
         if(shape !== undefined) {
