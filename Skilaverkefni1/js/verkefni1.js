@@ -20,8 +20,17 @@ $(document).ready(function () {
         textY: 0,
         textX: 0,
         // -- Moving --
-        dragging: false
+        dragging: false,
+        dragShape: undefined,
+        dragOffx: 0,
+        dragOffy: 0,
+        dragOffxEnd: 0,
+        dragOffyEnd: 0
     };
+    //select form
+    $(document).ready(function() {
+        $('select').material_select();
+      });
 
     // --------------------------------------------------------------------------------------------
   	//								                      Change color
@@ -158,21 +167,21 @@ $(document).ready(function () {
             console.log("hello");
         }
         else if(settings.nextShape === "Circle") {
-            shape = new Circle(x, y, settings.nextColor, settings.nextWidth);
+            shape = new Circle(x, y, settings.nextColor, settings.nextWidth, "Circle");
         }
         else if(settings.nextShape === "Rectangle") {
-            shape = new Rectangle(x, y, settings.nextColor, settings.nextWidth);
+            shape = new Rectangle(x, y, settings.nextColor, settings.nextWidth, "Rectangle");
         }
         else if(settings.nextShape === "Line") {
-            shape = new Line(x, y, settings.nextColor, settings.nextWidth);
+            shape = new Line(x, y, settings.nextColor, settings.nextWidth, "Line");
         }
         else if(settings.nextShape === "Eraser") {
-            shape = new Eraser(x, y, settings.eraser);
+            shape = new Eraser(x, y, settings.eraser, "Eraser");
             shape.points.push({x: x, y: y});
             shape.draw(context);
         }
         else if(settings.nextShape === "Pen") {
-            shape = new Pen(x, y, settings.nextColor, settings.nextWidth);
+            shape = new Pen(x, y, settings.nextColor, settings.nextWidth, "Pen");
             shape.points.push({x: x, y: y});
             shape.draw(context);
         }
@@ -181,12 +190,26 @@ $(document).ready(function () {
         }
         else {
             settings.moveOutline = new Rectangle(x, y, "black", 1);
-            settings.dragging = true;
             for (var i = settings.shapes.length - 1; i >= 0; i--) {
-                if(settings.shapes[i] === Circle) {
-                    console.log("woohooo");
+                if(settings.shapes[i].contains(x, y)) {
+                    settings.dragging = true;
+                    shape = settings.shapes[i];
+                    console.log("shape x: " + shape.x + "shape y: " + shape.y);
+                    settings.dragOffy = y - shape.y;
+                    settings.dragOffx = x - shape.x;
+                    settings.dragOffyEnd = y - shape.endY;
+                    settings.dragOffxEnd = x - shape.endX;
+                    settings.dragShape = shape;
+                    shape = undefined;
+                    return;
                 }
             }
+
+            if (settings.dragShape) {
+                settings.dragShape = undefined;
+                settings.dragging = false;
+            }
+
         }
 
         if(shape !== undefined) {
@@ -199,7 +222,7 @@ $(document).ready(function () {
         var context = settings.canvas.getContext("2d");
         var x = e.pageX - this.offsetLeft;
         var y = e.pageY - this.offsetTop;
-        if(settings.isDrawing === true){ //vera med tvo current/nest shape if currentShape !== undefined
+        if(settings.isDrawing === true){
 
             if(settings.nextShape === "Text") {
 
@@ -217,12 +240,25 @@ $(document).ready(function () {
                 settings.currentShape.draw(context);
             }
             else {
-                context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
-                settings.moveOutline.setEnd(x, y);
-                drawAll();
-                context.setLineDash([5, 15]);
-                settings.moveOutline.draw(context);
-                context.setLineDash([0]);
+
+                if(settings.dragging === true && settings.dragShape) {
+                    if(settings.dragShape.className == "Rectangle" || settings.dragShape.className == "Line") {
+                        context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+                        settings.dragShape.x = x - settings.dragOffx;
+                        settings.dragShape.y = y - settings.dragOffy;
+                        settings.dragShape.endX = x - settings.dragOffxEnd;
+                        settings.dragShape.endY = y - settings.dragOffyEnd;
+                        drawAll();
+                    }
+                }
+                else {
+                    context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+                    settings.moveOutline.setEnd(x, y);
+                    drawAll();
+                    context.setLineDash([5, 15]);
+                    settings.moveOutline.draw(context);
+                    context.setLineDash([0]);
+                }
             }
         }
     });
@@ -231,6 +267,7 @@ $(document).ready(function () {
         var context = settings.canvas.getContext("2d");
         settings.isDrawing = false;
         settings.dragging = false;
+        settings.dragShape = undefined;
         if(settings.currentShape !== undefined)
             settings.shapes.push(settings.currentShape);
             settings.currentShape = undefined;
@@ -254,12 +291,19 @@ $(document).ready(function () {
         }
     });
 
+    /*$("#saveButton").click(function () {
+        var context = settings.canvas.getContext("2d");
+
+        settings.redoShapes.push(settings.shapes.pop());
+        context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+        drawAll();
+    });*/
+
     $("#inputText").keypress(function(e) {
         var key = e.which;
         var shape = undefined;
         if(key == 13){
             var text = $("#inputText").val();
-            console.log(text);
             if(text !== "") {
                 shape = new Text(settings.textX, settings.textY, settings.nextColor, text, settings.nextFont, settings.nextTextSize);
                 settings.shapes.push(shape);

@@ -104,3 +104,10 @@ body{
   width: 700;
   height: 500;
 }
+
+.saveSelect{
+    background-color: #ee6e73;
+    color: white;
+    width: 50%;
+    height: 30px;
+}
