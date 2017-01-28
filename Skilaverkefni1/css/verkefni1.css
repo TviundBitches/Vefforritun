@@ -100,14 +100,33 @@ body{
   z-index: 99;
 }
 
-#canvasContainer{
-  width: 700;
-  height: 500;
-}
-
 .saveSelect{
     background-color: #ee6e73;
     color: white;
     width: 50%;
     height: 30px;
+}
+
+.fontSelect{
+    background-color: #ee6e73;
+    color: white;
+    width: 300px;
+    height: 30px;
+}
+
+.sizeSelect{
+    background-color: #ee6e73;
+    color: white;
+    width: 75px;
+    height: 30px;
+    margin-top: 15px;
+}
+
+#myCanvas{
+    width: 900px;
+    height: 500px;
+}
+
+.fontChanger{
+    display: none;
 }

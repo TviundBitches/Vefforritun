@@ -94,6 +94,7 @@ class Text extends Shape {
     }
 
     draw(context) {
+        console.log("This.size:" + this.size);
         context.font = this.size + this.font;
         context.fillStyle = this.color;
         context.fillText(this.text, this.x, this.y);

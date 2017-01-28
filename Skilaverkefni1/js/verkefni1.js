@@ -28,9 +28,20 @@ $(document).ready(function () {
         dragOffyEnd: 0
     };
     //select form
-    $(document).ready(function() {
         $('select').material_select();
-      });
+        $(".sizeSelect").change(function () {
+            var str = $(".sizeSelect option:selected").val();
+            $("#inputText").css('font-size', str);
+            settings.nextTextSize = str;
+            console.log(settings.nextTextSize);
+        })
+
+        $(".fontSelect").change(function () {
+            var str = $(".fontSelect option:selected").val();
+            $("#inputText").css('font-family', str);
+            settings.nextFont = str;
+            console.log(settings.nextFont);
+        })
 
     // --------------------------------------------------------------------------------------------
   	//								                      Change color
@@ -63,6 +74,7 @@ $(document).ready(function () {
   	//							                         Change shapes
   	// --------------------------------------------------------------------------------------------
   	$("#pen").click(function() {
+        $(".fontChanger").hide();
         $(".button").removeClass("active");
         $("#pen").addClass("active");
         settings.nextShape = "Pen";
@@ -70,6 +82,7 @@ $(document).ready(function () {
   	});
 
   	$("#line").click(function() {
+        $(".fontChanger").hide();
         $(".button").removeClass("active");
         $("#line").addClass("active");
         settings.nextShape = "Line";
@@ -77,6 +90,7 @@ $(document).ready(function () {
   	});
 
   	$("#rectangle").click(function() {
+        $(".fontChanger").hide();
         $(".button").removeClass("active");
         $("#rectangle").addClass("active");
         settings.nextShape = "Rectangle";
@@ -84,6 +98,7 @@ $(document).ready(function () {
   	});
 
   	$("#circle").click(function() {
+        $(".fontChanger").hide();
         $(".button").removeClass("active");
         $("#circle").addClass("active");
         settings.nextShape = "Circle";
@@ -91,6 +106,7 @@ $(document).ready(function () {
   	});
 
     $("#text").click(function() {
+        $(".fontChanger").hide();
         $(".button").removeClass("active");
         $("#text").addClass("active");
         settings.nextShape = "Text";
@@ -98,6 +114,7 @@ $(document).ready(function () {
     });
 
     $("#eraser").click(function() {
+        $(".fontChanger").hide();
         $(".button").removeClass("active");
         $("#eraser").addClass("active");
         settings.nextShape = "Eraser";
@@ -105,12 +122,14 @@ $(document).ready(function () {
     });
 
     $("#move").click(function() {
+        $(".fontChanger").hide();
         $(".button").removeClass("active");
         $("#move").addClass("active");
         settings.nextShape = "Move";
     });
 
     $("#bucket").click(function() {
+        $(".fontChanger").hide();
         $(".button").removeClass("active");
         $("#bucket").addClass("active");
         settings.nextShape = "Bucket";
@@ -160,6 +179,7 @@ $(document).ready(function () {
 
         if(settings.nextShape === "Text") {
             console.log(y + " " + x);
+            $(".fontChanger").show();
             $("#inputText").css({"top":  e.pageY, "left": e.pageX}).show();
             settings.isDrawing = false;
             settings.textX = x;
@@ -305,10 +325,14 @@ $(document).ready(function () {
         if(key == 13){
             var text = $("#inputText").val();
             if(text !== "") {
+                console.log(settings.nextTextSize);
                 shape = new Text(settings.textX, settings.textY, settings.nextColor, text, settings.nextFont, settings.nextTextSize);
                 settings.shapes.push(shape);
                 drawAll();
                 $("#inputText").hide().val("");
+                $(".fontChanger").hide();
+                settings.nextFont = "Arial";
+                $("#inputText").css('font-family', "Arial");
             }
         }
     });
