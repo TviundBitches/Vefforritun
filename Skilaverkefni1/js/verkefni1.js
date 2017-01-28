@@ -22,6 +22,10 @@ $(document).ready(function () {
         // -- Moving --
         dragging: false
     };
+    //select form
+    $(document).ready(function() {
+        $('select').material_select();
+      });
 
     // --------------------------------------------------------------------------------------------
   	//								                      Change color
