@@ -455,7 +455,17 @@ $(document).ready(function () {
         console.log(settings.shapes.length);
         console.log("Mouseup: x=" + x + ", y=" + y);
         console.log("Moveoutlie mouseup: " + settings.moveOutline);
-
+        if(settings.nextShape === "Move") {
+            for (var i = settings.shapes.length - 1; i >= 0; i--) {
+                if (settings.shapes[i].intersects(settings.moveOutline)) {
+                    console.log(settings.shapes[i]);
+                    settings.templates.push(settings.shapes[i]);
+                }
+            }
+            if(settings.templates.length !== 0) {
+                $("#saveTemplate").show();
+            }
+        }
 
         if(settings.dragging) {
             settings.dragging = false;
@@ -632,8 +642,9 @@ $(document).ready(function () {
             success: function(data) {
                 var text = "";
                 for(var i in data) {
-                    $("#tempSelect").append($("<option>", { value: i }).text("Template " + i));
+                    text += '<a href="#!" class="collection-item">' + "Template " + i + '</a>\n'
                 }
+                document.getElementById("tempSelect").innerHTML = text;
             }
         });
         if(loadNr === 1000000) {
