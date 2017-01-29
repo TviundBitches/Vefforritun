@@ -30,7 +30,8 @@ body{
 }
 
 #colors{
-    padding: 0px;
+    padding: 16px;
+    float: right;
 }
 
 .colors button{
@@ -185,7 +186,7 @@ body{
 .fontSelect{
     background-color: #ee6e73;
     color: white;
-    width: 300px;
+    width: 230px;
     height: 30px;
 }
 

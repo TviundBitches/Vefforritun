@@ -26,24 +26,30 @@ $(document).ready(function () {
         dragOffxEnd: 0,
         dragOffyEnd: 0
     };
-    //select form
-        $('select').material_select();
-        $(".sizeSelect").change(function () {
-            var str = $(".sizeSelect option:selected").val();
-            $("#inputText").css('font-size', str);
-            settings.nextTextSize = str;
-            console.log(settings.nextTextSize);
-        })
 
-        $(".fontSelect").change(function () {
-            var str = $(".fontSelect option:selected").val();
-            $("#inputText").css('font-family', str);
-            settings.nextFont = str;
-            console.log(settings.nextFont);
-        })
+    //select form
+    $('select').material_select();
 
     // --------------------------------------------------------------------------------------------
-  	//								                      Change color
+  	//								     Text: Change font and size
+  	// --------------------------------------------------------------------------------------------
+
+    $(".sizeSelect").change(function () {
+        var str = $(".sizeSelect option:selected").val();
+        $("#inputText").css('font-size', str);
+        settings.nextTextSize = str;
+        console.log(settings.nextTextSize);
+    })
+
+    $(".fontSelect").change(function () {
+        var str = $(".fontSelect option:selected").val();
+        $("#inputText").css('font-family', str);
+        settings.nextFont = str;
+        console.log(settings.nextFont);
+    })
+
+    // --------------------------------------------------------------------------------------------
+  	//								          Change color
   	// --------------------------------------------------------------------------------------------
   	$("#redColor").click(function() {
         $(".colorBtn").removeClass("colorActive");
@@ -69,79 +75,8 @@ $(document).ready(function () {
         settings.nextColor = "black";
     });
 
-    $("#pinkColor").click(function() {
-        $(".colorBtn").removeClass("colorActive");
-        $("#pinkColor").addClass("colorActive");
-        settings.nextColor = "hotPink";
-    });
-
-    $("#whiteColor").click(function() {
-        $(".colorBtn").removeClass("colorActive");
-        $("#whiteColor").addClass("colorActive");
-        settings.nextColor = "white";
-    });
-
-    $("#yellowColor").click(function() {
-        $(".colorBtn").removeClass("colorActive");
-        $("#yellowColor").addClass("colorActive");
-        settings.nextColor = "yellow";
-    });
-
-    $("#deepRedColor").click(function() {
-        $(".colorBtn").removeClass("colorActive");
-        $("#deepRedColor").addClass("colorActive");
-        settings.nextColor = "FireBrick";
-    });
-
-    $("#purpleColor").click(function() {
-        $(".colorBtn").removeClass("colorActive");
-        $("#purpleColor").addClass("colorActive");
-        settings.nextColor = "darkviolet";
-    });
-
-    $("#limeColor").click(function() {
-        $(".colorBtn").removeClass("colorActive");
-        $("#limeColor").addClass("colorActive");
-        settings.nextColor = "lawnGreen";
-    });
-
-    $("#turquoiseColor").click(function() {
-        $(".colorBtn").removeClass("colorActive");
-        $("#turquoiseColor").addClass("colorActive");
-        settings.nextColor = "DarkTurquoise";
-    });
-
-    $("#moccasinColor").click(function() {
-        $(".colorBtn").removeClass("colorActive");
-        $("#moccasinColor").addClass("colorActive");
-        settings.nextColor = "Moccasin";
-    });
-
-    $("#greyColor").click(function() {
-        $(".colorBtn").removeClass("colorActive");
-        $("#greyColor").addClass("colorActive");
-        settings.nextColor = "grey";
-    });
-
-    $("#brownColor").click(function() {
-        $(".colorBtn").removeClass("colorActive");
-        $("#brownColor").addClass("colorActive");
-        settings.nextColor = "saddlebrown";
-    });
-
-    $("#deepPinkColor").click(function() {
-        $(".colorBtn").removeClass("colorActive");
-        $("#deepPinkColor").addClass("colorActive");
-        settings.nextColor = "DeepPink";
-    });
-
-    $("#orangeColor").click(function() {
-        $(".colorBtn").removeClass("colorActive");
-        $("#orangeColor").addClass("colorActive");
-        settings.nextColor = "darkorange";
-    });
   	// --------------------------------------------------------------------------------------------
-  	//							                         Change shapes
+  	//							           Change shapes
   	// --------------------------------------------------------------------------------------------
   	$("#pen").click(function() {
         $(".fontChanger").hide();
@@ -206,7 +141,7 @@ $(document).ready(function () {
     });
 
     // --------------------------------------------------------------------------------------------
-  	//							                        Change Width
+  	//							              Change Width
   	// --------------------------------------------------------------------------------------------
 
     $("#small").click(function() {
@@ -235,7 +170,7 @@ $(document).ready(function () {
 
 
   	// --------------------------------------------------------------------------------------------
-  	//							        	        Drawing and do stuff on canvas
+  	//							      Drawing and do stuff on canvas
   	// --------------------------------------------------------------------------------------------
     $("#myCanvas").mousedown(function (e) {
         var x = e.pageX - this.offsetLeft;
@@ -312,7 +247,7 @@ $(document).ready(function () {
         var context = settings.canvas.getContext("2d");
         var x = e.pageX - this.offsetLeft;
         var y = e.pageY - this.offsetTop;
-        if(settings.isDrawing === true){
+        if(settings.isDrawing === true) {
 
             if(settings.nextShape === "Text") {
 
@@ -332,12 +267,20 @@ $(document).ready(function () {
             else {
 
                 if(settings.dragging === true && settings.dragShape) {
+
                     if(settings.dragShape.className == "Rectangle" || settings.dragShape.className == "Line") {
                         context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
                         settings.dragShape.x = x - settings.dragOffx;
                         settings.dragShape.y = y - settings.dragOffy;
                         settings.dragShape.endX = x - settings.dragOffxEnd;
                         settings.dragShape.endY = y - settings.dragOffyEnd;
+                        drawAll();
+                    }
+                    else if(settings.dragShape.className == "Pen") {
+                        context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+                        for(var i = settings.dragShape.points.length - 1; i >= 0; i--) {
+                            settings.dragShape.points[i]
+                        }
                         drawAll();
                     }
                 }
@@ -411,14 +354,13 @@ $(document).ready(function () {
                 $(".fontChanger").hide();
                 settings.nextFont = "Arial";
                 $("#inputText").css('font-family', "Arial");
-                $("option:selected").removeAttr("selected");
             }
         }
     });
 
 
     // --------------------------------------------------------------------------------------------
-    //							        	        Helper functions
+    //							            Helper functions
     // --------------------------------------------------------------------------------------------
     function drawAll(x,y) {
         var context = settings.canvas.getContext("2d");
