@@ -168,6 +168,7 @@ $(document).ready(function () {
   	$("#pen").click(function() {
         $(".fontChanger").hide();
         $(".changeFill").hide();
+        $("#saveTemplate").hide();
         $(".button").removeClass("active");
         $("#pen").addClass("active");
         settings.nextShape = "Pen";
@@ -177,6 +178,7 @@ $(document).ready(function () {
   	$("#line").click(function() {
         $(".fontChanger").hide();
         $(".changeFill").hide();
+        $("#saveTemplate").hide();
         $(".button").removeClass("active");
         $("#line").addClass("active");
         settings.nextShape = "Line";
@@ -186,6 +188,7 @@ $(document).ready(function () {
   	$("#rectangle").click(function() {
         $(".fontChanger").hide();
         $(".changeFill").show();
+        $("#saveTemplate").hide();
         $(".button").removeClass("active");
         $("#rectangle").addClass("active");
         settings.nextShape = "Rectangle";
@@ -195,6 +198,7 @@ $(document).ready(function () {
   	$("#circle").click(function() {
         $(".fontChanger").hide();
         $(".changeFill").show();
+        $("#saveTemplate").hide();
         $(".button").removeClass("active");
         $("#circle").addClass("active");
         settings.nextShape = "Circle";
@@ -204,6 +208,7 @@ $(document).ready(function () {
     $("#text").click(function() {
         $(".fontChanger").hide();
         $(".changeFill").hide();
+        $("#saveTemplate").hide();
         $(".button").removeClass("active");
         $("#text").addClass("active");
         settings.nextShape = "Text";
@@ -213,6 +218,7 @@ $(document).ready(function () {
     $("#eraser").click(function() {
         $(".fontChanger").hide();
         $(".changeFill").hide();
+        $("#saveTemplate").hide();
         $(".button").removeClass("active");
         $("#fill").removeClass("active");
         $("#noFill").addClass("active");
@@ -233,6 +239,7 @@ $(document).ready(function () {
     $("#bucket").click(function() {
         $(".fontChanger").hide();
         $(".changeFill").hide();
+        $("#saveTemplate").hide();
         $(".button").removeClass("active");
         $("#bucket").addClass("active");
         settings.nextShape = "Bucket";
@@ -331,12 +338,14 @@ $(document).ready(function () {
         }
         else {
             settings.moveOutline = new Rectangle(x, y, "black", 1);
+            console.log("Moveoutlie mousedown: " + settings.moveOutline);
+
+            console.log("Mousedown: x=" + x + ", y=" + y);
             for (var i = settings.shapes.length - 1; i >= 0; i--) {
                 if(settings.shapes[i].contains(x, y)) {
                     settings.dragging = true;
                     shape = settings.shapes[i];
-                    settings.templates.push(shape);
-                    console.log("shape x: " + shape.x + "shape y: " + shape.y);
+                    //console.log("shape x: " + shape.x + "shape y: " + shape.y);
                     settings.dragOffy = y - shape.y;
                     settings.dragOffx = x - shape.x;
                     settings.dragOffyEnd = y - shape.endY;
@@ -419,12 +428,25 @@ $(document).ready(function () {
     });
 
     $("#myCanvas").mouseup(function (e) {
+        var x = e.pageX - this.offsetLeft;
+        var y = e.pageY - this.offsetTop;
         var context = settings.canvas.getContext("2d");
         settings.isDrawing = false;
         settings.dragging = false;
         settings.dragShape = undefined;
-        if(settings.nextShape === "Move" && settings.templates.length !== 0){
-            $("#saveTemplate").show()
+        console.log(settings.nextShape);
+        console.log(settings.shapes.length);
+        console.log("Mouseup: x=" + x + ", y=" + y);
+        console.log("Moveoutlie mouseup: " + settings.moveOutline);
+
+        if(settings.nextShape === "Move"){
+            for (var i = settings.shapes.length - 1; i >= 0; i--) {
+                if(settings.shapes[i].intersects(settings.moveOutline)) {
+                    console.log(settings.shapes[i]);
+                    settings.templates.push(settings.shapes[i]);
+                }
+            }
+            $("#saveTemplate").show();
         }
         if(settings.currentShape !== undefined)
             settings.shapes.push(settings.currentShape);

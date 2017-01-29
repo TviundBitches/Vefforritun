@@ -15,6 +15,9 @@ class Shape {
         this.endX = x;
         this.endY = y;
     }
+    intersects(rect) {
+        //todo
+    }
 }
 
 class Rectangle extends Shape {
@@ -38,6 +41,12 @@ class Rectangle extends Shape {
         }
     }
 
+    intersects(rect) {
+        return !( rect.x           > (this.x + this.w) ||
+        (rect.x + rect.w) <  this.x           ||
+        rect.y           > (this.y + this.h) ||
+        (rect.y + rect.h) <  this.y);
+    }
     contains(x, y) {
         return  ((this.x <= x) && (this.x + Math.abs(this.endX - this.x) >= x) &&
                 (this.y <= y) && (this.y + Math.abs(this.endY - this.y) >= y)) ||
@@ -69,6 +78,38 @@ class Circle extends Shape {
 
     computeRadius(x,y){
         return Math.sqrt(Math.pow(this.x - x, 2) + Math.pow(this.y - y, 2));
+    }
+
+    intersects(rect){
+        // var x = Math.abs(this.x - rect.x-rect.w/2);
+        // var y = Math.abs(this.y - rect.y-rect.h/2);
+        // if (x > (rect.w/2 + this.computeRadius(this.endX, this.endY))){
+        //     return false;
+        // }
+        // if (y > (rect.h/2 + this.computeRadius(this.endX, this.endY))) {
+        //     return false;
+        // }
+        // if (x <= (rect.w/2)) {
+        //     return true;
+        // }
+        // if (y <= (rect.h/2)) {
+        //     return true;
+        // }
+        // var dx = x-rect.w/2;
+        // var dy = y-rect.h/2;
+        // return(dx*dx+dy*dy <= (this.computeRadius(this.endX, this.endY)*this.computeRadius(this.endX, this.endY)));
+        var distX = Math.abs(this.x - rect.x-rect.w/2);
+        var distY = Math.abs(this.y - rect.y-rect.h/2);
+
+        if (distX > (rect.w/2 + this.computeRadius(this.endX, this.endY))) { return false; }
+        if (distY > (rect.h/2 + this.computeRadius(this.endX, this.endY))) { return false; }
+
+        if (distX <= (rect.w/2)) { return true; }
+        if (distY <= (rect.h/2)) { return true; }
+
+        var dx=distX-rect.w/2;
+        var dy=distY-rect.h/2;
+        return (dx*dx+dy*dy<=(this.computeRadius(this.endX, this.endY)*this.computeRadius(this.endX, this.endY)));
     }
 
     contains(x, y) {
