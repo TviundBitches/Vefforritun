@@ -113,6 +113,9 @@ class Circle extends Shape {
     }
 
     contains(x, y) {
+        var radius = this.computeRadius(this.endX, this.endY);
+
+        return (Math.pow(x - this.x, 2) + Math.pow(y - this.y, 2)) <= Math.pow(radius, 2);
 
     }
 }
