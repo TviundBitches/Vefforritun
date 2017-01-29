@@ -80,7 +80,9 @@ class Line extends Shape {
 
     contains(x, y) {
         var slope = ((this.endY - this.y)/(this.endX - this.x));
+        console.log(slope);
         var yZero = (this.y - (slope * this.x));
+        console.log(yZero);
         return (((slope * x) + yZero) === y);
     }
 }
@@ -113,6 +115,8 @@ class Pen extends Shape {
 
     draw(context) {
         context.beginPath();
+        context.lineCap = 'round';
+        context.lineJoin = 'round';
         context.strokeStyle = this.color;
         context.lineWidth = this.width;
         context.moveTo(this.x, this.y);
