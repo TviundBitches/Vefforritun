@@ -22,6 +22,7 @@ $(document).ready(function () {
         // -- Moving --
         dragging: false,
         dragShape: undefined,
+        dragShapes: [],
         dragOffx: 0,
         dragOffy: 0,
         dragOffxEnd: 0,
@@ -331,10 +332,13 @@ $(document).ready(function () {
         else if(settings.nextShape === "Bucket") {
             $("#myCanvas").css('background-color', settings.nextColor);
         }
+        // ------------    Dragging  ---------------
         else {
             settings.moveOutline = new Rectangle(x, y, "black", 1);
             for (var i = settings.shapes.length - 1; i >= 0; i--) {
+
                 if(settings.shapes[i].contains(x, y)) {
+                    document.getElementById("myCanvas").style.cursor = "move";
                     settings.dragging = true;
                     shape = settings.shapes[i];
                     settings.templates.push(shape);
@@ -382,11 +386,12 @@ $(document).ready(function () {
                 drawAll();
                 settings.currentShape.draw(context);
             }
+            // ------------    Dragging  ---------------
             else {
 
-                if(settings.dragging === true && settings.dragShape) {
+                if(settings.dragging === true && (settings.dragShape !== undefined || settings.dragShape !== [])) {
 
-                    if(settings.dragShape.className == "Rectangle" || settings.dragShape.className == "Line") {
+                    if(settings.dragShape.className == "Rectangle" || settings.dragShape.className == "Line" || settings.dragShape.className == "Circle") {
                         context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
                         settings.dragShape.x = x - settings.dragOffx;
                         settings.dragShape.y = y - settings.dragOffy;
@@ -423,11 +428,16 @@ $(document).ready(function () {
     $("#myCanvas").mouseup(function (e) {
         var context = settings.canvas.getContext("2d");
         settings.isDrawing = false;
-        settings.dragging = false;
-        settings.dragShape = undefined;
+
+        if(settings.dragging) {
+            settings.dragging = false;
+            settings.dragShape = undefined;
+            document.getElementById("myCanvas").style.cursor = "crosshair";
+        }
         if(settings.nextShape === "Move" && settings.templates.length !== 0){
             $("#saveTemplate").show()
         }
+
         if(settings.currentShape !== undefined)
             settings.shapes.push(settings.currentShape);
             settings.currentShape = undefined;
@@ -579,6 +589,10 @@ $(document).ready(function () {
 
         }
     });
+
+    // --------------------------------------------------------------------------------------------
+    //							               Text
+    // --------------------------------------------------------------------------------------------
 
     $("#inputText").keypress(function(e) {
         var key = e.which;
