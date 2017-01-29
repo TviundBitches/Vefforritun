@@ -185,6 +185,7 @@ $(document).ready(function () {
         if(settings.nextShape === "Text") {
             console.log(y + " " + x);
             $(".fontChanger").show();
+            $("#inputText").css({"color": settings.nextColor, "background": "transparent", "border-style": "dotted", "border-color": "grey"});
             $("#inputText").css({"top":  e.pageY, "left": e.pageX}).show();
             settings.isDrawing = false;
             settings.textX = x;
