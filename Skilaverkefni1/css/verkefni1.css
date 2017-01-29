@@ -29,6 +29,10 @@ body{
     color: white;
 }
 
+#colors{
+    padding: 0px;
+}
+
 .colors button{
     border: 2px solid;
     border-radius: 4px;
@@ -64,6 +68,77 @@ body{
     border: 2px solid green;
     border-radius: 4px;
     background-color: green;
+}
+
+.colors .whiteButton{
+    border: 2px solid white;
+    border-radius: 4px;
+    background-color: white;
+}
+
+.colors .pinkButton{
+    border: 2px solid hotpink;
+    border-radius: 4px;
+    background-color: hotpink;
+}
+
+.colors .yellowButton{
+    border: 2px solid yellow;
+    border-radius: 4px;
+    background-color: yellow;
+}
+
+.colors .purpleButton{
+    border: 2px solid darkviolet;
+    border-radius: 4px;
+    background-color: darkviolet;
+}
+.colors .deepRedButton{
+    border: 2px solid FireBrick ;
+    border-radius: 4px;
+    background-color: FireBrick ;
+}
+
+.colors .limeButton{
+    border: 2px solid LawnGreen;
+    border-radius: 4px;
+    background-color: LawnGreen;
+}
+
+.colors .turquoiseButton{
+    border: 2px solid DarkTurquoise;
+    border-radius: 4px;
+    background-color: DarkTurquoise;
+}
+
+.colors .moccasinButton{
+    border: 2px solid Moccasin;
+    border-radius: 4px;
+    background-color: Moccasin;
+}
+
+.colors .greyButton{
+    border: 2px solid grey;
+    border-radius: 4px;
+    background-color: grey;
+}
+
+.colors .brownButton{
+    border: 2px solid saddlebrown;
+    border-radius: 4px;
+    background-color: saddlebrown;
+}
+
+.colors .deepPinkButton{
+    border: 2px solid deeppink;
+    border-radius: 4px;
+    background-color: deeppink;
+}
+
+.colors .orangeButton{
+    border: 2px solid darkorange;
+    border-radius: 4px;
+    background-color: darkorange;
 }
 
 .lowerBar .button{

@@ -7,9 +7,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
+
 <body>
     <div class = "row head">
-    <div class="grid-example col s12"><span class="flow-text"><h3>The most awesome canvas in the world</h3></span></div>
+        <div class="grid-example col s12">
+            <span class="flow-text">
+                <h3>The most awesome canvas in the world</h3>
+            </span>
+        </div>
     </div>
 
     <div class="row container lowerBar">
@@ -25,13 +30,9 @@
         <button id="move" class="button" type="button"><img src="./logos/dragging.png" style="width:15px;height:15px;"></button>
     </div>
 
-
     <div class="row container">
-        <div class="col s6 colors">
-            <button id="blackColor" class="colorActive blackButton colorBtn" type="button"></button>
-            <button id="redColor" class="redButton  colorBtn" type="button"></button>
-            <button id="greenColor" class="greenButton colorBtn" type="button"></button>
-            <button id="blueColor" class="blueButton colorBtn" type="line"></button>
+        <div class="col s6 ">
+
         </div>
         <div class="col s6 widthOp">
             <i class="fa fa-circle sizeActive" id="small" aria-hidden="true" style="font-size: 70%;"></i>
@@ -41,37 +42,67 @@
         </div>
     </div>
 
-
-        <div class="row">
-            <div class="col s3">
+    <div class="row">
+        <div id="colors" class="col s3 colors">
+            <div>
+                <button id="blackColor" class="colorActive blackButton colorBtn" type="button"></button>
+                <button id="redColor" class="redButton  colorBtn" type="button"></button>
             </div>
-
-            <div id="canvasContainer" class="col s6">
-                <input type="textarea" style="display: none" id="inputText" name="name"/><br/>
-                <canvas id="myCanvas" width="1000" height="500">
-                    <p>Unfortunetly your browser does not support this functionality.</p>
-                </canvas>
+            <div>
+                <button id="greenColor" class="greenButton colorBtn" type="button"></button>
+                <button id="whiteColor" class="whiteButton colorBtn" type="button"></button>
             </div>
-
-            <div class="input-field col s3 fontChanger">
-                <select class="browser-default fontSelect">
-                    <option value="" disabled selected>Font</option>
-                    <option value="Comic Sans MS">Comic Sans</option>
-                    <option value="Georgia">Georgia</option>
-                    <option value="Arial">Arial</option>
-                    <option value="Courier New">Corrier New</option>
-                    <option value="Times New Roman">Times New Roman</option>
-                </select>
-
-                <select class="browser-default sizeSelect">
-                    <option value="" disabled selected>Size</option>
-                    <option value="10px">10 px</option>
-                    <option value="15px">15 px</option>
-                    <option value="20px">20 px</option>
-                </select>
+            <div>
+                <button id="pinkColor" class="pinkButton colorBtn" type="button"></button>
+                <button id="yellowColor" class="yellowButton colorBtn" type="button"></button>
+            </div>
+            <div>
+                <button id="blueColor" class="blueButton colorBtn" type="button"></button>
+                <button id="purpleColor" class="purpleButton colorBtn" type="button"></button>
+            </div>
+            <div>
+                <button id="deepRedColor" class="deepRedButton colorBtn" type="button"></button>
+                <button id="limeColor" class="limeButton  colorBtn" type="button"></button>
+            </div>
+            <div>
+                <button id="turquoiseColor" class="turquoiseButton colorBtn" type="button"></button>
+                <button id="moccasinColor" class="moccasinButton colorBtn" type="button"></button>
+            </div>
+            <div>
+                <button id="greyColor" class="greyButton colorBtn" type="button"></button>
+                <button id="brownColor" class="brownButton colorBtn" type="button"></button>
+            </div>
+            <div>
+                <button id="deepPinkColor" class="deepPinkButton colorBtn" type="button"></button>
+                <button id="orangeColor" class="orangeButton colorBtn" type="button"></button>
             </div>
         </div>
 
+        <div id="canvasContainer" class="col s6">
+            <input type="textarea" style="display: none" id="inputText" name="name"/><br/>
+            <canvas id="myCanvas" width="1000" height="500">
+                <p>Unfortunetly your browser does not support this functionality.</p>
+            </canvas>
+        </div>
+
+        <div class="input-field col s3 fontChanger">
+            <select class="browser-default fontSelect">
+                <option value="" disabled selected>Font</option>
+                <option value="Comic Sans MS">Comic Sans</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Arial">Arial</option>
+                <option value="Courier New">Corrier New</option>
+                <option value="Times New Roman">Times New Roman</option>
+            </select>
+
+            <select class="browser-default sizeSelect">
+                <option value="" disabled selected>Size</option>
+                <option value="10px">10 px</option>
+                <option value="15px">15 px</option>
+                <option value="20px">20 px</option>
+            </select>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col s6 lowerBar">
@@ -82,8 +113,6 @@
         </div>
     </div>
 
-
-
     <div class="">
 
     </div>
@@ -91,30 +120,29 @@
 
     </div>
 
-
     <footer class="page-footer">
-              <div class="container">
-                <div class="row">
-                  <div class="col l6 s12">
-                    <h5 class="white-text">Skilaverkefni 1</h5>
-                    <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-                  </div>
-                  <div class="col l4 offset-l2 s12">
-                    <h5 class="white-text">Höfundar</h5>
-                    <ul>
-                      <li><a class="grey-text text-lighten-3" href="mailto:johannas15@ru.is?Subject=You%20are%20awesome">Jóhanna María Svövudóttir</a></li>
-                      <li><a class="grey-text text-lighten-3" href="mailto:sigrung15@ru.is?Subject=You%20are%20awesome">Sigrún Tinna Gissurardóttir</a></li>
-                      <li><a class="grey-text text-lighten-3" href="mailto:unnuri15@ru.is?Subject=You%20are%20awesome">Unnur Sól Ingimarsdóttir</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="footer-copyright">
-                <div class="container">
-                © 2014 Copyright Text
-                <!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
-                </div>
-              </div>
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Skilaverkefni 1</h5>
+            <p class="grey-text text-lighten-4">Vefforritun II</p>
+          </div>
+          <div class="col l4 offset-l2 s12">
+            <h5 class="white-text">Höfundar</h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="mailto:johannas15@ru.is?Subject=You%20are%20awesome">Jóhanna María Svövudóttir</a></li>
+              <li><a class="grey-text text-lighten-3" href="mailto:sigrung15@ru.is?Subject=You%20are%20awesome">Sigrún Tinna Gissurardóttir</a></li>
+              <li><a class="grey-text text-lighten-3" href="mailto:unnuri15@ru.is?Subject=You%20are%20awesome">Unnur Sól Ingimarsdóttir</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+        © 2017
+        <!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
+        </div>
+      </div>
     </footer>
     <script src="https://use.fontawesome.com/91e5a23c24.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>

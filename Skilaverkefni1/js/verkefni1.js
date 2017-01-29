@@ -70,6 +70,77 @@ $(document).ready(function () {
         settings.nextColor = "black";
     });
 
+    $("#pinkColor").click(function() {
+        $(".colorBtn").removeClass("colorActive");
+        $("#pinkColor").addClass("colorActive");
+        settings.nextColor = "hotPink";
+    });
+
+    $("#whiteColor").click(function() {
+        $(".colorBtn").removeClass("colorActive");
+        $("#whiteColor").addClass("colorActive");
+        settings.nextColor = "white";
+    });
+
+    $("#yellowColor").click(function() {
+        $(".colorBtn").removeClass("colorActive");
+        $("#yellowColor").addClass("colorActive");
+        settings.nextColor = "yellow";
+    });
+
+    $("#deepRedColor").click(function() {
+        $(".colorBtn").removeClass("colorActive");
+        $("#deepRedColor").addClass("colorActive");
+        settings.nextColor = "FireBrick";
+    });
+
+    $("#purpleColor").click(function() {
+        $(".colorBtn").removeClass("colorActive");
+        $("#purpleColor").addClass("colorActive");
+        settings.nextColor = "darkviolet";
+    });
+
+    $("#limeColor").click(function() {
+        $(".colorBtn").removeClass("colorActive");
+        $("#limeColor").addClass("colorActive");
+        settings.nextColor = "lawnGreen";
+    });
+
+    $("#turquoiseColor").click(function() {
+        $(".colorBtn").removeClass("colorActive");
+        $("#turquoiseColor").addClass("colorActive");
+        settings.nextColor = "DarkTurquoise";
+    });
+
+    $("#moccasinColor").click(function() {
+        $(".colorBtn").removeClass("colorActive");
+        $("#moccasinColor").addClass("colorActive");
+        settings.nextColor = "Moccasin";
+    });
+
+    $("#greyColor").click(function() {
+        $(".colorBtn").removeClass("colorActive");
+        $("#greyColor").addClass("colorActive");
+        settings.nextColor = "grey";
+    });
+
+    $("#brownColor").click(function() {
+        $(".colorBtn").removeClass("colorActive");
+        $("#brownColor").addClass("colorActive");
+        settings.nextColor = "saddlebrown";
+    });
+
+    $("#deepPinkColor").click(function() {
+        $(".colorBtn").removeClass("colorActive");
+        $("#deepPinkColor").addClass("colorActive");
+        settings.nextColor = "DeepPink";
+    });
+
+    $("#orangeColor").click(function() {
+        $(".colorBtn").removeClass("colorActive");
+        $("#orangeColor").addClass("colorActive");
+        settings.nextColor = "darkorange";
+    });
   	// --------------------------------------------------------------------------------------------
   	//							                         Change shapes
   	// --------------------------------------------------------------------------------------------
@@ -341,6 +412,7 @@ $(document).ready(function () {
                 $(".fontChanger").hide();
                 settings.nextFont = "Arial";
                 $("#inputText").css('font-family', "Arial");
+                $("option:selected").removeAttr("selected");
             }
         }
     });
