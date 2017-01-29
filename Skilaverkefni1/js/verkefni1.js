@@ -171,6 +171,7 @@ $(document).ready(function () {
   	$("#pen").click(function() {
         $(".fontChanger").hide();
         $(".changeFill").hide();
+        $("#saveTemplate").hide();
         $(".button").removeClass("active");
         $("#pen").addClass("active");
         settings.nextShape = "Pen";
@@ -180,6 +181,7 @@ $(document).ready(function () {
   	$("#line").click(function() {
         $(".fontChanger").hide();
         $(".changeFill").hide();
+        $("#saveTemplate").hide();
         $(".button").removeClass("active");
         $("#line").addClass("active");
         settings.nextShape = "Line";
@@ -189,6 +191,7 @@ $(document).ready(function () {
   	$("#rectangle").click(function() {
         $(".fontChanger").hide();
         $(".changeFill").show();
+        $("#saveTemplate").hide();
         $(".button").removeClass("active");
         $("#rectangle").addClass("active");
         settings.nextShape = "Rectangle";
@@ -198,6 +201,7 @@ $(document).ready(function () {
   	$("#circle").click(function() {
         $(".fontChanger").hide();
         $(".changeFill").show();
+        $("#saveTemplate").hide();
         $(".button").removeClass("active");
         $("#circle").addClass("active");
         settings.nextShape = "Circle";
@@ -207,6 +211,7 @@ $(document).ready(function () {
     $("#text").click(function() {
         $(".fontChanger").hide();
         $(".changeFill").hide();
+        $("#saveTemplate").hide();
         $(".button").removeClass("active");
         $("#text").addClass("active");
         settings.nextShape = "Text";
@@ -216,6 +221,7 @@ $(document).ready(function () {
     $("#eraser").click(function() {
         $(".fontChanger").hide();
         $(".changeFill").hide();
+        $("#saveTemplate").hide();
         $(".button").removeClass("active");
         $("#fill").removeClass("active");
         $("#noFill").addClass("active");
@@ -236,6 +242,7 @@ $(document).ready(function () {
     $("#bucket").click(function() {
         $(".fontChanger").hide();
         $(".changeFill").hide();
+        $("#saveTemplate").hide();
         $(".button").removeClass("active");
         $("#bucket").addClass("active");
         settings.nextShape = "Bucket";
@@ -335,14 +342,16 @@ $(document).ready(function () {
         // ------------    Dragging  ---------------
         else {
             settings.moveOutline = new Rectangle(x, y, "black", 1);
+            console.log("Moveoutlie mousedown: " + settings.moveOutline);
+
+            console.log("Mousedown: x=" + x + ", y=" + y);
             for (var i = settings.shapes.length - 1; i >= 0; i--) {
 
                 if(settings.shapes[i].contains(x, y)) {
                     document.getElementById("myCanvas").style.cursor = "move";
                     settings.dragging = true;
                     shape = settings.shapes[i];
-                    settings.templates.push(shape);
-                    console.log("shape x: " + shape.x + "shape y: " + shape.y);
+                    //console.log("shape x: " + shape.x + "shape y: " + shape.y);
                     settings.dragOffy = y - shape.y;
                     settings.dragOffx = x - shape.x;
                     settings.dragOffyEnd = y - shape.endY;
@@ -400,9 +409,19 @@ $(document).ready(function () {
                         drawAll();
                     }
                     else if(settings.dragShape.className == "Pen") {
+                        //settings.oldX =
                         context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+                        var oldX = settings.dragShape.x;
+                        var oldY = settings.dragShape.y;
+                        settings.dragShape.x = x - settings.dragOffx;
+                        settings.dragShape.y = y - settings.dragOffy;
+                        deltaX = settings.dragShape.x - oldX;
+                        deltaY = settings.dragShape.y - oldY;
                         for(var i = settings.dragShape.points.length - 1; i >= 0; i--) {
-                            settings.dragShape.points[i]
+                            context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+                            settings.dragShape.points[i].x += deltaX;
+                            settings.dragShape.points[i].y += deltaY;
+                            drawAll();
                         }
                         drawAll();
                     }
@@ -426,16 +445,22 @@ $(document).ready(function () {
     });
 
     $("#myCanvas").mouseup(function (e) {
+        var x = e.pageX - this.offsetLeft;
+        var y = e.pageY - this.offsetTop;
         var context = settings.canvas.getContext("2d");
         settings.isDrawing = false;
+        settings.dragging = false;
+        settings.dragShape = undefined;
+        console.log(settings.nextShape);
+        console.log(settings.shapes.length);
+        console.log("Mouseup: x=" + x + ", y=" + y);
+        console.log("Moveoutlie mouseup: " + settings.moveOutline);
+
 
         if(settings.dragging) {
             settings.dragging = false;
             settings.dragShape = undefined;
             document.getElementById("myCanvas").style.cursor = "crosshair";
-        }
-        if(settings.nextShape === "Move" && settings.templates.length !== 0){
-            $("#saveTemplate").show()
         }
 
         if(settings.currentShape !== undefined)
@@ -498,6 +523,10 @@ $(document).ready(function () {
             });
         }
     });
+
+    // --------------------------------------------------------------------------------------------
+    //							         Load drawing
+    // --------------------------------------------------------------------------------------------
 
     $("#load").click(function () {
         var url = "http://localhost:3000/api/drawings";
@@ -596,6 +625,74 @@ $(document).ready(function () {
             }
         });
     });
+
+    // --------------------------------------------------------------------------------------------
+    //							         Load template
+    // --------------------------------------------------------------------------------------------
+
+    $("#tempSelect").click(function () {
+        var url = "http://localhost:3000/api/templates";
+        var loadNr = 1000000;
+        $.ajax({
+            type: "GET",
+            url: url,
+            success: function(data) {
+                var text = "";
+                for(var i in data) {
+                    $("#tempSelect").append($("<option>", { value: i }).text("Template " + i));
+                }
+            }
+        });
+        if(loadNr === 1000000) {
+            $.ajax({
+                type: "GET",
+                url: url,
+                success: function(data) {
+                    var context = settings.canvas.getContext("2d");
+                    for(var s in data.content) {
+                        var shape = undefined;
+                        if(data.content[s].className === "Text") {
+                            shape = new Text(data.content[s].x, data.content[s].y, data.content[s].color, data.content[s].text, data.content[s].font, data.content[s].size, data.content[s].className, data.content[s].width, data.content[s].height, data.content[s].style);
+                        }
+                        else if(data.content[s].className === "Circle") {
+                            shape = new Circle(data.content[s].x, data.content[s].y, data.content[s].color, data.content[s].width, data.content[s].className, data.content[s].fill);
+                            shape.setEnd(data.content[s].endX, data.content[s].endY);
+                        }
+                        else if(data.content[s].className === "Rectangle") {
+                            shape = new Rectangle(data.content[s].x, data.content[s].y, data.content[s].color, data.content[s].width, data.content[s].className, data.content[s].fill);
+                            shape.setEnd(data.content[s].endX, data.content[s].endY);
+                        }
+                        else if(data.content[s].className === "Line") {
+                            shape = new Line(data.content[s].x, data.content[s].y, data.content[s].color, data.content[s].width, data.content[s].className);
+                            shape.setEnd(data.content[s].endX, data.content[s].endY);
+                        }
+                        else if(data.content[s].className === "Eraser") {
+                            shape = new Eraser(data.content[s].endX, data.content[s].endY, data.content[s].color, data.content[s].className);
+                            for(var p in data.content[s].points) {
+                                console.log(data.content[s].points[p]);
+                                shape.points.push({x: data.content[s].points[p].x, y: data.content[s].points[p].y});;
+                            }
+                        }
+                        else if(data.content[s].className === "Pen") {
+                            shape = new Pen(data.content[s].x, data.content[s].y, data.content[s].color, data.content[s].width, data.content[s].className);
+                            for(var p in data.content[s].points) {
+                                console.log(data.content[s].points[p]);
+                                shape.points.push({x: data.content[s].points[p].x, y: data.content[s].points[p].y});;
+                            }
+                        }
+                        settings.shapes.push(shape);
+                    }
+
+                    context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+                    drawAll();
+                },
+                error: function(xhr, err) {
+                    console.log("it failed");
+                }
+            });
+        }
+    });
+
     // --------------------------------------------------------------------------------------------
   	//							         Clear everything
   	// --------------------------------------------------------------------------------------------
@@ -606,6 +703,7 @@ $(document).ready(function () {
         if (r == true) {
             settings.shapes = [];
             context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+            $("#myCanvas").css('background-color', "white");
         } else {
 
         }
