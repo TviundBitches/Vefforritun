@@ -15,7 +15,7 @@ $(document).ready(function () {
         redoShapes: [],
         // -- Text stuff  --
         nextFont: "Arial",
-        nextTextSize: "16px",
+        nextTextSize: "16",
         textY: 0,
         textX: 0,
         // -- Moving --
@@ -36,16 +36,14 @@ $(document).ready(function () {
 
     $(".sizeSelect").change(function () {
         var str = $(".sizeSelect option:selected").val();
-        $("#inputText").css('font-size', str);
+        $("#inputText").css('font-size', str + "px");
         settings.nextTextSize = str;
-        console.log(settings.nextTextSize);
     })
 
     $(".fontSelect").change(function () {
         var str = $(".fontSelect option:selected").val();
         $("#inputText").css('font-family', str);
         settings.nextFont = str;
-        console.log(settings.nextFont);
     })
 
     // --------------------------------------------------------------------------------------------
@@ -123,7 +121,7 @@ $(document).ready(function () {
         $(".button").removeClass("active");
         $("#eraser").addClass("active");
         settings.nextShape = "Eraser";
-        document.getElementById("myCanvas").style.cursor ="url(pen.png), auto";
+        document.getElementById("myCanvas").style.cursor ="src='./logos/eraser.png', auto";
     });
 
     $("#move").click(function() {
@@ -131,6 +129,7 @@ $(document).ready(function () {
         $(".button").removeClass("active");
         $("#move").addClass("active");
         settings.nextShape = "Move";
+        document.getElementById("myCanvas").style.cursor = "crosshair";
     });
 
     $("#bucket").click(function() {
@@ -189,7 +188,6 @@ $(document).ready(function () {
             settings.isDrawing = false;
             settings.textX = x;
             settings.textY = y;
-            console.log("hello");
         }
         else if(settings.nextShape === "Circle") {
             shape = new Circle(x, y, settings.nextColor, settings.nextWidth, "Circle");
@@ -229,7 +227,6 @@ $(document).ready(function () {
                     return;
                 }
             }
-
             if (settings.dragShape) {
                 settings.dragShape = undefined;
                 settings.dragging = false;
@@ -281,6 +278,12 @@ $(document).ready(function () {
                         for(var i = settings.dragShape.points.length - 1; i >= 0; i--) {
                             settings.dragShape.points[i]
                         }
+                        drawAll();
+                    }
+                    else if(settings.dragShape.className == "Text") {
+                        context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+                        settings.dragShape.x = x - settings.dragOffx;
+                        settings.dragShape.y = y - settings.dragOffy;
                         drawAll();
                     }
                 }
@@ -346,8 +349,10 @@ $(document).ready(function () {
         if(key == 13){
             var text = $("#inputText").val();
             if(text !== "") {
-                console.log(settings.nextTextSize);
-                shape = new Text(settings.textX, settings.textY, settings.nextColor, text, settings.nextFont, settings.nextTextSize);
+                var context = settings.canvas.getContext("2d");
+                console.log(context.measureText(text).width);
+                context.font = settings.nextTextSize + "px " + settings.nextFont;
+                shape = new Text(settings.textX, settings.textY, settings.nextColor, text, settings.nextFont, settings.nextTextSize, "Text", context.measureText(text).width, parseInt(settings.nextTextSize));
                 settings.shapes.push(shape);
                 drawAll();
                 $("#inputText").hide().val("");

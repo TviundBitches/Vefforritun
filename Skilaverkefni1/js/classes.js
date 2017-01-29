@@ -79,28 +79,30 @@ class Line extends Shape {
 
     contains(x, y) {
         var slope = ((this.endY - this.y)/(this.endX - this.x));
+        console.log(slope);
         var yZero = (this.y - (slope * this.x));
+        console.log(yZero);
         return (((slope * x) + yZero) === y);
     }
 }
 
 class Text extends Shape {
-    constructor(x, y, color, text, font, size, className){
-        super(x, y, color, 0, className);
+    constructor(x, y, color, text, font, size, className, width, height){
+        super(x, y, color, width, className);
         this.text = text;
         this.font = font;
         this.size = size;
+        this.height = height;
     }
 
     draw(context) {
-        console.log("This.size:" + this.size);
-        context.font = this.size + " " + this.font;
+        context.font = this.size + "px " + this.font;
         context.fillStyle = this.color;
         context.fillText(this.text, this.x, this.y);
     }
 
     contains(x, y) {
-
+        return (x >= this.x && x <= this.x + this.width && y >= this.y - this.height && y <= this.y);
     }
 }
 
@@ -112,6 +114,8 @@ class Pen extends Shape {
 
     draw(context) {
         context.beginPath();
+        context.lineCap = 'round';
+        context.lineJoin = 'round';
         context.strokeStyle = this.color;
         context.lineWidth = this.width;
         context.moveTo(this.x, this.y);
