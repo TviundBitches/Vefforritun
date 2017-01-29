@@ -32,7 +32,7 @@ $(document).ready(function () {
         $(".sizeSelect").change(function () {
             var str = $(".sizeSelect option:selected").val();
             $("#inputText").css('font-size', str);
-            settings.nextTextSize = str;
+            settings.nextTextSize = str + " ";
             console.log(settings.nextTextSize);
         })
 
