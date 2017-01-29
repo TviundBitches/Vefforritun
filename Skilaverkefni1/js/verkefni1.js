@@ -659,6 +659,7 @@ $(document).ready(function () {
                 type: "GET",
                 url: url,
                 success: function(data) {
+                    console.log(data);
                     var context = settings.canvas.getContext("2d");
                     for(var s in data.content) {
                         var shape = undefined;
