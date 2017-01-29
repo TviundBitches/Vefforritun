@@ -1,7 +1,6 @@
 /**
  * Created by jojo, sigga, usi
  */
-//Bua til constructor function fyrir Point med x og y hnt
 $(document).ready(function () {
     var settings = {
         canvas: document.getElementById("myCanvas"),

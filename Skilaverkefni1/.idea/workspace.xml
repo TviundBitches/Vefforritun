@@ -21,18 +21,18 @@
       <file leaf-file-name="verkefni1.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/verkefni1.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="128" column="41" lean-forward="false" selection-start-line="128" selection-start-column="41" selection-end-line="128" selection-end-column="41" />
+            <state relative-caret-position="682">
+              <caret line="295" column="13" lean-forward="true" selection-start-line="295" selection-start-column="13" selection-end-line="295" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="classes.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="classes.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/classes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="96" column="46" lean-forward="false" selection-start-line="96" selection-start-column="46" selection-end-line="96" selection-end-column="46" />
+            <state relative-caret-position="720">
+              <caret line="114" column="41" lean-forward="true" selection-start-line="114" selection-start-column="41" selection-end-line="114" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -41,17 +41,17 @@
       <file leaf-file-name="verkefni1.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/verkefni1.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2100">
+            <state relative-caret-position="1470">
               <caret line="140" column="33" lean-forward="false" selection-start-line="140" selection-start-column="33" selection-end-line="140" selection-end-column="33" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="verkefni1.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="verkefni1.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/verkefni1.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="569">
+            <state relative-caret-position="-225">
               <caret line="66" column="90" lean-forward="false" selection-start-line="66" selection-start-column="90" selection-end-line="66" selection-end-column="90" />
               <folding>
                 <element signature="n#style#0;n#img#0;n#button#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -87,9 +87,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/css/verkefni1.css" />
+        <option value="$PROJECT_DIR$/verkefni1.html" />
         <option value="$PROJECT_DIR$/js/verkefni1.js" />
         <option value="$PROJECT_DIR$/js/classes.js" />
-        <option value="$PROJECT_DIR$/verkefni1.html" />
       </list>
     </option>
   </component>
@@ -252,12 +252,12 @@
       <updated>1484665812412</updated>
       <workItem from="1484665813713" duration="24000" />
       <workItem from="1485531859880" duration="6707000" />
-      <workItem from="1485622779651" duration="17400000" />
+      <workItem from="1485622779651" duration="18228000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24131000" />
+    <option name="totallyTimeSpent" value="24959000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1985" y="24" width="1855" height="1056" extended-state="6" />
@@ -441,23 +441,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/verkefni1.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="128" column="41" lean-forward="false" selection-start-line="128" selection-start-column="41" selection-end-line="128" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/classes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="96" column="46" lean-forward="false" selection-start-line="96" selection-start-column="46" selection-end-line="96" selection-end-column="46" />
+        <state relative-caret-position="682">
+          <caret line="295" column="13" lean-forward="true" selection-start-line="295" selection-start-column="13" selection-end-line="295" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/verkefni1.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2100">
+        <state relative-caret-position="1470">
           <caret line="140" column="33" lean-forward="false" selection-start-line="140" selection-start-column="33" selection-end-line="140" selection-end-column="33" />
           <folding />
         </state>
@@ -465,7 +457,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/verkefni1.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="569">
+        <state relative-caret-position="-225">
           <caret line="66" column="90" lean-forward="false" selection-start-line="66" selection-start-column="90" selection-end-line="66" selection-end-column="90" />
           <folding>
             <element signature="n#style#0;n#img#0;n#button#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -485,6 +477,14 @@
             <element signature="n#style#0;n#input#0;n#div#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#button#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/classes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="114" column="41" lean-forward="true" selection-start-line="114" selection-start-column="41" selection-end-line="114" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>

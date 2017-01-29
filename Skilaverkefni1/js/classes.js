@@ -1,4 +1,3 @@
-//context sama og ur hinu skjalinu
 class Shape {
     constructor(x, y, color, width, className){
         //x, y eru hnit upphafsstadsetningar
