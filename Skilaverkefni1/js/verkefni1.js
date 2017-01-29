@@ -450,24 +450,31 @@ $(document).ready(function () {
     });
 
     $("#saveButton").click(function () {
-        var drawing = {
-            title: "save",
-            content: settings.shapes
-        };
-        var url = "http://localhost:3000/api/drawings";
+        var save = prompt("File name:", "Best drawing in the world");
+        do{
+            save = prompt("File name:", "");
+        }while(save === "")
 
-        $.ajax({
-            type: "POST",
-            contentType: "application/json; charset=utf-8",
-            url: url,
-            data: JSON.stringify(drawing),
-            success: function(data) {
-                console.log("it worked");
-            },
-            error: function(xhr, err) {
-                console.log("it failed");
-            }
-        });
+        if(save !== "") {
+            var drawing = {
+                title: save,
+                content: settings.shapes
+            };
+            var url = "http://localhost:3000/api/drawings";
+
+            $.ajax({
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                url: url,
+                data: JSON.stringify(drawing),
+                success: function(data) {
+                    console.log("it worked");
+                },
+                error: function(xhr, err) {
+                    console.log("it failed");
+                }
+            });
+        }
     });
 
     $("#load").click(function () {
