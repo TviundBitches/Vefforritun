@@ -325,21 +325,26 @@ $(document).ready(function () {
         }
     });
 
-    /*$("#saveButton").click(function () {
-        db.drawings.push(settings.shapes);
-    });
+    $("#saveButton").click(function () {
+        var drawing = {
+            title: "save",
+            content: settings.shapes
+        };
+        var url = "http://localhost:3000/api/drawings";
 
-    function () {
-        var saved = document.getElementById("save"),
-            df = document.createDocumentFragment();
-        for(var i = 1; i <= db.drawings.length; i++) {
-            var option = document.createElement("option");
-            option.value = i;
-            option.appendChild(document.createTextNode("save #" + i));
-            df.appendChild(option);
-        }
-        saved.appendChild(df);
-    });*/
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            url: url,
+            data: JSON.stringify(drawing),
+            success: function(data) {
+                console.log("it worked");
+            },
+            error: function(xhr, err) {
+                console.log("it failed");
+            }
+        });
+    });
 
     $("#inputText").keypress(function(e) {
         var key = e.which;
