@@ -26,7 +26,9 @@ $(document).ready(function () {
         dragOffx: 0,
         dragOffy: 0,
         dragOffxEnd: 0,
-        dragOffyEnd: 0
+        dragOffyEnd: 0,
+        // -- Template --
+        templates: []
     };
 
     //select form
@@ -337,6 +339,7 @@ $(document).ready(function () {
                     document.getElementById("myCanvas").style.cursor = "move";
                     settings.dragging = true;
                     shape = settings.shapes[i];
+                    settings.templates.push(shape);
                     console.log("shape x: " + shape.x + "shape y: " + shape.y);
                     settings.dragOffy = y - shape.y;
                     settings.dragOffx = x - shape.x;
@@ -429,6 +432,9 @@ $(document).ready(function () {
             settings.dragShape = undefined;
             document.getElementById("myCanvas").style.cursor = "crosshair";
         }
+        if(settings.nextShape === "Move" && settings.templates.length !== 0){
+            $("#saveTemplate").show()
+        }
 
         if(settings.currentShape !== undefined)
             settings.shapes.push(settings.currentShape);
@@ -436,7 +442,6 @@ $(document).ready(function () {
         context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
         drawAll();
     });
-
 
 
   	// --------------------------------------------------------------------------------------------
@@ -459,18 +464,107 @@ $(document).ready(function () {
         }
     });
 
+
+    // --------------------------------------------------------------------------------------------
+    //							         Save drawing
+    // --------------------------------------------------------------------------------------------
+
     $("#saveButton").click(function () {
-        var drawing = {
-            title: "save",
-            content: settings.shapes
+        var save = prompt("File name:", "Best drawing in the world");
+        do{
+            save = prompt("File name:", "");
+        }while(save === "")
+
+        if(save !== "") {
+            var drawing = {
+                title: save,
+                content: settings.shapes
+            };
+            var url = "http://localhost:3000/api/drawings";
+
+            $.ajax({
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                url: url,
+                data: JSON.stringify(drawing),
+                success: function(data) {
+                    console.log("it worked");
+                },
+                error: function(xhr, err) {
+                    console.log("it failed");
+                }
+            });
+        }
+    });
+
+    $("#load").click(function () {
+        var url = "http://localhost:3000/api/drawings/3";
+        $.ajax({
+            type: "GET",
+            url: url,
+            success: function(data) {
+                var context = settings.canvas.getContext("2d");
+                settings.shapes = [];
+                settings.redoShapes = [];
+                for(var s in data.content) {
+                    var shape = undefined;
+                    if(data.content[s].className === "Text") {
+                        shape = new Text(data.content[s].x, data.content[s].y, data.content[s].color, data.content[s].text, data.content[s].font, data.content[s].size, data.content[s].className, data.content[s].width, data.content[s].height, data.content[s].style);
+                    }
+                    else if(data.content[s].className === "Circle") {
+                        shape = new Circle(data.content[s].x, data.content[s].y, data.content[s].color, data.content[s].width, data.content[s].className, data.content[s].fill);
+                        shape.setEnd(data.content[s].endX, data.content[s].endY);
+                    }
+                    else if(data.content[s].className === "Rectangle") {
+                        shape = new Rectangle(data.content[s].x, data.content[s].y, data.content[s].color, data.content[s].width, data.content[s].className, data.content[s].fill);
+                        shape.setEnd(data.content[s].endX, data.content[s].endY);
+                    }
+                    else if(data.content[s].className === "Line") {
+                        shape = new Line(data.content[s].x, data.content[s].y, data.content[s].color, data.content[s].width, data.content[s].className);
+                        shape.setEnd(data.content[s].endX, data.content[s].endY);
+                    }
+                    else if(data.content[s].className === "Eraser") {
+                        shape = new Eraser(data.content[s].endX, data.content[s].endY, data.content[s].color, data.content[s].className);
+                        for(var p in data.content[s].points) {
+                            console.log(data.content[s].points[p]);
+                            shape.points.push({x: data.content[s].points[p].x, y: data.content[s].points[p].y});;
+                        }
+                    }
+                    else if(data.content[s].className === "Pen") {
+                        shape = new Pen(data.content[s].x, data.content[s].y, data.content[s].color, data.content[s].width, data.content[s].className);
+                        for(var p in data.content[s].points) {
+                            console.log(data.content[s].points[p]);
+                            shape.points.push({x: data.content[s].points[p].x, y: data.content[s].points[p].y});;
+                        }
+                    }
+                    settings.shapes.push(shape);
+                }
+
+                context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+                drawAll();
+            },
+            error: function(xhr, err) {
+                console.log("it failed");
+            }
+        });
+    });
+
+    // --------------------------------------------------------------------------------------------
+    //							         Save template
+    // --------------------------------------------------------------------------------------------
+
+    $("#saveTemplate").click(function () {
+        var template = {
+            title: "template",
+            content: settings.templates
         };
-        var url = "http://localhost:3000/api/drawings";
+        var url = "http://localhost:3000/api/templates";
 
         $.ajax({
             type: "POST",
             contentType: "application/json; charset=utf-8",
             url: url,
-            data: JSON.stringify(drawing),
+            data: JSON.stringify(template),
             success: function(data) {
                 console.log("it worked");
             },
@@ -479,7 +573,6 @@ $(document).ready(function () {
             }
         });
     });
-
     // --------------------------------------------------------------------------------------------
   	//							         Clear everything
   	// --------------------------------------------------------------------------------------------
