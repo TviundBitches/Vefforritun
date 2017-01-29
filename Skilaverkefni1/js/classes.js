@@ -86,22 +86,22 @@ class Line extends Shape {
 }
 
 class Text extends Shape {
-    constructor(x, y, color, text, font, size, className){
-        super(x, y, color, 0, className);
+    constructor(x, y, color, text, font, size, className, width, height){
+        super(x, y, color, width, className);
         this.text = text;
         this.font = font;
         this.size = size;
+        this.height = height;
     }
 
     draw(context) {
-        console.log("This.size:" + this.size);
-        context.font = this.size + " " + this.font;
+        context.font = this.size + "px " + this.font;
         context.fillStyle = this.color;
         context.fillText(this.text, this.x, this.y);
     }
 
     contains(x, y) {
-
+        return (x >= this.x && x <= this.x + this.width && y >= this.y - this.height && y <= this.y);
     }
 }
 
