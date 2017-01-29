@@ -87,7 +87,7 @@ class Line extends Shape {
 
 class Text extends Shape {
     constructor(x, y, color, text, font, size, className){
-        super(x, y, color, className);
+        super(x, y, color, 0, className);
         this.text = text;
         this.font = font;
         this.size = size;
@@ -95,8 +95,7 @@ class Text extends Shape {
 
     draw(context) {
         console.log("This.size:" + this.size);
-        context.font = this.size + this.font;
-        console.log(this.size + this.font);
+        context.font = this.size + " " + this.font;
         context.fillStyle = this.color;
         context.fillText(this.text, this.x, this.y);
     }
@@ -131,22 +130,11 @@ class Pen extends Shape {
     }
 }
 
-class Eraser extends Shape {
+class Eraser extends Pen {
     constructor(x, y, color, className){
-        super(x, y, color);
-        this.points = [];
+        super(x, y, color, 18, className);
     }
 
-    draw(context) {
-        context.beginPath();
-        context.strokeStyle = this.color;
-        context.lineWidth = 18;
-        context.moveTo(this.x, this.y);
-        this.points.forEach(function (item) {
-            context.lineTo(item.x, item.y);
-            context.stroke();
-        })
-    }
 
     contains(x, y) {
 

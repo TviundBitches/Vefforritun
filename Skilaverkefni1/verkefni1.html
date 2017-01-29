@@ -17,6 +17,7 @@
         </div>
     </div>
 
+    <!--                    TOOL BAR                    -->
     <div class="row container lowerBar">
         <button id="pen" class="button active" type="button"><img src="./logos/pen.png" style="width:15px;height:15px;"></button>
         <button id="line" class="button" type="line"><img src="./logos/line.png" style="width:15px;height:15px;"></button>
@@ -30,60 +31,63 @@
         <button id="move" class="button" type="button"><img src="./logos/dragging.png" style="width:15px;height:15px;"></button>
     </div>
 
-    <div class="row container">
-        <div class="col s6 ">
-
-        </div>
-        <div class="col s6 widthOp">
-            <i class="fa fa-circle sizeActive" id="small" aria-hidden="true" style="font-size: 70%;"></i>
-            <i class="fa fa-circle" id="medium" aria-hidden="true" style="font-size: 100%;"></i>
-            <i class="fa fa-circle" id="large" aria-hidden="true" style="font-size: 130%;"></i>
-            <i class="fa fa-circle" id="xlarge" aria-hidden="true" style="font-size: 160%;"></i>
-        </div>
-    </div>
 
     <div class="row">
-        <div id="colors" class="col s3 colors">
-            <div>
-                <button id="blackColor" class="colorActive blackButton colorBtn" type="button"></button>
-                <button id="redColor" class="redButton  colorBtn" type="button"></button>
+
+        <!--                    LEFT SIDE BAR                    -->
+        <div class="col s3">
+            <div class="widthOp">
+                <i class="fa fa-circle sizeActive" id="small" aria-hidden="true" style="font-size: 70%;"></i>
+                <i class="fa fa-circle" id="medium" aria-hidden="true" style="font-size: 100%;"></i>
+                <i class="fa fa-circle" id="large" aria-hidden="true" style="font-size: 130%;"></i>
+                <i class="fa fa-circle" id="xlarge" aria-hidden="true" style="font-size: 160%;"></i>
             </div>
-            <div>
-                <button id="greenColor" class="greenButton colorBtn" type="button"></button>
-                <button id="whiteColor" class="whiteButton colorBtn" type="button"></button>
+            <div id="colors" class="colors">
+                <div>
+                    <button id="blackColor" class="colorActive blackButton colorBtn" type="button"></button>
+                    <button id="redColor" class="redButton  colorBtn" type="button"></button>
+                </div>
+                <div>
+                    <button id="greenColor" class="greenButton colorBtn" type="button"></button>
+                    <button id="whiteColor" class="whiteButton colorBtn" type="button"></button>
+                </div>
+                <div>
+                    <button id="pinkColor" class="pinkButton colorBtn" type="button"></button>
+                    <button id="yellowColor" class="yellowButton colorBtn" type="button"></button>
+                </div>
+                <div>
+                    <button id="blueColor" class="blueButton colorBtn" type="button"></button>
+                    <button id="purpleColor" class="purpleButton colorBtn" type="button"></button>
+                </div>
+                <div>
+                    <button id="deepRedColor" class="deepRedButton colorBtn" type="button"></button>
+                    <button id="limeColor" class="limeButton  colorBtn" type="button"></button>
+                </div>
+                <div>
+                    <button id="turquoiseColor" class="turquoiseButton colorBtn" type="button"></button>
+                    <button id="moccasinColor" class="moccasinButton colorBtn" type="button"></button>
+                </div>
+                <div>
+                    <button id="greyColor" class="greyButton colorBtn" type="button"></button>
+                    <button id="brownColor" class="brownButton colorBtn" type="button"></button>
+                </div>
+                <div>
+                    <button id="deepPinkColor" class="deepPinkButton colorBtn" type="button"></button>
+                    <button id="orangeColor" class="orangeButton colorBtn" type="button"></button>
+                </div>
             </div>
-            <div>
-                <button id="pinkColor" class="pinkButton colorBtn" type="button"></button>
-                <button id="yellowColor" class="yellowButton colorBtn" type="button"></button>
-            </div>
-            <div>
-                <button id="blueColor" class="blueButton colorBtn" type="button"></button>
-                <button id="purpleColor" class="purpleButton colorBtn" type="button"></button>
-            </div>
-            <div>
-                <button id="deepRedColor" class="deepRedButton colorBtn" type="button"></button>
-                <button id="limeColor" class="limeButton  colorBtn" type="button"></button>
-            </div>
-            <div>
-                <button id="turquoiseColor" class="turquoiseButton colorBtn" type="button"></button>
-                <button id="moccasinColor" class="moccasinButton colorBtn" type="button"></button>
-            </div>
-            <div>
-                <button id="greyColor" class="greyButton colorBtn" type="button"></button>
-                <button id="brownColor" class="brownButton colorBtn" type="button"></button>
-            </div>
-            <div>
-                <button id="deepPinkColor" class="deepPinkButton colorBtn" type="button"></button>
-                <button id="orangeColor" class="orangeButton colorBtn" type="button"></button>
-            </div>
+
         </div>
 
+        <!--                    THE CANVAS                     -->
         <div id="canvasContainer" class="col s6">
             <input type="textarea" style="display: none" id="inputText" name="name"/><br/>
-            <canvas id="myCanvas" width="1000" height="500">
+            <canvas id="myCanvas" width="700" height="500">
                 <p>Unfortunetly your browser does not support this functionality.</p>
             </canvas>
         </div>
+
+        <!--                    RIGHT SIDE BAR                    -->
 
         <div class="input-field col s3 fontChanger">
             <select class="browser-default fontSelect">
@@ -104,9 +108,10 @@
         </div>
     </div>
 
+
     <div class="row">
         <div class="col s6 lowerBar">
-            <button id="saveButton" class="button" type="button">Save Image</button>
+            <button id="saveButton" class="button" type="button"><img src="./logos/save.png" style="width:15px;height:15px;"></button>
         </div>
         <div class="input-field col s6">
             <select id="save" class="browser-default saveSelect"></select>
@@ -143,6 +148,7 @@
         <!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
         </div>
       </div>
+
     </footer>
     <script src="https://use.fontawesome.com/91e5a23c24.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>

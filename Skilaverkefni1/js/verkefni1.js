@@ -16,7 +16,7 @@ $(document).ready(function () {
         redoShapes: [],
         // -- Text stuff  --
         nextFont: "Arial",
-        nextTextSize: "16px ",
+        nextTextSize: "16px",
         textY: 0,
         textX: 0,
         // -- Moving --
