@@ -30,18 +30,18 @@
         <button id="eraser" class="button" type="button"><img src="./logos/eraser.png" style="width:15px;height:15px;"></button>
         <button id="move" class="button" type="button"><img src="./logos/dragging.png" style="width:15px;height:15px;"></button>
     </div>
+    <div class="widthOp">
+        <i class="fa fa-circle sizeActive" id="small" aria-hidden="true" style="font-size: 70%;"></i>
+        <i class="fa fa-circle" id="medium" aria-hidden="true" style="font-size: 100%;"></i>
+        <i class="fa fa-circle" id="large" aria-hidden="true" style="font-size: 130%;"></i>
+        <i class="fa fa-circle" id="xlarge" aria-hidden="true" style="font-size: 160%;"></i>
+    </div>
 
 
     <div class="row">
 
         <!--                    LEFT SIDE BAR                    -->
-        <div class="col s3">
-            <div class="widthOp">
-                <i class="fa fa-circle sizeActive" id="small" aria-hidden="true" style="font-size: 70%;"></i>
-                <i class="fa fa-circle" id="medium" aria-hidden="true" style="font-size: 100%;"></i>
-                <i class="fa fa-circle" id="large" aria-hidden="true" style="font-size: 130%;"></i>
-                <i class="fa fa-circle" id="xlarge" aria-hidden="true" style="font-size: 160%;"></i>
-            </div>
+        <div class="col s2">
             <div id="colors" class="colors">
                 <div>
                     <button id="blackColor" class="colorActive blackButton colorBtn" type="button"></button>
@@ -80,16 +80,15 @@
         </div>
 
         <!--                    THE CANVAS                     -->
-        <div id="canvasContainer" class="col s6">
+        <div id="canvasContainer" class="col s8">
             <input type="textarea" style="display: none" id="inputText" name="name"/><br/>
-            <canvas id="myCanvas" width="700" height="500">
+            <canvas id="myCanvas" width="1000" height="500">
                 <p>Unfortunetly your browser does not support this functionality.</p>
             </canvas>
         </div>
 
         <!--                    RIGHT SIDE BAR                    -->
-
-        <div class="input-field col s3 fontChanger">
+        <div class="input-field col s2 fontChanger">
             <select class="browser-default fontSelect">
                 <option value="" disabled selected>Font</option>
                 <option value="Comic Sans MS">Comic Sans</option>
