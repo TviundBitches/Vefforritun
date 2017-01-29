@@ -16,6 +16,7 @@ $(document).ready(function () {
         // -- Text stuff  --
         nextFont: "Arial",
         nextTextSize: "16",
+        nextTextStyle: "",
         textY: 0,
         textX: 0,
         // -- Moving --
@@ -31,7 +32,7 @@ $(document).ready(function () {
     $('select').material_select();
 
     // --------------------------------------------------------------------------------------------
-  	//								     Text: Change font and size
+  	//								    Text: Change font, size and style
   	// --------------------------------------------------------------------------------------------
 
     $(".sizeSelect").change(function () {
@@ -44,6 +45,21 @@ $(document).ready(function () {
         var str = $(".fontSelect option:selected").val();
         $("#inputText").css('font-family', str);
         settings.nextFont = str;
+    })
+
+    $("#italic").click(function () {
+        $("#inputText").css("font-style", "italic");
+        settings.nextTextStyle += "italic ";
+    })
+
+    $("#bold").click(function () {
+        $("#inputText").css("font-weight", "bold");
+        settings.nextTextStyle += "bold ";
+    })
+
+    $("#underline").click(function () {
+        $("#inputText").css("font-style", "underline");
+        //settings.nextTextStyle += "underline "; virkar ekki
     })
 
     // --------------------------------------------------------------------------------------------
@@ -283,7 +299,8 @@ $(document).ready(function () {
         if(settings.nextShape === "Text") {
             console.log(y + " " + x);
             $(".fontChanger").show();
-            $("#inputText").css({"top":  e.pageY, "left": e.pageX}).show();
+            $("#inputText").css({"color": settings.nextColor, "background": "transparent", "border-style": "dotted", "border-color": "grey"});
+            $("#inputText").css({"top":  e.pageY-15, "left": e.pageX}).show();
             settings.isDrawing = false;
             settings.textX = x;
             settings.textY = y;
@@ -472,11 +489,17 @@ $(document).ready(function () {
                 var context = settings.canvas.getContext("2d");
                 console.log(context.measureText(text).width);
                 context.font = settings.nextTextSize + "px " + settings.nextFont;
-                shape = new Text(settings.textX, settings.textY, settings.nextColor, text, settings.nextFont, settings.nextTextSize, "Text", context.measureText(text).width, parseInt(settings.nextTextSize));
+                shape = new Text(settings.textX, settings.textY, settings.nextColor, text, settings.nextFont, settings.nextTextSize, "Text", context.measureText(text).width, parseInt(settings.nextTextSize), settings.nextTextStyle);
                 settings.shapes.push(shape);
                 drawAll();
                 $("#inputText").hide().val("");
                 $(".fontChanger").hide();
+                settings.nextFont = "Arial";
+                $("#inputText").css('font-family', "Arial");
+                settings.nextTextStyle = "";
+                $("#inputText").css("font-style", "normal");
+                $("#inputText").css("font-weight", "normal");
+
             }
         }
     });
