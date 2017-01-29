@@ -523,61 +523,6 @@ $(document).ready(function () {
                     settings.shapes.push(shape);
                 }
 
-                /*if(settings.nextShape === "Text") {
-                    console.log(y + " " + x);
-                    $(".fontChanger").show();
-                    $("#inputText").css({"color": settings.nextColor, "background": "transparent", "border-style": "dotted", "border-color": "grey"});
-                    $("#inputText").css({"top":  e.pageY-15, "left": e.pageX}).show();
-                    settings.isDrawing = false;
-                    settings.textX = x;
-                    settings.textY = y;
-                }
-                else if(settings.nextShape === "Circle") {
-                    shape = new Circle(x, y, settings.nextColor, settings.nextWidth, "Circle", settings.fill);
-                }
-                else if(settings.nextShape === "Rectangle") {
-                    shape = new Rectangle(x, y, settings.nextColor, settings.nextWidth, "Rectangle", settings.fill);
-                }
-                else if(settings.nextShape === "Line") {
-                    shape = new Line(x, y, settings.nextColor, settings.nextWidth, "Line");
-                }
-                else if(settings.nextShape === "Eraser") {
-                    shape = new Eraser(x, y, settings.eraser, "Eraser");
-                    shape.points.push({x: x, y: y});
-                    shape.draw(context);
-                }
-                else if(settings.nextShape === "Pen") {
-                    shape = new Pen(x, y, settings.nextColor, settings.nextWidth, "Pen");
-                    shape.points.push({x: x, y: y});
-                    shape.draw(context);
-                }
-                else if(settings.nextShape === "Bucket") {
-                    $("#myCanvas").css('background-color', settings.nextColor);
-                }
-                else {
-                    settings.moveOutline = new Rectangle(x, y, "black", 1);
-                    for (var i = settings.shapes.length - 1; i >= 0; i--) {
-                        if(settings.shapes[i].contains(x, y)) {
-                            settings.dragging = true;
-                            shape = settings.shapes[i];
-                            console.log("shape x: " + shape.x + "shape y: " + shape.y);
-                            settings.dragOffy = y - shape.y;
-                            settings.dragOffx = x - shape.x;
-                            settings.dragOffyEnd = y - shape.endY;
-                            settings.dragOffxEnd = x - shape.endX;
-                            settings.dragShape = shape;
-                            shape = undefined;
-                            return;
-                        }
-                    }
-                    if (settings.dragShape) {
-                        settings.dragShape = undefined;
-                        settings.dragging = false;
-                    }
-
-                }*/
-
-
                 context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
                 drawAll();
             },
