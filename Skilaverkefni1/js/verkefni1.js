@@ -409,9 +409,19 @@ $(document).ready(function () {
                         drawAll();
                     }
                     else if(settings.dragShape.className == "Pen") {
+                        //settings.oldX =
                         context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+                        var oldX = settings.dragShape.x;
+                        var oldY = settings.dragShape.y;
+                        settings.dragShape.x = x - settings.dragOffx;
+                        settings.dragShape.y = y - settings.dragOffy;
+                        deltaX = settings.dragShape.x - oldX;
+                        deltaY = settings.dragShape.y - oldY;
                         for(var i = settings.dragShape.points.length - 1; i >= 0; i--) {
-                            settings.dragShape.points[i]
+                            context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+                            settings.dragShape.points[i].x += deltaX;
+                            settings.dragShape.points[i].y += deltaY;
+                            drawAll();
                         }
                         drawAll();
                     }
@@ -686,6 +696,7 @@ $(document).ready(function () {
         if (r == true) {
             settings.shapes = [];
             context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+            $("#myCanvas").css('background-color', "white");
         } else {
 
         }

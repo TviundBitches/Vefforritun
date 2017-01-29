@@ -136,14 +136,13 @@ class Line extends Shape {
     }
 
     contains(x, y) {
-        console.log(x + " " + y );
-        console.log(this.x + " " + this.y );
-        console.log(this.endX + " " + this.endY );
         var slope = ((this.endY - this.y)/(this.endX - this.x));
-        console.log(slope);
         var yZero = (this.y - (slope * this.x));
-        console.log(yZero);
-        return (((slope * x) + yZero) === y);
+        return (((slope * x) + yZero) <= y+3) && (((slope * x) + yZero) >= y-3) &&
+                (((this.x <= x) && (this.x + Math.abs(this.endX - this.x) >= x) &&
+                (this.y <= y) && (this.y + Math.abs(this.endY - this.y) >= y)) ||
+                ((this.endX <= x) && (this.endX + Math.abs(this.x - this.endX) >= x) &&
+                (this.endY <= y) && (this.endY + Math.abs(this.y - this.endY) >= y)));
     }
 }
 
