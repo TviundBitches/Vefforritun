@@ -410,6 +410,12 @@ $(document).ready(function () {
         drawAll();
     });
 
+
+
+  	// --------------------------------------------------------------------------------------------
+  	//							            Undo and Redo
+  	// --------------------------------------------------------------------------------------------
+
     $("#undo").click(function () {
         var context = settings.canvas.getContext("2d");
         settings.redoShapes.push(settings.shapes.pop());
@@ -423,6 +429,21 @@ $(document).ready(function () {
             settings.shapes.push(settings.redoShapes.pop());
             context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
             drawAll();
+        }
+    });
+
+    // --------------------------------------------------------------------------------------------
+  	//							         Clear everything
+  	// --------------------------------------------------------------------------------------------
+
+    $("#clear").click(function () {
+        var context = settings.canvas.getContext("2d");
+        var r = confirm("Are you sure you want to clear this masterpiece? You can not undo it.");
+        if (r == true) {
+            settings.shapes = [];
+            context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+        } else {
+
         }
     });
 
