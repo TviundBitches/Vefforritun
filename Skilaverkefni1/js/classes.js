@@ -79,6 +79,9 @@ class Line extends Shape {
     }
 
     contains(x, y) {
+        console.log(x + " " + y );
+        console.log(this.x + " " + this.y );
+        console.log(this.endX + " " + this.endY );
         var slope = ((this.endY - this.y)/(this.endX - this.x));
         console.log(slope);
         var yZero = (this.y - (slope * this.x));
