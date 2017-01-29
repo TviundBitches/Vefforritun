@@ -29,12 +29,17 @@
         <button id="redo" class="button" type="button"><img src="./logos/redo.png" style="width:15px;height:15px;"></button>
         <button id="eraser" class="button" type="button"><img src="./logos/eraser.png" style="width:15px;height:15px;"></button>
         <button id="move" class="button" type="button"><img src="./logos/dragging.png" style="width:15px;height:15px;"></button>
+        <button id="clear" class="button" type="button"><img src="./logos/clear.png" style="width:15px;height:15px;"></button>
     </div>
     <div class="widthOp">
         <i class="fa fa-circle sizeActive" id="small" aria-hidden="true" style="font-size: 70%;"></i>
         <i class="fa fa-circle" id="medium" aria-hidden="true" style="font-size: 100%;"></i>
         <i class="fa fa-circle" id="large" aria-hidden="true" style="font-size: 130%;"></i>
         <i class="fa fa-circle" id="xlarge" aria-hidden="true" style="font-size: 160%;"></i>
+    </div>
+    <div>
+        <button id="noFill" class="changeFill active" type="button"><img src="./logos/pen.png" style="width:15px;height:15px;"></button>
+        <button id="fill" class="changeFill" type="button"><img src="./logos/bucket.png" style="width:15px;height:15px;"></button>
     </div>
 
 
@@ -44,37 +49,39 @@
         <div class="col s2">
             <div id="colors" class="colors">
                 <div>
-                    <button id="blackColor" class="colorActive blackButton colorBtn" type="button"></button>
-                    <button id="redColor" class="redButton  colorBtn" type="button"></button>
-                </div>
-                <div>
-                    <button id="greenColor" class="greenButton colorBtn" type="button"></button>
-                    <button id="whiteColor" class="whiteButton colorBtn" type="button"></button>
-                </div>
-                <div>
-                    <button id="pinkColor" class="pinkButton colorBtn" type="button"></button>
-                    <button id="yellowColor" class="yellowButton colorBtn" type="button"></button>
-                </div>
-                <div>
-                    <button id="blueColor" class="blueButton colorBtn" type="button"></button>
-                    <button id="purpleColor" class="purpleButton colorBtn" type="button"></button>
-                </div>
-                <div>
-                    <button id="deepRedColor" class="deepRedButton colorBtn" type="button"></button>
-                    <button id="limeColor" class="limeButton  colorBtn" type="button"></button>
-                </div>
-                <div>
-                    <button id="turquoiseColor" class="turquoiseButton colorBtn" type="button"></button>
-                    <button id="moccasinColor" class="moccasinButton colorBtn" type="button"></button>
-                </div>
-                <div>
-                    <button id="greyColor" class="greyButton colorBtn" type="button"></button>
-                    <button id="brownColor" class="brownButton colorBtn" type="button"></button>
-                </div>
-                <div>
-                    <button id="deepPinkColor" class="deepPinkButton colorBtn" type="button"></button>
-                    <button id="orangeColor" class="orangeButton colorBtn" type="button"></button>
-                </div>
+                    <div>
+                        <button id="blackColor" class="colorActive blackButton colorBtn" type="button"></button>
+                        <button id="orangeColor" class="orangeButton colorBtn" type="button"></button>
+                    </div>
+                    <div>
+                        <button id="yellowColor" class="yellowButton colorBtn" type="button"></button>
+                        <button id="greenColor" class="greenButton colorBtn" type="button"></button>
+                    </div>
+                    <div>
+                        <button id="limeColor" class="limeButton  colorBtn" type="button"></button>
+                        <button id="turquoiseColor" class="turquoiseButton colorBtn" type="button"></button>
+                    </div>
+                    <div>
+                        <button id="blueColor" class="blueButton colorBtn" type="button"></button>
+                        <button id="purpleColor" class="purpleButton colorBtn" type="button"></button>
+                    </div>
+                    <div>
+                        <button id="brownColor" class="brownButton colorBtn" type="button"></button>
+                        <button id="deepRedColor" class="deepRedButton colorBtn" type="button"></button>
+                    </div>
+                    <div>
+                        <button id="redColor" class="redButton  colorBtn" type="button"></button>
+                        <button id="deepPinkColor" class="deepPinkButton colorBtn" type="button"></button>
+                    </div>
+                    <div>
+                        <button id="pinkColor" class="pinkButton colorBtn" type="button"></button>
+                        <button id="whiteColor" class="whiteButton colorBtn" type="button"></button>
+                    </div>
+                    <div>
+                        <button id="moccasinColor" class="moccasinButton colorBtn" type="button"></button>
+                        <button id="greyColor" class="greyButton colorBtn" type="button"></button>
+                    </div>
+            </div>
             </div>
 
         </div>
@@ -97,13 +104,22 @@
                 <option value="Courier New">Corrier New</option>
                 <option value="Times New Roman">Times New Roman</option>
             </select>
+            <div class = "row">
+                <select class="browser-default sizeSelect">
+                    <option value="" disabled selected>Size</option>
+                    <option value="10">10 px</option>
+                    <option value="15">15 px</option>
+                    <option value="20">20 px</option>
+                    <option value="25">25 px</option>
+                    <option value="30">30 px</option>
+                </select>
+            </div>
 
-            <select class="browser-default sizeSelect">
-                <option value="" disabled selected>Size</option>
-                <option value="10px">10 px</option>
-                <option value="15px">15 px</option>
-                <option value="20px">20 px</option>
-            </select>
+            <div class = "row lowerBar">
+                <button id="italic" class="textStyle button" type="button"><img src="./logos/italic.png" style="width:15px;height:15px;"></button>
+                <button id="bold" class="textStyle button" type="button"><img src="./logos/bold.png" style="width:15px;height:15px;"></button>
+                <button id="underline" class="textStyle button"  type="button"><img src="./logos/underline.png" style="width:15px;height:15px;"></button>
+            </div>
         </div>
     </div>
 

@@ -1,6 +1,5 @@
-//context sama og ur hinu skjalinu
 class Shape {
-    constructor(x, y, color, width, className){
+    constructor(x, y, color, width, className, fill){
         //x, y eru hnit upphafsstadsetningar
         this.className = className;
         this.x = x;
@@ -9,6 +8,7 @@ class Shape {
         this.endY = y;
         this.color = color;
         this.width = width;
+        this.fill = fill;
     }
 
     setEnd(x,y) {
@@ -18,8 +18,8 @@ class Shape {
 }
 
 class Rectangle extends Shape {
-    constructor(x, y, color, width, className){
-        super(x, y, color, width, className);
+    constructor(x, y, color, width, className, fill){
+        super(x, y, color, width, className, fill);
     }
 
     draw(context) {
@@ -28,8 +28,14 @@ class Rectangle extends Shape {
   		    w = Math.abs(this.endX - this.x),
   			h = Math.abs(this.endY - this.y);
         context.lineWidth = this.width;
-        context.strokeStyle = this.color;
-        context.strokeRect(x, y, w, h);
+        if(this.fill){
+            context.fillStyle = this.color;
+            context.fillRect( x, y, w, h );
+        }
+        else {
+            context.strokeStyle = this.color;
+            context.strokeRect(x, y, w, h);
+        }
     }
 
     contains(x, y) {
@@ -41,8 +47,8 @@ class Rectangle extends Shape {
 }
 
 class Circle extends Shape {
-    constructor(x, y, color, width, className){
-        super(x, y, color, width, className);
+    constructor(x, y, color, width, className, fill){
+        super(x, y, color, width, className, fill);
     }
 
     draw(context) {
@@ -50,8 +56,15 @@ class Circle extends Shape {
         context.arc(this.x, this.y, this.computeRadius(this.endX, this.endY), 0, 2 * Math.PI, false);
         //context.lineWidth = 2;
         context.lineWidth = this.width;
-        context.strokeStyle = this.color;
-        context.stroke();
+        if(this.fill){
+            context.fillStyle = this.color;
+            context.fill();
+        }
+        else {
+            context.strokeStyle = this.color;
+            context.stroke();
+        }
+
     }
 
     computeRadius(x,y){
@@ -79,29 +92,35 @@ class Line extends Shape {
     }
 
     contains(x, y) {
+        console.log(x + " " + y );
+        console.log(this.x + " " + this.y );
+        console.log(this.endX + " " + this.endY );
         var slope = ((this.endY - this.y)/(this.endX - this.x));
+        console.log(slope);
         var yZero = (this.y - (slope * this.x));
+        console.log(yZero);
         return (((slope * x) + yZero) === y);
     }
 }
 
 class Text extends Shape {
-    constructor(x, y, color, text, font, size, className){
-        super(x, y, color, 0, className);
+    constructor(x, y, color, text, font, size, className, width, height, style){
+        super(x, y, color, width, className);
         this.text = text;
         this.font = font;
         this.size = size;
+        this.height = height;
+        this.style = style;
     }
 
     draw(context) {
-        console.log("This.size:" + this.size);
-        context.font = this.size + " " + this.font;
+        context.font = this.style + this.size + "px " + this.font;
         context.fillStyle = this.color;
         context.fillText(this.text, this.x, this.y);
     }
 
     contains(x, y) {
-
+        return (x >= this.x && x <= this.x + this.width && y >= this.y - this.height && y <= this.y);
     }
 }
 
@@ -113,6 +132,8 @@ class Pen extends Shape {
 
     draw(context) {
         context.beginPath();
+        context.lineCap = 'round';
+        context.lineJoin = 'round';
         context.strokeStyle = this.color;
         context.lineWidth = this.width;
         context.moveTo(this.x, this.y);
