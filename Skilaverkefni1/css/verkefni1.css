@@ -204,7 +204,7 @@ body{
 
 .changeFill{
     display: none;
-    border: 2px solid;
+    border: 2px solid #ee6e73;
     border-radius: 4px;
     height: 25px;
     width: 25px;
