@@ -62,10 +62,6 @@ $(document).ready(function () {
         settings.nextTextStyle += "bold ";
     })
 
-    $("#underline").click(function () {
-        $("#inputText").css("font-style", "underline");
-        //settings.nextTextStyle += "underline "; virkar ekki
-    })
 
     // --------------------------------------------------------------------------------------------
   	//								          Change color
@@ -409,7 +405,6 @@ $(document).ready(function () {
                         drawAll();
                     }
                     else if(settings.dragShape.className == "Pen") {
-                        //settings.oldX =
                         context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
                         var oldX = settings.dragShape.x;
                         var oldY = settings.dragShape.y;
@@ -417,13 +412,13 @@ $(document).ready(function () {
                         settings.dragShape.y = y - settings.dragOffy;
                         deltaX = settings.dragShape.x - oldX;
                         deltaY = settings.dragShape.y - oldY;
+                        drawAll();
                         for(var i = settings.dragShape.points.length - 1; i >= 0; i--) {
                             context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
                             settings.dragShape.points[i].x += deltaX;
                             settings.dragShape.points[i].y += deltaY;
                             drawAll();
                         }
-                        drawAll();
                     }
                     else if(settings.dragShape.className == "Text") {
                         context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
