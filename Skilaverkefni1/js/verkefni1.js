@@ -352,6 +352,7 @@ $(document).ready(function () {
             if(text !== "") {
                 var context = settings.canvas.getContext("2d");
                 console.log(context.measureText(text).width);
+                context.font = settings.nextTextSize + "px " + settings.nextFont;
                 shape = new Text(settings.textX, settings.textY, settings.nextColor, text, settings.nextFont, settings.nextTextSize, "Text", context.measureText(text).width, parseInt(settings.nextTextSize));
                 settings.shapes.push(shape);
                 drawAll();
