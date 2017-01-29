@@ -25,7 +25,9 @@ $(document).ready(function () {
         dragOffx: 0,
         dragOffy: 0,
         dragOffxEnd: 0,
-        dragOffyEnd: 0
+        dragOffyEnd: 0,
+        // -- Template --
+        templates: []
     };
 
     //select form
@@ -333,6 +335,7 @@ $(document).ready(function () {
                 if(settings.shapes[i].contains(x, y)) {
                     settings.dragging = true;
                     shape = settings.shapes[i];
+                    settings.templates.push(shape);
                     console.log("shape x: " + shape.x + "shape y: " + shape.y);
                     settings.dragOffy = y - shape.y;
                     settings.dragOffx = x - shape.x;
@@ -420,13 +423,15 @@ $(document).ready(function () {
         settings.isDrawing = false;
         settings.dragging = false;
         settings.dragShape = undefined;
+        if(settings.nextShape === "Move" && settings.templates.length !== 0){
+            $("#saveTemplate").show()
+        }
         if(settings.currentShape !== undefined)
             settings.shapes.push(settings.currentShape);
             settings.currentShape = undefined;
         context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
         drawAll();
     });
-
 
 
   	// --------------------------------------------------------------------------------------------
@@ -449,6 +454,11 @@ $(document).ready(function () {
         }
     });
 
+
+    // --------------------------------------------------------------------------------------------
+    //							         Save drawing
+    // --------------------------------------------------------------------------------------------
+
     $("#saveButton").click(function () {
         var drawing = {
             title: "save",
@@ -470,6 +480,30 @@ $(document).ready(function () {
         });
     });
 
+    // --------------------------------------------------------------------------------------------
+    //							         Save template
+    // --------------------------------------------------------------------------------------------
+
+    $("#saveTemplate").click(function () {
+        var template = {
+            title: "template",
+            content: settings.templates
+        };
+        var url = "http://localhost:3000/api/templates";
+
+        $.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            url: url,
+            data: JSON.stringify(template),
+            success: function(data) {
+                console.log("it worked");
+            },
+            error: function(xhr, err) {
+                console.log("it failed");
+            }
+        });
+    });
     // --------------------------------------------------------------------------------------------
   	//							         Clear everything
   	// --------------------------------------------------------------------------------------------
