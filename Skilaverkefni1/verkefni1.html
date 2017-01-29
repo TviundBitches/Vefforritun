@@ -32,7 +32,7 @@
         <button id="clear" class="button" type="button"><img src="./logos/clear.png" style="width:15px;height:15px;"></button>
         <button id="saveTemplate" class="button" type="button">Save Template</button>
         <button id="saveButton" class="button" type="button"><img src="./logos/save.png" style="width:15px;height:15px;"></button>
-        <button id="load" class="button" type="button"><img src="./logos/open.png" style="width:15px;height:15px;"></button>
+        <button id="load" class="button" type="button" data-target="loads"><img src="./logos/open.png" style="width:15px;height:15px;"></button>
     </div>
     <div class="widthOp">
         <i class="fa fa-circle sizeActive" id="small" aria-hidden="true" style="font-size: 70%;"></i>
@@ -156,8 +156,19 @@
         <!-- <a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
         </div>
       </div>
-
     </footer>
+
+    <div id="loads" class="modal bottom-sheet">
+        <div class="modal-content">
+            <h4>Recent pictures</h4>
+            <p>WARNING! You cannot undo this action.</p>
+        </div>
+        <div id="images" class="collection"></div>
+        <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Open</a>
+        </div>
+    </div>
+
     <script src="https://use.fontawesome.com/91e5a23c24.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
     <script src="js/classes.js"></script>
