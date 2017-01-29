@@ -519,55 +519,69 @@ $(document).ready(function () {
     // --------------------------------------------------------------------------------------------
 
     $("#load").click(function () {
-        var url = "http://localhost:3000/api/drawings/3";
+        var url = "http://localhost:3000/api/drawings";
+        var loadNr = 1000000;
         $.ajax({
             type: "GET",
             url: url,
             success: function(data) {
-                var context = settings.canvas.getContext("2d");
-                settings.shapes = [];
-                settings.redoShapes = [];
-                for(var s in data.content) {
-                    var shape = undefined;
-                    if(data.content[s].className === "Text") {
-                        shape = new Text(data.content[s].x, data.content[s].y, data.content[s].color, data.content[s].text, data.content[s].font, data.content[s].size, data.content[s].className, data.content[s].width, data.content[s].height, data.content[s].style);
-                    }
-                    else if(data.content[s].className === "Circle") {
-                        shape = new Circle(data.content[s].x, data.content[s].y, data.content[s].color, data.content[s].width, data.content[s].className, data.content[s].fill);
-                        shape.setEnd(data.content[s].endX, data.content[s].endY);
-                    }
-                    else if(data.content[s].className === "Rectangle") {
-                        shape = new Rectangle(data.content[s].x, data.content[s].y, data.content[s].color, data.content[s].width, data.content[s].className, data.content[s].fill);
-                        shape.setEnd(data.content[s].endX, data.content[s].endY);
-                    }
-                    else if(data.content[s].className === "Line") {
-                        shape = new Line(data.content[s].x, data.content[s].y, data.content[s].color, data.content[s].width, data.content[s].className);
-                        shape.setEnd(data.content[s].endX, data.content[s].endY);
-                    }
-                    else if(data.content[s].className === "Eraser") {
-                        shape = new Eraser(data.content[s].endX, data.content[s].endY, data.content[s].color, data.content[s].className);
-                        for(var p in data.content[s].points) {
-                            console.log(data.content[s].points[p]);
-                            shape.points.push({x: data.content[s].points[p].x, y: data.content[s].points[p].y});;
-                        }
-                    }
-                    else if(data.content[s].className === "Pen") {
-                        shape = new Pen(data.content[s].x, data.content[s].y, data.content[s].color, data.content[s].width, data.content[s].className);
-                        for(var p in data.content[s].points) {
-                            console.log(data.content[s].points[p]);
-                            shape.points.push({x: data.content[s].points[p].x, y: data.content[s].points[p].y});;
-                        }
-                    }
-                    settings.shapes.push(shape);
+                var text = "";
+                for(var i in data) {
+                    text += '<a href="#!" class="collection-item">' + data[i].title + '</a>\n'
                 }
-
-                context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
-                drawAll();
-            },
-            error: function(xhr, err) {
-                console.log("it failed");
+                document.getElementById("images").innerHTML = text;
             }
         });
+        if(loadNr === 1000000) {
+            $.ajax({
+                type: "GET",
+                url: url,
+                success: function(data) {
+                    var context = settings.canvas.getContext("2d");
+                    settings.shapes = [];
+                    settings.redoShapes = [];
+                    for(var s in data.content) {
+                        var shape = undefined;
+                        if(data.content[s].className === "Text") {
+                            shape = new Text(data.content[s].x, data.content[s].y, data.content[s].color, data.content[s].text, data.content[s].font, data.content[s].size, data.content[s].className, data.content[s].width, data.content[s].height, data.content[s].style);
+                        }
+                        else if(data.content[s].className === "Circle") {
+                            shape = new Circle(data.content[s].x, data.content[s].y, data.content[s].color, data.content[s].width, data.content[s].className, data.content[s].fill);
+                            shape.setEnd(data.content[s].endX, data.content[s].endY);
+                        }
+                        else if(data.content[s].className === "Rectangle") {
+                            shape = new Rectangle(data.content[s].x, data.content[s].y, data.content[s].color, data.content[s].width, data.content[s].className, data.content[s].fill);
+                            shape.setEnd(data.content[s].endX, data.content[s].endY);
+                        }
+                        else if(data.content[s].className === "Line") {
+                            shape = new Line(data.content[s].x, data.content[s].y, data.content[s].color, data.content[s].width, data.content[s].className);
+                            shape.setEnd(data.content[s].endX, data.content[s].endY);
+                        }
+                        else if(data.content[s].className === "Eraser") {
+                            shape = new Eraser(data.content[s].endX, data.content[s].endY, data.content[s].color, data.content[s].className);
+                            for(var p in data.content[s].points) {
+                                console.log(data.content[s].points[p]);
+                                shape.points.push({x: data.content[s].points[p].x, y: data.content[s].points[p].y});;
+                            }
+                        }
+                        else if(data.content[s].className === "Pen") {
+                            shape = new Pen(data.content[s].x, data.content[s].y, data.content[s].color, data.content[s].width, data.content[s].className);
+                            for(var p in data.content[s].points) {
+                                console.log(data.content[s].points[p]);
+                                shape.points.push({x: data.content[s].points[p].x, y: data.content[s].points[p].y});;
+                            }
+                        }
+                        settings.shapes.push(shape);
+                    }
+
+                    context.clearRect(0, 0, settings.canvas.width, settings.canvas.height);
+                    drawAll();
+                },
+                error: function(xhr, err) {
+                    console.log("it failed");
+                }
+            });
+        }
     });
 
     // --------------------------------------------------------------------------------------------
