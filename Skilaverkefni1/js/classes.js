@@ -188,7 +188,7 @@ class Pen extends Shape {
 
     contains(x, y) {
         for(var i = this.points.length - 1; i >= 0; i--) {
-            if(this.points[i].x == x && this.points[i].y == y)
+            if(((this.points[i].x <= x + 3) && (this.points[i].x >= x - 3)) && ((this.points[i].y <= y + 3) && (this.points[i].y >= y - 3)))
                 return true;
         }
     }
