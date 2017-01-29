@@ -201,3 +201,14 @@ body{
 .fontChanger{
     display: none;
 }
+
+.changeFill{
+    display: none;
+    border: 2px solid #ee6e73;
+    border-radius: 4px;
+    height: 25px;
+    width: 25px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    background-color: #ee6e73;
+}
