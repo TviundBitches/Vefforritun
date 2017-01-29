@@ -16,7 +16,7 @@ $(document).ready(function () {
         redoShapes: [],
         // -- Text stuff  --
         nextFont: "Arial",
-        nextTextSize: "16px ",
+        nextTextSize: "16px",
         textY: 0,
         textX: 0,
         // -- Moving --
@@ -32,7 +32,7 @@ $(document).ready(function () {
         $(".sizeSelect").change(function () {
             var str = $(".sizeSelect option:selected").val();
             $("#inputText").css('font-size', str);
-            settings.nextTextSize = str + " ";
+            settings.nextTextSize = str;
             console.log(settings.nextTextSize);
         })
 
