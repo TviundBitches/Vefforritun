@@ -1,5 +1,5 @@
 class Shape {
-    constructor(x, y, color, width, className){
+    constructor(x, y, color, width, className, fill){
         //x, y eru hnit upphafsstadsetningar
         this.className = className;
         this.x = x;
@@ -8,6 +8,7 @@ class Shape {
         this.endY = y;
         this.color = color;
         this.width = width;
+        this.fill = fill;
     }
 
     setEnd(x,y) {
@@ -17,8 +18,8 @@ class Shape {
 }
 
 class Rectangle extends Shape {
-    constructor(x, y, color, width, className){
-        super(x, y, color, width, className);
+    constructor(x, y, color, width, className, fill){
+        super(x, y, color, width, className, fill);
     }
 
     draw(context) {
@@ -27,8 +28,14 @@ class Rectangle extends Shape {
   		    w = Math.abs(this.endX - this.x),
   			h = Math.abs(this.endY - this.y);
         context.lineWidth = this.width;
-        context.strokeStyle = this.color;
-        context.strokeRect(x, y, w, h);
+        if(this.fill){
+            context.fillStyle = this.color;
+            context.fillRect( x, y, w, h );
+        }
+        else {
+            context.strokeStyle = this.color;
+            context.strokeRect(x, y, w, h);
+        }
     }
 
     contains(x, y) {
@@ -40,8 +47,8 @@ class Rectangle extends Shape {
 }
 
 class Circle extends Shape {
-    constructor(x, y, color, width, className){
-        super(x, y, color, width, className);
+    constructor(x, y, color, width, className, fill){
+        super(x, y, color, width, className, fill);
     }
 
     draw(context) {
@@ -49,8 +56,15 @@ class Circle extends Shape {
         context.arc(this.x, this.y, this.computeRadius(this.endX, this.endY), 0, 2 * Math.PI, false);
         //context.lineWidth = 2;
         context.lineWidth = this.width;
-        context.strokeStyle = this.color;
-        context.stroke();
+        if(this.fill){
+            context.fillStyle = this.color;
+            context.fill();
+        }
+        else {
+            context.strokeStyle = this.color;
+            context.stroke();
+        }
+
     }
 
     computeRadius(x,y){
