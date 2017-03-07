@@ -21,4 +21,11 @@ export class SellersService {
       return <Seller[]> response.json();
     });
   }
+
+  getSellerById(id: number): Observable<Seller> {
+    return this.http.get('http://localhost:5000/api/sellers/' + id)
+    .map(response => {
+      return <Seller> response.json();
+    });
+  }
 }
