@@ -2,12 +2,32 @@
 
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { SellersService } from './sellers.service'
+import { SellersService } from './sellers.service';
+import {} from 'jasmine';
 
 describe('AppComponent', () => {
 
   const mockService = {
+    successGetProducts: true,
+    productList: [{
+      id: 7,
+      name: 'ullarsokkar'
+    }],
+    getSellerProduct: function(id) {
+      return {
+        subscribe: function(fnSuccess, fnError) {
+          if (mockService.successGetProducts === true) {
+            fnSuccess(mockService.productList);
+          } else {
+            fnError();
+          }
+        }
+      }
+    }
+  };
 
+  const mockModal = {
+    open: jasmine.createSpy('open')
   };
 
   beforeEach(() => {
@@ -18,6 +38,9 @@ describe('AppComponent', () => {
       providers: [{
         provide: SellersService,
         useValue: mockService
+      }, {
+        provide: NgbModal,
+        useValue: mockModal
       }
       ],
     });
@@ -42,4 +65,12 @@ describe('AppComponent', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h1').textContent).toContain('app works!');
   }));
+
+  describe('when sellers service returns empty list of products', () => {
+    mockService.successGetProducts = true;
+    mockService.productList = [];
+    it('should display a message indicating that no products are to be displayed', () => {
+
+    });
+  });
 });
