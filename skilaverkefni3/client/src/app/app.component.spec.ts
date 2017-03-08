@@ -2,12 +2,23 @@
 
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { SellersService } from './sellers.service'
 
 describe('AppComponent', () => {
+
+  const mockService = {
+
+  };
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent
+      ],
+      providers: [{
+        provide: SellersService,
+        useValue: mockService
+      }
       ],
     });
     TestBed.compileComponents();

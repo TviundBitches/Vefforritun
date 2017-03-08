@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import construct = Reflect.construct;
 import { SellersService, Seller } from './sellers.service';
+//import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,7 +14,7 @@ export class AppComponent {
   private sellers: Seller[];
   private seller: Seller;
 
-  constructor(private service: SellersService) {}
+  constructor(private service: SellersService, /*private modalService: NgbModal*/) {}
 
   ngOnInit() {
     /*var successHandler = (result) =>{
