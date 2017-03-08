@@ -3,6 +3,7 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { SellersService } from './sellers.service'
+import {} from 'jasmine';
 
 describe('AppComponent', () => {
 

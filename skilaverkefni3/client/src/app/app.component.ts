@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import construct = Reflect.construct;
 import { SellersService, Seller } from './sellers.service';
+
 //import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -38,4 +39,3 @@ export class AppComponent {
      });
   }
 }
-
