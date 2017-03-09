@@ -43,7 +43,16 @@ export class SellerDetails implements OnInit {
     modalInstance.result.then(obj => {
       console.log('Dialog was closed using OK');
       console.log(obj);
-      this.service.updateProduct()
+      const params = {
+        id: this.seller.id,
+        name: obj.name,
+        price: obj.price,
+        quantityInStock: obj.quantityInStock,
+        path: obj.imagePath
+      }
+      this.service.addProduct(params).subscribe(result => {
+        console.log(result)
+      });
     }).catch(err => {
       console.log('Dialog was closed using cancel');
       console.log(err);

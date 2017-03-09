@@ -40,7 +40,7 @@ export class SellersService {
   }
 
   getSellerProducts(id: number): Observable<SellerProduct[]> {
-    return this.http.get('http://localhost:5000/api/sellers/'+ id + '/products')
+    return this.http.get('http://localhost:5000/api/sellers/' + id + '/products')
     .map(response => {
       console.log(response.json());
       return <SellerProduct[]> response.json();
@@ -48,8 +48,14 @@ export class SellersService {
   }
 
   updateProduct() {
-    //this.http.post('http://localhost:5000/api/sellers/' + )
+    //this.http.put('http://localhost:5000/api/sellers/' + )
     // Adds a product to the catalog of a given seller:
     // app.post("/api/sellers/:id/products", (req, res) => {
+  }
+
+  addProduct(obj: any): Observable<any> {
+    console.log(obj);
+    console.log('id:');
+    return this.http.post('http://localhost:5000/api/sellers/1/products', obj);
   }
 }

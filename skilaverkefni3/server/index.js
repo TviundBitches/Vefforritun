@@ -79,7 +79,7 @@ function findSellerById(id) {
 
 // Return all listed sellers:
 app.get("/api/sellers", (req, res) => {
-	res.type("application/json");
+res.type("application/json");
 	res.json(sellers);
 });
 
@@ -146,7 +146,9 @@ app.put("/api/sellers/:id", (req, res) => {
 
 // Returns the list of products by a given seller:
 app.get("/api/sellers/:id/products", (req, res) => {
-	var sellerProducts = [];
+  console.log('products')
+
+var sellerProducts = [];
 	var id = parseInt(req.params.id);
 	for (var p of products) {
 		if (p.id === id) {
@@ -160,7 +162,8 @@ app.get("/api/sellers/:id/products", (req, res) => {
 
 // Adds a product to the catalog of a given seller:
 app.post("/api/sellers/:id/products", (req, res) => {
-
+  console.log('in server')
+  console.log(req);
 	// Validate seller:
 	var seller = findSellerById(parseInt(req.params.id));
 	if (!seller) {
