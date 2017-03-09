@@ -29,7 +29,7 @@ export class SellerDetails implements OnInit {
       this.seller = result;
       this.name = this.seller.name;
       this.category = this.seller.category;
-      //this.imagePath = this.seller.imagePath;
+      this.imagePath = this.seller.imagePath;
       this.service.getSellerProducts(this.seller.id).subscribe(result => {
         this.products = result;
       });

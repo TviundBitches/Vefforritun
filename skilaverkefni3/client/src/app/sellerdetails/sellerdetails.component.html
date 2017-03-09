@@ -6,8 +6,9 @@
 <div class="row jumbotron">
   <div class="col-md-2"></div>
   <div class="col-md-3">
-
-    <!-- <img src="{{seller.imagePath}}" alt="Image of the seller"/> -->
+    <div *ngIf="imagePath">
+      <img class="img-circle" src="{{imagePath}}" alt="Image of the seller" style="width: 160px"/>
+    </div>
   </div>
   <div class="col-md-5">
     <div class="row">
