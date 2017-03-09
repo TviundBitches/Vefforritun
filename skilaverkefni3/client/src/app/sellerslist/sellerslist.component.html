@@ -1,5 +1,5 @@
-hello
-<ul>
+
+<!-- <ul>
   <li *ngFor="let s of sellers">
     {{s.name}}
   </li>
@@ -7,4 +7,23 @@ hello
 <div *ngIf="seller">
   <h2>{{seller.name}}</h2>
   <img src="{{seller.imagePath}}" alt="Image of the seller"/>
+</div> -->
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-10">
+    <h3>Söluaðilar</h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div *ngFor="let s of sellers">
+      <app-seller
+        [seller]="s"
+        (sellerUpdated)="onUpdateSeller($event)">
+      </app-seller>
+    </div>
+  </div>
+  <div class="col-md-2"></div>
 </div>
