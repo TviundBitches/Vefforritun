@@ -58,4 +58,9 @@ export class SellersService {
     console.log('id:');
     return this.http.post('http://localhost:5000/api/sellers/1/products', obj);
   }
+
+  addSeller(obj: any): Observable<any> {
+    console.log(obj);
+    return this.http.post('http://localhost:5000/api/sellers', obj);
+  }
 }

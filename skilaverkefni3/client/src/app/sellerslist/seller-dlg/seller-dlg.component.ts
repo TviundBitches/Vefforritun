@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-// import { Seller } from '../../sellers.service';
+import { Seller } from '../../sellers.service';
 // import { Router, ActivatedRoute } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -11,7 +11,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 export class SellerDlgComponent implements OnInit {
 
-  sellerName: string;
+  seller: Seller;
 
   constructor(public activeModal: NgbActiveModal) { }
 
@@ -23,7 +23,7 @@ export class SellerDlgComponent implements OnInit {
   }
 
   onOk() {
-    this.activeModal.close(this.sellerName);
+    this.activeModal.close(this.seller);
   }
 
 }
