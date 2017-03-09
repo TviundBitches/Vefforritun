@@ -32,7 +32,7 @@ import { SellerComponent } from './seller/seller.component';
       path: 'sellerslist',
       component: SellersListComponent
   }, {
-      path: 'sellerdetails',
+      path: 'sellerdetails/:id',
       component: SellerDetails}]),
     NgbModule.forRoot()
   ],
