@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppComponent } from '../app.component';
 import { SellersService, Seller } from '../sellers.service';
@@ -7,7 +7,17 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-sellerslist',
   templateUrl: './sellerslist.component.html',
-  styleUrls: ['./sellerslist.component.css']
+  styleUrls: ['./sellerslist.component.css'],
+  encapsulation: ViewEncapsulation.None,
+  styles: [`
+    .dark-modal .modal-content {
+      background-color: #292b2c;
+      color: white;
+    }
+    .dark-modal .close {
+      color: white;
+    }
+  `]
 })
 export class SellersListComponent implements OnInit {
   private sellers: Seller[];
@@ -29,22 +39,9 @@ export class SellersListComponent implements OnInit {
      this.sellers = result;
      });
   }
-
   open(content) {
-    this.modalService.open(content).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
+    this.modalService.open(content, {windowClass: 'dark-modal'});
   }
 
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return  `with: ${reason}`;
-    }
-  }
+
 }
