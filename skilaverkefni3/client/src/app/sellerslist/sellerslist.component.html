@@ -1,7 +1,12 @@
-<button (click)="addSeller()">Add Seller</button>
+<button class="btn-primary" (click)="addSeller()">Add Seller</button>
 
-<pre>{{closeResult}}</pre>
-<ul>
+<template ngbModalContainer></template>
+
+<!-- <pre>{{closeResult}}</pre>
+<ul> -->
+
+<!-- <ul>
+>>>>>>> 3e4aec3d0bf62f9415b06cfeb24e0591fbce9646
   <li *ngFor="let s of sellers">
     {{s.name}}
   </li>
@@ -9,4 +14,23 @@
 <div *ngIf="seller">
   <h2>{{seller.name}}</h2>
   <img src="{{seller.imagePath}}" alt="Image of the seller"/>
+</div> -->
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-10">
+    <h3>Söluaðilar</h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+    <div *ngFor="let s of sellers">
+      <app-seller
+        [seller]="s"
+        (sellerUpdated)="onUpdateSeller($event)">
+      </app-seller>
+    </div>
+  </div>
+  <div class="col-md-2"></div>
 </div>
