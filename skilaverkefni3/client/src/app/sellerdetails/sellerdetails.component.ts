@@ -5,7 +5,7 @@ import { isNullOrUndefined } from 'util';
 import { isUndefined } from 'util';
 
 @Component({
-  selector: 'app-room',
+  selector: 'app-sellerdetails',
   templateUrl: './sellerdetails.component.html',
   styleUrls: ['./sellerdetails.component.css']
 })
