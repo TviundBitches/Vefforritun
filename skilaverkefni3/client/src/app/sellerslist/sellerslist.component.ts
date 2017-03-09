@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AppComponent } from '../app.component';
 import { SellersService, Seller } from '../sellers.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { SellerComponent } from './seller/seller.component';
+import { SellerDlgComponent } from './seller-dlg/seller-dlg.component';
 
 @Component({
   selector: 'app-sellerslist',
@@ -26,12 +26,12 @@ export class SellersListComponent implements OnInit {
     });
 
     this.service.getSellers().subscribe(result => {
-     this.sellers = result;
-     });
+      this.sellers = result;
+      });
   }
 
   addSeller() {
-    const modalInstance = this.modalService.open(SellerComponent);
+    const modalInstance = this.modalService.open(SellerDlgComponent);
     modalInstance.componentInstance.sellerName = 'Sigrun';
     modalInstance.result.then(obj => {
       console.log('Dialog was closed');
