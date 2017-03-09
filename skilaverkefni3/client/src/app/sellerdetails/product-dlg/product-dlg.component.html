@@ -5,7 +5,26 @@
   </button>
 </div>
 <div class="modal-body">
-  <input [(ngModel)]="productName" autofocus />
+  <div>
+    <label>Name</label>
+    <input [(ngModel)]="product.name" autofocus />
+  </div>
+  <div>
+    <label>Price</label>
+    <input [(ngModel)]="product.price"/>
+  </div>
+  <div>
+    <label>Quantity in stock</label>
+    <input [(ngModel)]="product.quantityInStock"/>
+  </div>
+  <div>
+    <label>Quantity sold</label>
+    <input [(ngModel)]="product.quantitySold"/>
+  </div>
+  <div>
+    <label>Image</label>
+    <input [(ngModel)]="product.imagePath"/>
+  </div>
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>

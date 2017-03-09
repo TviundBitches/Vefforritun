@@ -38,10 +38,12 @@ export class SellerDetails implements OnInit {
 
   onAddProduct() {
     const modalInstance = this.modalService.open(ProductDlgComponent);
-    modalInstance.componentInstance.productName = 'Nammi';
+    modalInstance.componentInstance.product = {
+    };
     modalInstance.result.then(obj => {
       console.log('Dialog was closed using OK');
       console.log(obj);
+      this.service.updateProduct()
     }).catch(err => {
       console.log('Dialog was closed using cancel');
       console.log(err);
