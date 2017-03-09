@@ -2,6 +2,10 @@
     font-family: header;
     src: url(../NightWindSentSample.ttf);
 }
+@font-face {
+    font-family: slaufu;
+    src: url(../Infinite_Stroke.otf);
+}
 
 #headerTitle {
     font-family: header;
@@ -23,4 +27,17 @@
 #witchLogo {
     margin: 30px;
     margin-left: 10px;
+}
+
+.footerText {
+    font-size: 30px;
+    margin: 10px;
+}
+
+a {
+    color: #3a034f;
+}
+
+#cat {
+    margin-left: 50px;
 }
