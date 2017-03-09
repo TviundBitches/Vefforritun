@@ -49,4 +49,8 @@ export class SellerDetails implements OnInit {
       console.log(err);
     });
   }
+
+  onCloseAlert() {
+      document.getElementById("alert").style.visibility = "hidden";
+  }
 }
