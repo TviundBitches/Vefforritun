@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Seller } from '../sellers.service';
+import { Seller } from '../../sellers.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
