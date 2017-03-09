@@ -13,15 +13,12 @@
   <img src="{{seller.imagePath}}" alt="Image of the seller"/>
 </div> -->
 
-<div class="row">
+<div class="row jumbotron">
   <div class="col-md-2"></div>
-  <div class="col-md-10">
+  <div class="col-md-6">
     <h3>Söluaðilar</h3>
   </div>
-</div>
-
-<div class="row">
-  <div class="col-md-8"></div>
+  <!-- The create sellers modal opening button -->
   <div class="col-md-2">
     <button class="btn btn-primary" (click)="addSeller()">Búa til söluaðila</button>
 
@@ -30,6 +27,9 @@
   <div class="col-md-2"></div>
 </div>
 
+
+
+<!-- The table with all the sellers -->
 <div class="row table">
   <div class="col-md-2"></div>
   <div class="col-md-8">
