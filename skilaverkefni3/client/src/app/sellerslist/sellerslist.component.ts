@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AppComponent } from '../app.component';
 import { SellersService, Seller } from '../sellers.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { SellerComponent } from '../seller/seller.component';
+import { SellerComponent } from './seller/seller.component';
 
 @Component({
   selector: 'app-sellerslist',
