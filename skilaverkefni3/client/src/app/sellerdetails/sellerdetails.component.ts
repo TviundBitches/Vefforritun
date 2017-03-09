@@ -21,6 +21,7 @@ export class SellerDetails implements OnInit {
   private category: string;
   private imagePath: string;
   products: SellerProduct[];
+  topTenProducts: SellerProduct[];
 
   constructor(private service: SellersService, private modalService: NgbModal, private route: ActivatedRoute) {}
 
@@ -32,6 +33,9 @@ export class SellerDetails implements OnInit {
       this.imagePath = this.seller.imagePath;
       this.service.getSellerProducts(this.seller.id).subscribe(result => {
         this.products = result;
+      });
+      this.service.getTopSellerProducts(this.seller.id).subscribe(result => {
+        this.topTenProducts = result;
       });
     });
   }

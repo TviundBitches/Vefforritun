@@ -49,7 +49,12 @@
       <ngb-tab>
         <template ngbTabTitle><b>Topp</b> 10</template>
         <template ngbTabContent>
-          <p>Top 10 is here</p>
+          <div *ngFor="let p of topTenProducts">
+            <app-product-card
+              [product]="p"
+              (productUpdated)="onUpdateProduct($event)">
+            </app-product-card>
+          </div>
         </template>
       </ngb-tab>
     </ngb-tabset>

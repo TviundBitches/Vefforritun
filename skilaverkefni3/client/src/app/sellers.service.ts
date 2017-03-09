@@ -47,6 +47,14 @@ export class SellersService {
     });
   }
 
+  getTopSellerProducts(id: number): Observable<SellerProduct[]> {
+    return this.http.get('http://localhost:5000/api/sellers/' + id + '/products')
+    .map(response => {
+      let result = (response.json().sort(function(a,b) {return (a.quantitySold > b.quantitySold) ? 1 : ((b.quantitySold > a.quantitySold) ? -1 : 0);} )).slice(0, 10);;
+      return <SellerProduct[]> result;
+    });
+  }
+
   updateProduct() {
     //this.http.put('http://localhost:5000/api/sellers/' + )
     // Adds a product to the catalog of a given seller:
