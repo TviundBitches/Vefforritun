@@ -1,5 +1,5 @@
  import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
- import { SellerProduct } from '../../sellers.service';
+ import {SellerProduct, SellersService} from '../../sellers.service';
  import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
  import { ProductDlgComponent } from '../product-dlg/product-dlg.component';
 
@@ -14,7 +14,7 @@ export class ProductCard implements OnInit {
   @Input() product: SellerProduct;
   @Output() productUpdated = new EventEmitter();
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal, private service: SellersService) {}
 
   ngOnInit() {
   }
@@ -26,7 +26,16 @@ export class ProductCard implements OnInit {
     modalInstance.result.then(obj => {
       console.log('Dialog was closed using OK');
       console.log(obj);
-      //this.service.updateProduct()
+          const params = {
+            id: 1,
+            name: obj.name,
+            price: obj.price,
+            quantityInStock: obj.quantityInStock,
+            path: obj.imagePath
+          };
+      this.service.updateProduct(params).subscribe(result => {
+        console.log(result)
+      });
     }).catch(err => {
       console.log('Dialog was closed using cancel');
       console.log(err);
@@ -37,5 +46,28 @@ export class ProductCard implements OnInit {
 
     this.productUpdated.emit(this.product);
   }
+  //
+  // onAddProduct() {
+  //   const modalInstance = this.modalService.open(ProductDlgComponent);
+  //   modalInstance.componentInstance.product = {
+  //   };
+  //   modalInstance.result.then(obj => {
+  //     console.log('Dialog was closed using OK');
+  //     console.log(obj);
+  //     const params = {
+  //       id: this.seller.id,
+  //       name: obj.name,
+  //       price: obj.price,
+  //       quantityInStock: obj.quantityInStock,
+  //       path: obj.imagePath
+  //     }
+  //     this.service.addProduct(params).subscribe(result => {
+  //       console.log(result)
+  //     });
+  //   }).catch(err => {
+  //     console.log('Dialog was closed using cancel');
+  //     console.log(err);
+  //   });
+  // }
 
 }

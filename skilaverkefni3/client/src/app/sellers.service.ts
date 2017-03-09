@@ -47,7 +47,8 @@ export class SellersService {
     });
   }
 
-  updateProduct() {
+  updateProduct(obj: any): Observable<any> {
+    return this.http.put('http://localhost:5000/api/sellers/1/products/1', obj);
     //this.http.put('http://localhost:5000/api/sellers/' + )
     // Adds a product to the catalog of a given seller:
     // app.post("/api/sellers/:id/products", (req, res) => {

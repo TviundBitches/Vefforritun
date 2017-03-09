@@ -123,8 +123,8 @@ app.post("/api/sellers", (req, res) => {
 
 app.put("/api/sellers/:id", (req, res) => {
 	// Check if we can find the seller:
-	var seller = findSellerById(req.params.id);
-	if (!seller) {
+  var seller = findSellerById(parseInt(req.params.id));
+  if (!seller) {
 		res.statusCode = 404;
 		return res.send('Error 404: No seller found!');
 	}
@@ -189,6 +189,8 @@ app.post("/api/sellers/:id/products", (req, res) => {
 
 app.put("/api/sellers/:id/products/:prodId", (req, res) => {
 	// Validate seller:
+  console.log('in put')
+  console.log(req.params.id)
 	var seller = findSellerById(parseInt(req.params.id));
 	if (!seller) {
 		res.statusCode = 404;
