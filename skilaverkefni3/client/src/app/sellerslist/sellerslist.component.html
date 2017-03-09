@@ -37,18 +37,18 @@
       <thead>
         <tr>
           <th>Nafn</th>
-          <th>Flokkur</th>
+          <th> </th>
           <th> </th>
         </tr>
       </thead>
-      <div *ngFor="let s of sellers" >
-        <tbody>
-          <app-seller
-            [seller]="s"
-            (sellerUpdated)="onUpdateSeller($event)">
-          </app-seller>
-        </tbody>
-      </div>
+      <tbody>
+        <div *ngFor="let s of sellers" >
+            <app-seller
+              [seller]="s"
+              (sellerUpdated)="onUpdateSeller($event)">
+            </app-seller>
+        </div>
+      </tbody>
     </table>
   </div>
   <div class="col-md-2"></div>
