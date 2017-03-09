@@ -5,14 +5,26 @@ import { HttpModule } from '@angular/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { SellersService } from './sellers.service';
+import { RouterModule } from '@angular/router';
+import { SellersListComponent } from './sellerslist/sellerslist.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SellersListComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    RouterModule.forRoot([{
+      path: '',
+      redirectTo: 'sellerslist',
+      pathMatch: 'full'
+    }, {
+      path: 'sellerslist',
+      component: SellersListComponent
+    }]),
     NgbModule.forRoot()
   ],
   providers: [SellersService],
