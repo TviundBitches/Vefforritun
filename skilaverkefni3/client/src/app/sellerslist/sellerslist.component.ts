@@ -42,7 +42,7 @@ export class SellersListComponent implements OnInit {
         category: obj.category,
         imagePath: obj.imagePath
       }
-      this.service.addProduct(params).subscribe(result => {
+      this.service.addSeller(params).subscribe(result => {
         console.log(result);
       })
     }).catch(err => {
