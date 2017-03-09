@@ -5,9 +5,12 @@ import { HttpModule } from '@angular/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { SellersService } from './sellers.service';
+import { SellerDetails } from './sellerdetails/sellerdetails.component'
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SellerDetails
   ],
   imports: [
     BrowserModule,
