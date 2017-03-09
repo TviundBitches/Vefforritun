@@ -47,4 +47,9 @@ export class SellersService {
     });
   }
 
+  updateProduct() {
+    //this.http.post('http://localhost:5000/api/sellers/' + )
+    // Adds a product to the catalog of a given seller:
+    // app.post("/api/sellers/:id/products", (req, res) => {
+  }
 }

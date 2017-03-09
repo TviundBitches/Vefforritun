@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { SellersService, Seller, SellerProduct } from '../../sellers.service';
+
 
 @Component({
   selector: 'app-product-dlg',
@@ -8,7 +10,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ProductDlgComponent implements OnInit {
 
-  productName: string;
+  product: SellerProduct;
 
   constructor(public activeModal: NgbActiveModal) { }
 
@@ -20,7 +22,7 @@ export class ProductDlgComponent implements OnInit {
   }
 
   onOk() {
-    this.activeModal.close(this.productName);
+    this.activeModal.close(this.product);
   }
 
 }
