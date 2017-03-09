@@ -9,7 +9,8 @@
 
  export class ProductCard implements OnInit {
 
-    @Input() product: SellerProduct;
+    @Input()
+    product: SellerProduct;
     //@Output() productUpdated = new EventEmitter();
 
 

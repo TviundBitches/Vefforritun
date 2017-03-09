@@ -29,7 +29,9 @@ import { ProductCard } from './productcard/productcard.component';
     }, {
       path: 'sellerslist',
       component: SellersListComponent
-    }]),
+  }, {
+      path: 'sellerdetails',
+      component: SellerDetails}]),
     NgbModule.forRoot()
   ],
   providers: [SellersService],
