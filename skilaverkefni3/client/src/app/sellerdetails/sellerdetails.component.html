@@ -50,7 +50,7 @@
           <div *ngFor="let p of products">
             <app-product-card
               [product]="p"
-              (productUpdated)="onEdit($event)">
+              (productUpdated)="onUpdateProduct($event)">
             </app-product-card>
           </div>
         </template>

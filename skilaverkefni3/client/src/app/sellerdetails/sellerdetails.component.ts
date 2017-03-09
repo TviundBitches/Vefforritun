@@ -68,6 +68,10 @@ export class SellerDetails implements OnInit {
     document.getElementById("alert").style.visibility = "hidden";
   }
 
+  onUpdateProduct($event) {
+
+  }
+
   // onGoBack() {
   //   this.router.navigate(['']);
   // }
