@@ -8,6 +8,7 @@ import { SellersService } from './sellers.service';
 import { RouterModule } from '@angular/router';
 import { SellerDetails } from './sellerdetails/sellerdetails.component'
 import { SellersListComponent } from './sellerslist/sellerslist.component';
+import { ProductDlgComponent } from './sellerdetails/product-dlg/product-dlg.component';
 import { ProductCard } from './sellerdetails/productcard/productcard.component';
 import { SellerComponent } from './sellerslist/seller/seller.component';
 

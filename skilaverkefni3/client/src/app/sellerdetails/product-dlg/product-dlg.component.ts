@@ -3,8 +3,8 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-product-dlg',
-  templateUrl: './product-dlg.component.html',
-  styleUrls: ['./product-dlg.component.css']
+  templateUrl: 'product-dlg.component.html',
+  styleUrls: ['product-dlg.component.css']
 })
 export class ProductDlgComponent implements OnInit {
 
