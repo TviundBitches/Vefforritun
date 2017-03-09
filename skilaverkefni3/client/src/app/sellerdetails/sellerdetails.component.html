@@ -34,9 +34,10 @@
         <template ngbTabTitle>Allar vörur</template>
         <template ngbTabContent>
           <div *ngFor="let p of products">
-              <app-product-card [product]="p">
-
-              </app-product-card>
+            <app-product-card
+              [product]="p"
+              (productUpdated)="onUpdateProduct($event)">
+            </app-product-card>
           </div>
         </template>
       </ngb-tab>
