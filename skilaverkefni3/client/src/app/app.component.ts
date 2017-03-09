@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import construct = Reflect.construct;
-import { SellersService, Seller } from './sellers.service';
-import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { Component } from '@angular/core';
+//import construct = Reflect.construct;
+//import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-root',
@@ -11,12 +10,9 @@ import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 export class AppComponent {
   title = 'app works!';
 
-  private sellers: Seller[];
-  private seller: Seller;
+  constructor() {}
 
-  constructor(private service: SellersService, private modalService: NgbModal) {}
-
-  ngOnInit() {
+  //ngOnInit() {
     /*var successHandler = (result) =>{
       this.seller = result;
     };
@@ -26,15 +22,15 @@ export class AppComponent {
     };
     this.service.getSellerById(2).subscribe(successHandler, errorHandler);
     */
-    this.service.getSellerById(1).subscribe(result => {
-      this.seller = result;
-      }, (err) => {
-      // TODO display tostr!
-      console.log('something failed');
-    });
-
-    this.service.getSellers().subscribe(result => {
-     this.sellers = result;
-     });
-  }
+    // this.service.getSellerById(1).subscribe(result => {
+    //   this.seller = result;
+    //   }, (err) => {
+    //   // TODO display tostr!
+    //   console.log('something failed');
+    // });
+    //
+    // this.service.getSellers().subscribe(result => {
+    //  this.sellers = result;
+    //  });
+  //}
 }
