@@ -1,6 +1,4 @@
-<button class="btn-primary" (click)="addSeller()">Búa til söluaðila</button>
 
-<template ngbModalContainer></template>
 
 <!-- <pre>{{closeResult}}</pre>
 <ul> -->
@@ -23,14 +21,35 @@
 </div>
 
 <div class="row">
+  <div class="col-md-8"></div>
+  <div class="col-md-2">
+    <button class="btn btn-primary" (click)="addSeller()">Búa til söluaðila</button>
+
+    <template ngbModalContainer></template>
+  </div>
+  <div class="col-md-2"></div>
+</div>
+
+<div class="row table">
   <div class="col-md-2"></div>
   <div class="col-md-8">
-    <div *ngFor="let s of sellers">
-      <app-seller
-        [seller]="s"
-        (sellerUpdated)="onUpdateSeller($event)">
-      </app-seller>
-    </div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Nafn</th>
+          <th>Flokkur</th>
+          <th> </th>
+        </tr>
+      </thead>
+      <div *ngFor="let s of sellers" >
+        <tbody>
+          <app-seller
+            [seller]="s"
+            (sellerUpdated)="onUpdateSeller($event)">
+          </app-seller>
+        </tbody>
+      </div>
+    </table>
   </div>
   <div class="col-md-2"></div>
 </div>

@@ -12,3 +12,10 @@
     padding-top: 50px;
     padding-bottom: 50px;
 }
+
+.footer {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    width: 500px;
+    font-family: header;
+}

@@ -1,5 +1,7 @@
 <div *ngIf="seller">
-    <a (click)="onVisitSellerDetails(seller)"><h5>{{seller.name}}</h5></a>
-    <i>{{seller.category}}</i>
-    <button class="btn-primary" (click)="onEdit()">Breyta söluaðila</button>
+    <tr>
+        <td><a (click)="onVisitSellerDetails(seller)"><h5>{{seller.name}}</h5></a></td>
+        <td><i>{{seller.category}}</i></td>
+        <td><button class="buttons btn btn-info" (click)="onEdit()">Breyta</button></td>
+    </tr>
 </div>
