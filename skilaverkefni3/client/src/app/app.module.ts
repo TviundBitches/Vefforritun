@@ -10,6 +10,7 @@ import { SellerDetails } from './sellerdetails/sellerdetails.component'
 import { SellersListComponent } from './sellerslist/sellerslist.component';
 import { ProductCard } from './productcard/productcard.component';
 import { ProductDlgComponent } from './product-dlg/product-dlg.component';
+import { SellerComponent } from './sellerslist/seller/seller.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ProductDlgComponent } from './product-dlg/product-dlg.component';
     SellerDetails,
     SellersListComponent,
     ProductCard,
-    ProductDlgComponent
+    ProductDlgComponent,
+    SellerComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,7 @@ import { ProductDlgComponent } from './product-dlg/product-dlg.component';
       path: 'sellerslist',
       component: SellersListComponent
   }, {
-      path: 'sellerdetails',
+      path: 'sellerdetails/:id',
       component: SellerDetails}]),
     NgbModule.forRoot()
   ],
