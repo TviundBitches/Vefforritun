@@ -5,16 +5,18 @@ import { HttpModule } from '@angular/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { SellersService } from './sellers.service';
-import { SellerDetails } from './sellerdetails/sellerdetails.component'
 import { RouterModule } from '@angular/router';
+import { SellerDetails } from './sellerdetails/sellerdetails.component'
 import { SellersListComponent } from './sellerslist/sellerslist.component';
+import { ProductCard } from './productcard/productcard.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SellerDetails,
-    SellersListComponent
+    SellersListComponent,
+    ProductCard
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,9 @@ import { SellersListComponent } from './sellerslist/sellerslist.component';
     }, {
       path: 'sellerslist',
       component: SellersListComponent
-    }]),
+  }, {
+      path: 'sellerdetails',
+      component: SellerDetails}]),
     NgbModule.forRoot()
   ],
   providers: [SellersService],

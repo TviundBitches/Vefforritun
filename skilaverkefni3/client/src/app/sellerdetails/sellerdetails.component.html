@@ -1,0 +1,52 @@
+<h2>
+    <!-- {{seller.name}} -->
+</h2>
+
+<!-- About the seller -->
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-3">
+    <h2>
+        Here's the pic
+    </h2>
+  </div>
+  <div class="col-md-5">
+    <div class="row">
+      <h5>
+          Here's the name
+      </h5>
+    </div>
+    <div class="row">
+      <h5>
+          Here's the category
+      </h5>
+    </div>
+  </div>
+  <div class="col-md-2"></div>
+</div>
+
+<!-- The products -->
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class ="col-md-8">
+    <ngb-tabset>
+      <ngb-tab>
+        <template ngbTabTitle>Allar vörur</template>
+        <template ngbTabContent>
+          <div *ngFor="let p of products">
+              <app-product-card [product]="p">
+
+              </app-product-card>
+          </div>
+        </template>
+      </ngb-tab>
+      <ngb-tab>
+        <template ngbTabTitle><b>Topp</b> 10</template>
+        <template ngbTabContent>
+          <p>Top 10 is here</p>
+        </template>
+      </ngb-tab>
+    </ngb-tabset>
+  </div>
+  <div class="col-md-2"></div>
+</div>
