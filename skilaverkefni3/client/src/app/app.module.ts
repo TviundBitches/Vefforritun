@@ -8,8 +8,8 @@ import { SellersService } from './sellers.service';
 import { RouterModule } from '@angular/router';
 import { SellerDetails } from './sellerdetails/sellerdetails.component'
 import { SellersListComponent } from './sellerslist/sellerslist.component';
-import { ProductCard } from './productcard/productcard.component';
 import { ProductDlgComponent } from './product-dlg/product-dlg.component';
+import { ProductCard } from './sellerdetails/productcard/productcard.component';
 import { SellerComponent } from './sellerslist/seller/seller.component';
 
 
@@ -40,6 +40,6 @@ import { SellerComponent } from './sellerslist/seller/seller.component';
   ],
   providers: [SellersService],
   bootstrap: [AppComponent],
-  entryComponents: [ProductDlgComponent]
+  entryComponents: [ProductDlgComponent, SellerComponent]
 })
 export class AppModule { }
