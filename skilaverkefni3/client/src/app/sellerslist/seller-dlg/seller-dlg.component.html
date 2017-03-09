@@ -1,11 +1,22 @@
 <div class="modal-header">
-  <h4 class="modal-title">Velkomin/nn</h4>
+  <h4 class="modal-title">Búa til/Breyta söluaðila</h4>
   <button type="button" class="close" aria-label="Close" (click)="onCancel()">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
 <div class="modal-body">
-  <input [(ngModel)]="sellerName"/>
+  <div>
+    <label>Nafn söluaðila: </label>
+    <input [(ngModel)]="seller.name" autofocus/>
+  </div>
+  <div>
+    <label>Flokkur: </label>
+    <input [(ngModel)]="seller.category"/>
+  </div>
+  <div>
+    <label>Mynd: </label>
+    <input [(ngModel)]="seller.imagePath"/>
+  </div>
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-secondary" (click)="onCancel()">Hætta við</button>

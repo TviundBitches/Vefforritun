@@ -21,8 +21,10 @@ export class SellerDetails implements OnInit {
   private category: string;
   private imagePath: string;
   products: SellerProduct[];
+  topTenProducts: SellerProduct[];
 
-  constructor(private service: SellersService, private modalService: NgbModal, private route: ActivatedRoute) {}
+  constructor(private service: SellersService, private modalService: NgbModal,
+              private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.service.getSellerById(this.route.snapshot.params['id']).subscribe(result => {
@@ -32,6 +34,9 @@ export class SellerDetails implements OnInit {
       this.imagePath = this.seller.imagePath;
       this.service.getSellerProducts(this.seller.id).subscribe(result => {
         this.products = result;
+      });
+      this.service.getTopSellerProducts(this.seller.id).subscribe(result => {
+        this.topTenProducts = result;
       });
     });
   }
@@ -60,6 +65,10 @@ export class SellerDetails implements OnInit {
   }
 
   onCloseAlert() {
-      document.getElementById("alert").style.visibility = "hidden";
+    document.getElementById("alert").style.visibility = "hidden";
   }
+
+  // onGoBack() {
+  //   this.router.navigate(['']);
+  // }
 }
