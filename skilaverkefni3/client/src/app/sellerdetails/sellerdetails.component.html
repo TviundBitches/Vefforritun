@@ -1,6 +1,3 @@
-<h2>
-    <!-- {{seller.name}} -->
-</h2>
 
 <!-- About the seller -->
 <div class="row jumbotron">
@@ -12,9 +9,9 @@
   </div>
   <div class="col-md-5">
     <div class="row">
-      <h5>
+      <h4>
         {{name}}
-      </h5>
+      </h4>
     </div>
     <div class="row">
       <h5>
@@ -24,8 +21,20 @@
   </div>
   <div class="col-md-2"></div>
 </div>
-<button class="btn-primary" (click)="onAddProduct(0)"> Add product </button>
-<template ngbModalContainer></template>
+
+<div class="row buttons">
+  <div class="col-md-2"></div>
+  <div class="col-md-7">
+    <button class="btn btn-primary" (click)="onAddProduct(0)"> Add product </button>
+    <template ngbModalContainer></template>
+  </div>
+  <div class="col-md-3">
+    <button class="btn btn-primary"> Go back </button>
+    <template ngbModalContainer></template>
+  </div>
+
+</div>
+
 
 <!-- The products -->
 <div class="row">
@@ -49,7 +58,12 @@
       <ngb-tab>
         <template ngbTabTitle><b>Topp</b> 10</template>
         <template ngbTabContent>
-          <p>Top 10 is here</p>
+          <div *ngFor="let p of topTenProducts">
+            <app-product-card
+              [product]="p"
+              (productUpdated)="onUpdateProduct($event)">
+            </app-product-card>
+          </div>
         </template>
       </ngb-tab>
     </ngb-tabset>
