@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { SellerDetails } from './sellerdetails/sellerdetails.component'
 import { SellersListComponent } from './sellerslist/sellerslist.component';
 import { ProductCard } from './productcard/productcard.component';
+import { ProductDlgComponent } from './product-dlg/product-dlg.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ProductCard } from './productcard/productcard.component';
     AppComponent,
     SellerDetails,
     SellersListComponent,
-    ProductCard
+    ProductCard,
+    ProductDlgComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +37,7 @@ import { ProductCard } from './productcard/productcard.component';
     NgbModule.forRoot()
   ],
   providers: [SellersService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ProductDlgComponent]
 })
 export class AppModule { }

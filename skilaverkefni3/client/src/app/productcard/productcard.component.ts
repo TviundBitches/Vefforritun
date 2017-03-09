@@ -18,4 +18,9 @@
    ngOnInit() {
 
    }
+
+   onEdit() {
+
+   }
+
  }
