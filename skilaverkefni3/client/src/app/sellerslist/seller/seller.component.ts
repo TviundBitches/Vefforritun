@@ -12,7 +12,6 @@ export class SellerComponent implements OnInit {
 
   @Input() seller: Seller;
   @Output() sellerUpdated = new EventEmitter();
-  sellerName: string;
 
   constructor(private router: Router) { }
 
