@@ -17,12 +17,15 @@ export class SellerDetails implements OnInit {
   private seller: Seller;
   products: SellerProduct[];
 
-  constructor(private service: SellersService) {}
+  constructor(private service: SellersService, private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.service.getSellerProducts(1).subscribe(result => {
-      this.products = result;
-      console.log(result);
+    this.service.getSellerById(this.route.snapshot.params['id']).subscribe(result => {
+      this.seller = result;
+      this.service.getSellerProducts(this.seller.id).subscribe(result => {
+        this.products = result;
+      });
     });
+
   }
 }

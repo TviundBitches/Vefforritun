@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Seller } from '../sellers.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-seller',
@@ -13,7 +14,7 @@ export class SellerComponent implements OnInit {
   @Output() sellerUpdated = new EventEmitter();
   sellerName: string;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -22,6 +23,9 @@ export class SellerComponent implements OnInit {
     // Code which displays a dialog, and if the user
     // presses the OK button we notify about it:
     this.sellerUpdated.emit(this.seller);
+  }
+  onVisitSellerDetails(seller) {
+    this.router.navigate(['/sellerdetails/' + seller.id])
   }
 
 }
