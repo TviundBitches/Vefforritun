@@ -17,6 +17,9 @@ import { SellersService, Seller, SellerProduct } from '../sellers.service';
 
 export class SellerDetails implements OnInit {
   private seller: Seller;
+  private name: string;
+  private category: string;
+  private imagePath: string;
   products: SellerProduct[];
 
   constructor(private service: SellersService, private modalService: NgbModal, private route: ActivatedRoute) {}
@@ -24,11 +27,15 @@ export class SellerDetails implements OnInit {
   ngOnInit() {
     this.service.getSellerById(this.route.snapshot.params['id']).subscribe(result => {
       this.seller = result;
+      this.name = this.seller.name;
+      this.category = this.seller.category;
+      //this.imagePath = this.seller.imagePath;
       this.service.getSellerProducts(this.seller.id).subscribe(result => {
         this.products = result;
       });
     });
   }
+
   onAddProduct() {
     const modalInstance = this.modalService.open(ProductDlgComponent);
     modalInstance.componentInstance.productName = 'Nammi';
