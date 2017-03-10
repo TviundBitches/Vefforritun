@@ -52,6 +52,7 @@ export class SellersService {
     console.log(productid)
     return this.http.put('http://localhost:5000/api/sellers/'+sellerid+'/products/'+productid, obj);
   }
+
   getTopSellerProducts(id: number): Observable<SellerProduct[]> {
     return this.http.get('http://localhost:5000/api/sellers/' + id + '/products')
     .map(response => {
@@ -61,7 +62,7 @@ export class SellersService {
   }
 
   addProduct(obj: any): Observable<any> {
-    console.log(obj.id)
+    console.log(obj.id);
     return this.http.post('http://localhost:5000/api/sellers/'+obj.id+'/products', obj);
   }
 

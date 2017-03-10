@@ -72,7 +72,7 @@ export class SellerDetails implements OnInit {
 
   }
 
-  // onGoBack() {
-  //   this.router.navigate(['']);
-  // }
+  onGoBack() {
+    this.router.navigate(['/sellerslist']);
+  }
 }
