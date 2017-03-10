@@ -1,18 +1,3 @@
-
-
-<!-- <pre>{{closeResult}}</pre>
-<ul> -->
-
-<!-- <ul>
-  <li *ngFor="let s of sellers">
-    {{s.name}}
-  </li>
-</ul>
-<div *ngIf="seller">
-  <h2>{{seller.name}}</h2>
-  <img src="{{seller.imagePath}}" alt="Image of the seller"/>
-</div> -->
-
 <div class="row jumbotron">
   <div class="col-md-2"></div>
   <div class="col-md-6">
@@ -21,7 +6,6 @@
   <!-- The create sellers modal opening button -->
   <div class="col-md-2">
     <button class="butt btn btn-primary" (click)="addSeller()">Búa til söluaðila</button>
-
     <template ngbModalContainer></template>
   </div>
   <div class="col-md-2"></div>
@@ -33,23 +17,16 @@
 <div class="row table">
   <div class="col-md-2"></div>
   <div class="col-md-8">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>Nafn</th>
-          <th> </th>
-          <th> </th>
-        </tr>
-      </thead>
-      <tbody>
-        <div *ngFor="let s of sellers" >
-            <app-seller
-              [seller]="s"
-              (sellerUpdated)="onUpdateSeller($event)">
-            </app-seller>
+    <div class="card-deck">
+      <div *ngFor="let s of sellers" style="width: 490px; height: 580px;">
+        <div class="card" style="width: 480px; height: 730;">
+          <app-seller
+            [seller]="s"
+            (sellerUpdated)="onUpdateSeller($event)">
+          </app-seller>
         </div>
-      </tbody>
-    </table>
+      </div>
+    </div>
   </div>
   <div class="col-md-2"></div>
 </div>
