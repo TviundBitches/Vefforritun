@@ -2,7 +2,7 @@ import { Component, OnInit, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProductDlgComponent } from './product-dlg/product-dlg.component';
-//import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { isNullOrUndefined } from 'util';
 import { isUndefined } from 'util';
 import { AppComponent } from '../app.component';
@@ -25,7 +25,7 @@ export class SellerDetails implements OnInit {
   topTenProducts: SellerProduct[];
 
   constructor(private service: SellersService, private modalService: NgbModal,
-              private router: Router, private route: ActivatedRoute) { }
+              private router: Router, private route: ActivatedRoute, private toastrService: ToastrService) { }
 
   ngOnInit() {
     this.service.getSellerById(this.route.snapshot.params['id']).subscribe(result => {
@@ -57,6 +57,7 @@ export class SellerDetails implements OnInit {
       }
       this.service.addProduct(params).subscribe(result => {
         //console.log(result);
+        this.toastrService.success('Successfully added product!');
       });
     }).catch(err => {
       console.log('Dialog was closed using cancel');

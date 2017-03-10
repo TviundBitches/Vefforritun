@@ -50,4 +50,8 @@ export class SellersListComponent implements OnInit {
       console.log(err);
     })
   }
+
+  onUpdateSeller(s: Seller) {
+    
+  }
 }

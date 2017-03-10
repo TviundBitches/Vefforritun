@@ -3,6 +3,7 @@
  import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
  import { ProductDlgComponent } from '../product-dlg/product-dlg.component';
  import { Router, ActivatedRoute } from '@angular/router';
+ import { ToastrService } from 'ngx-toastr';
 
 
  @Component({
@@ -16,7 +17,7 @@ export class ProductCard implements OnInit {
   @Input() product: SellerProduct;
   @Output() productUpdated = new EventEmitter();
 
-  constructor(private modalService: NgbModal, private route: ActivatedRoute, private service: SellersService) {}
+  constructor(private modalService: NgbModal, private route: ActivatedRoute, private service: SellersService, private toastrService: ToastrService) {}
 
   ngOnInit() {
     this.sellerId = this.route.snapshot.params['id'];
@@ -36,6 +37,7 @@ export class ProductCard implements OnInit {
           };
           console.log(this.sellerId)
       this.service.updateProduct(params, 1, id).subscribe(result => {
+        this.toastrService.success('Successfully edited product!');
       });
     }).catch(err => {
       console.log('Dialog was closed using cancel');
