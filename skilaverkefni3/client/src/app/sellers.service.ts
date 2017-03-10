@@ -3,14 +3,14 @@ import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 
-export interface Seller {
+export class Seller {
   id: number;
   name: string;
   category: string;
   imagePath: string;
 }
 
-export interface SellerProduct {
+export class SellerProduct {
     id: number;
     name: string;
     price: number;

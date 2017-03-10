@@ -27,17 +27,15 @@ export class ProductCard implements OnInit {
     modalInstance.componentInstance.product = this.product;
     modalInstance.result.then(obj => {
       console.log('Dialog was closed using OK');
-      console.log(obj);
           const params = {
             id: this.sellerId,
             name: obj.name,
             price: obj.price,
             quantityInStock: obj.quantityInStock,
-            path: obj.imagePath
+            imagePath: obj.imagePath
           };
           console.log(this.sellerId)
       this.service.updateProduct(params, 1, id).subscribe(result => {
-        console.log(result)
       });
     }).catch(err => {
       console.log('Dialog was closed using cancel');
@@ -49,28 +47,5 @@ export class ProductCard implements OnInit {
 
     this.productUpdated.emit(this.product);
   }
-  //
-  // onAddProduct() {
-  //   const modalInstance = this.modalService.open(ProductDlgComponent);
-  //   modalInstance.componentInstance.product = {
-  //   };
-  //   modalInstance.result.then(obj => {
-  //     console.log('Dialog was closed using OK');
-  //     console.log(obj);
-  //     const params = {
-  //       id: this.seller.id,
-  //       name: obj.name,
-  //       price: obj.price,
-  //       quantityInStock: obj.quantityInStock,
-  //       path: obj.imagePath
-  //     }
-  //     this.service.addProduct(params).subscribe(result => {
-  //       console.log(result)
-  //     });
-  //   }).catch(err => {
-  //     console.log('Dialog was closed using cancel');
-  //     console.log(err);
-  //   });
-  // }
 
 }
