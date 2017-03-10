@@ -1,7 +1,18 @@
-<div *ngIf="seller">
-    <tr>
-        <td><a (click)="onVisitSellerDetails(seller)"><h5>{{seller.name}}</h5></a></td>
-        <td><i (click)="onVisitSellerDetails(seller)">{{seller.category}}</i></td>
-        <td><button class="buttons btn btn-info" (click)="onEdit()"><img src="./edit1.png" style="width:20px;height:20px;"></button></td>
-    </tr>
+<div style="text-align: center;" *ngIf="seller">
+  <a (click)="onVisitSellerDetails(seller)">
+    <img class="card-img-top" [src]="seller.imagePath" style="height: 400px; width: 470px; margin-top: 5px;" />
+  </a>
+  <div class="card-block">
+    <a (click)="onVisitSellerDetails(seller)">
+      <h4 class="card-title">
+      {{seller.name}}
+      </h4>
+    </a>
+    <p class="card-text">{{seller.category}}</p>
+    <p class="card-text">
+      <small class="text-muted">
+        <button class="btn btn-primary" (click)="onEdit()">Breyta vöru</button>
+      </small>
+    </p>
+  </div>
 </div>

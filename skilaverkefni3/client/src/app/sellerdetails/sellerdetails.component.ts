@@ -3,7 +3,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProductDlgComponent } from './product-dlg/product-dlg.component';
 import { ToastrService } from 'ngx-toastr';
-
 import { isNullOrUndefined } from 'util';
 import { isUndefined } from 'util';
 import { AppComponent } from '../app.component';
