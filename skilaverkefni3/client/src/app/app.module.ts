@@ -13,6 +13,10 @@ import { ProductCard } from './sellerdetails/productcard/productcard.component';
 import { SellerComponent } from './sellerslist/seller/seller.component';
 import { SellerDlgComponent } from './sellerslist/seller-dlg/seller-dlg.component';
 
+/* Added */
+import { ToastrModule } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +42,9 @@ import { SellerDlgComponent } from './sellerslist/seller-dlg/seller-dlg.componen
   }, {
       path: 'sellerdetails/:id',
       component: SellerDetails}]),
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    CommonModule,           /* Added */
+    ToastrModule.forRoot(), /* ToastrModule added */
   ],
   providers: [SellersService],
   bootstrap: [AppComponent],

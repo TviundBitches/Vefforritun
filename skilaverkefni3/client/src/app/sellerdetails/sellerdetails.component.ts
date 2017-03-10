@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProductDlgComponent } from './product-dlg/product-dlg.component';
-//import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
+
 import { isNullOrUndefined } from 'util';
 import { isUndefined } from 'util';
 import { AppComponent } from '../app.component';
 import { SellersListComponent } from '../sellerslist/sellerslist.component';
 import { SellersService, Seller, SellerProduct } from '../sellers.service';
+import { ProductCard } from './productcard/productcard.component'
 
 @Component({
   selector: 'app-sellerdetails',
@@ -24,7 +26,7 @@ export class SellerDetails implements OnInit {
   topTenProducts: SellerProduct[];
 
   constructor(private service: SellersService, private modalService: NgbModal,
-              private router: Router, private route: ActivatedRoute) { }
+              private router: Router, private route: ActivatedRoute, private toastrService: ToastrService) { }
 
   ngOnInit() {
     this.service.getSellerById(this.route.snapshot.params['id']).subscribe(result => {
@@ -47,16 +49,16 @@ export class SellerDetails implements OnInit {
     };
     modalInstance.result.then(obj => {
       console.log('Dialog was closed using OK');
-      console.log(obj);
       const params = {
         id: this.seller.id,
         name: obj.name,
         price: obj.price,
         quantityInStock: obj.quantityInStock,
-        path: obj.imagePath
+        imagePath: obj.imagePath
       }
       this.service.addProduct(params).subscribe(result => {
-        console.log(result)
+        //console.log(result);
+        this.toastrService.success('Successfully added product!');
       });
     }).catch(err => {
       console.log('Dialog was closed using cancel');
@@ -68,7 +70,7 @@ export class SellerDetails implements OnInit {
     document.getElementById("alert").style.visibility = "hidden";
   }
 
-  onUpdateProduct($event) {
+  onUpdateProduct(p: SellerProduct) {
 
   }
 

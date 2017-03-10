@@ -3,6 +3,7 @@
  import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
  import { ProductDlgComponent } from '../product-dlg/product-dlg.component';
  import { Router, ActivatedRoute } from '@angular/router';
+ import { ToastrService } from 'ngx-toastr';
 
 
  @Component({
@@ -16,7 +17,7 @@ export class ProductCard implements OnInit {
   @Input() product: SellerProduct;
   @Output() productUpdated = new EventEmitter();
 
-  constructor(private modalService: NgbModal, private route: ActivatedRoute, private service: SellersService) {}
+  constructor(private modalService: NgbModal, private route: ActivatedRoute, private service: SellersService, private toastrService: ToastrService) {}
 
   ngOnInit() {
     this.sellerId = this.route.snapshot.params['id'];
@@ -27,17 +28,16 @@ export class ProductCard implements OnInit {
     modalInstance.componentInstance.product = this.product;
     modalInstance.result.then(obj => {
       console.log('Dialog was closed using OK');
-      console.log(obj);
           const params = {
             id: this.sellerId,
             name: obj.name,
             price: obj.price,
             quantityInStock: obj.quantityInStock,
-            path: obj.imagePath
+            imagePath: obj.imagePath
           };
           console.log(this.sellerId)
       this.service.updateProduct(params, 1, id).subscribe(result => {
-        console.log(result)
+        this.toastrService.success('Successfully edited product!');
       });
     }).catch(err => {
       console.log('Dialog was closed using cancel');
@@ -49,28 +49,5 @@ export class ProductCard implements OnInit {
 
     this.productUpdated.emit(this.product);
   }
-  //
-  // onAddProduct() {
-  //   const modalInstance = this.modalService.open(ProductDlgComponent);
-  //   modalInstance.componentInstance.product = {
-  //   };
-  //   modalInstance.result.then(obj => {
-  //     console.log('Dialog was closed using OK');
-  //     console.log(obj);
-  //     const params = {
-  //       id: this.seller.id,
-  //       name: obj.name,
-  //       price: obj.price,
-  //       quantityInStock: obj.quantityInStock,
-  //       path: obj.imagePath
-  //     }
-  //     this.service.addProduct(params).subscribe(result => {
-  //       console.log(result)
-  //     });
-  //   }).catch(err => {
-  //     console.log('Dialog was closed using cancel');
-  //     console.log(err);
-  //   });
-  // }
 
 }
