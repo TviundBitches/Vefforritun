@@ -2,38 +2,41 @@
  import {SellerProduct, SellersService} from '../../sellers.service';
  import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
  import { ProductDlgComponent } from '../product-dlg/product-dlg.component';
+ import { Router, ActivatedRoute } from '@angular/router';
 
-@Component({
+
+ @Component({
   selector: 'app-product-card',
   templateUrl: './productcard.component.html',
   styleUrls: ['./productcard.component.css']
 })
 
 export class ProductCard implements OnInit {
-
+  sellerId: number;
   @Input() product: SellerProduct;
   @Output() productUpdated = new EventEmitter();
 
-  constructor(private modalService: NgbModal, private service: SellersService) {}
+  constructor(private modalService: NgbModal, private route: ActivatedRoute, private service: SellersService) {}
 
   ngOnInit() {
+    this.sellerId = this.route.snapshot.params['id'];
   }
 
   onEdit(id) {
     const modalInstance = this.modalService.open(ProductDlgComponent);
     modalInstance.componentInstance.product = this.product;
-
     modalInstance.result.then(obj => {
       console.log('Dialog was closed using OK');
       console.log(obj);
           const params = {
-            id: 1,
+            id: this.sellerId,
             name: obj.name,
             price: obj.price,
             quantityInStock: obj.quantityInStock,
             path: obj.imagePath
           };
-      this.service.updateProduct(params).subscribe(result => {
+          console.log(this.sellerId)
+      this.service.updateProduct(params, 1, id).subscribe(result => {
         console.log(result)
       });
     }).catch(err => {

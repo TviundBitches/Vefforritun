@@ -47,8 +47,10 @@ export class SellersService {
     });
   }
 
-  updateProduct(obj: any): Observable<any> {
-    return this.http.put('http://localhost:5000/api/sellers/1/products/1', obj);
+  updateProduct(obj: any, sellerid, productid): Observable<any> {
+    console.log(sellerid)
+    console.log(productid)
+    return this.http.put('http://localhost:5000/api/sellers/'+sellerid+'/products/'+productid, obj);
   }
   getTopSellerProducts(id: number): Observable<SellerProduct[]> {
     return this.http.get('http://localhost:5000/api/sellers/' + id + '/products')
@@ -59,9 +61,8 @@ export class SellersService {
   }
 
   addProduct(obj: any): Observable<any> {
-    console.log(obj);
-    console.log('id:');
-    return this.http.post('http://localhost:5000/api/sellers/1/products', obj);
+    console.log(obj.id)
+    return this.http.post('http://localhost:5000/api/sellers/'+obj.id+'/products', obj);
   }
 
   addSeller(obj: any): Observable<any> {
