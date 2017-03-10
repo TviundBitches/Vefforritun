@@ -56,7 +56,6 @@ export class SellerDetails implements OnInit {
         imagePath: obj.imagePath
       }
       this.service.addProduct(params).subscribe(result => {
-        //console.log(result);
       });
     }).catch(err => {
       console.log('Dialog was closed using cancel');

@@ -48,9 +48,11 @@ export class SellersService {
   }
 
   updateProduct(obj: any, sellerid, productid): Observable<any> {
-    console.log(sellerid)
-    console.log(productid)
     return this.http.put('http://localhost:5000/api/sellers/'+sellerid+'/products/'+productid, obj);
+  }
+
+  updateSeller(obj: any, sellerid): Observable<any> {
+    return this.http.put('http://localhost:5000/api/sellers/'+sellerid, obj);
   }
 
   getTopSellerProducts(id: number): Observable<SellerProduct[]> {
