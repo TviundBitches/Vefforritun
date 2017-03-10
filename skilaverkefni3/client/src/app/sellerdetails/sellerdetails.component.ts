@@ -22,6 +22,7 @@ export class SellerDetails implements OnInit {
   private name: string;
   private category: string;
   private imagePath: string;
+  private sellerId: number;
   products: SellerProduct[];
   topTenProducts: SellerProduct[];
 
@@ -29,6 +30,13 @@ export class SellerDetails implements OnInit {
               private router: Router, private route: ActivatedRoute, private toastrService: ToastrService) { }
 
   ngOnInit() {
+    this.sellerId = this.route.snapshot.params['id'];
+    this.service.getSellers().subscribe(result => {
+      if (this.sellerId > result[result.length-1].id) {
+        this.toastrService.error('No seller with given ID!')
+        this.router.navigate(['/sellerslist']);
+      }
+    });
     this.service.getSellerById(this.route.snapshot.params['id']).subscribe(result => {
       this.seller = result;
       this.name = this.seller.name;
