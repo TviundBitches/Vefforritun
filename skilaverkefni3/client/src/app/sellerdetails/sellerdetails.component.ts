@@ -53,10 +53,10 @@ export class SellerDetails implements OnInit {
         name: obj.name,
         price: obj.price,
         quantityInStock: obj.quantityInStock,
-        path: obj.imagePath
+        imagePath: obj.imagePath
       }
       this.service.addProduct(params).subscribe(result => {
-        console.log(result);
+        //console.log(result);
       });
     }).catch(err => {
       console.log('Dialog was closed using cancel');
@@ -69,7 +69,7 @@ export class SellerDetails implements OnInit {
   }
 
   onUpdateProduct(p: SellerProduct) {
-      
+
   }
 
   onGoBack() {
