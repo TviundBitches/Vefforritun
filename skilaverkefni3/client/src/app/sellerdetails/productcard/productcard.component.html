@@ -1,6 +1,14 @@
-<div *ngIf="product">
-    <h3>{{product.name}}</h3>
-    <img [src]="product.imagePath" style="width: 80px" />
-    <i>{{product.price}} kr</i>
-    <button class="btn btn-primary" (click)="onEdit(product.id)">Breyta vöru</button>
+<div style="text-align: center;" *ngIf="product">
+  <img class="card-img-top" [src]="product.imagePath" style="height: 200px; width: 235px;" />
+  <div class="card-block">
+    <h4 class="card-title">
+    {{product.name}}
+    </h4>
+    <p class="card-text">{{product.price}} kr</p>
+    <p class="card-text">
+      <small class="text-muted">
+        <button class="btn btn-primary" (click)="onEdit(product.id)">Breyta vöru</button>
+      </small>
+    </p>
+  </div>
 </div>
