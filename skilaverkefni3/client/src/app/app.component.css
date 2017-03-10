@@ -6,6 +6,11 @@
     font-family: slaufu;
     src: url(../Infinite_Stroke.otf);
 }
+@font-face {
+    font-family: lightFont;
+    src: url(../GeosansLight.ttf);
+}
+
 
 #headerTitle {
     font-family: header;
