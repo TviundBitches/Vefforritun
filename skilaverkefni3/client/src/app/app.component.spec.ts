@@ -1,11 +1,16 @@
 /* tslint:disable:no-unused-variable */
 
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, ComponentFixture, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { SellersService } from './sellers.service';
-import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import {} from 'jasmine';
-import {FormsModule} from "@angular/forms";
+import { FormsModule } from '@angular/forms';
+import { DebugElement, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { By } from '@angular/platform-browser';
+import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { Observable } from 'rxjs/Observable';
 
 describe('AppComponent', () => {
 
@@ -43,9 +48,12 @@ describe('AppComponent', () => {
       }, {
         provide: NgbModal,
         useValue: mockModal
+      }, {
+        provide: Router,
+        useClass: class { navigate = jasmine.createSpy('navigate');}
       }
       ],
-      imports: [FormsModule]
+      imports: [FormsModule, RouterTestingModule]
     });
     TestBed.compileComponents();
   });
