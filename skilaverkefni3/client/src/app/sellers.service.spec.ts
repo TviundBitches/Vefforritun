@@ -2,11 +2,21 @@
 
 import { TestBed, async, inject } from '@angular/core/testing';
 import { SellersService } from './sellers.service';
+import { Http } from '@angular/http';
+
 
 describe('SellersService', () => {
+
+  const mockHttp = {
+    open: jasmine.createSpy('open')
+  };
+
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [SellersService]
+      providers: [SellersService, {
+        provide: Http,
+        useValue: mockHttp
+      }]
     });
   });
 

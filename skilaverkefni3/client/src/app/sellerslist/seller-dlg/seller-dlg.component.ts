@@ -27,7 +27,7 @@ export class SellerDlgComponent implements OnInit {
 
   onOk() {
     /* Added */
-    this.toastrService.success('Successfully added a new seller!');
+    this.toastrService.success('Procedure was successful!');
     this.activeModal.close(this.seller);
   }
 

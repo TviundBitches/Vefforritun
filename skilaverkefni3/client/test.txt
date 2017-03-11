@@ -1,0 +1,115 @@
+[33m11 03 2017 17:16:17.431:WARN [watcher]: [39mPattern "/home/jojo/WebstormProjects/Vefforritun/skilaverkefni3/client/src/assets/**" does not match any file.
+[33m11 03 2017 17:16:31.324:WARN [karma]: [39mNo captured browser, open http://localhost:9876/
+[32m11 03 2017 17:16:31.331:INFO [karma]: [39mKarma v1.2.0 server started at http://localhost:9876/
+[32m11 03 2017 17:16:31.331:INFO [launcher]: [39mLaunching browser Chrome with unlimited concurrency
+[32m11 03 2017 17:16:31.372:INFO [launcher]: [39mStarting browser Chrome
+[32m11 03 2017 17:16:32.501:INFO [Chrome 56.0.2924 (Linux 0.0.0)]: [39mConnected on socket /#Ugx1zoe3F4ppQwKzAAAA with id 50300842
+Chrome 56.0.2924 (Linux 0.0.0): Executed 0 of 11 SUCCESS (0 secs / 0 secs)
+[33m11 03 2017 17:16:33.630:WARN [web-server]: [39m404: /witchlogo3.png
+[1A[2KChrome 56.0.2924 (Linux 0.0.0): Executed 1 of 11 SUCCESS (0 secs / 0.431 secs)
+[33m11 03 2017 17:16:33.980:WARN [web-server]: [39m404: /witchlogo3.png
+[33m11 03 2017 17:16:33.981:WARN [web-server]: [39m404: /NightWindSentSample.ttf
+[1A[2KChrome 56.0.2924 (Linux 0.0.0): Executed 2 of 11 SUCCESS (0 secs / 0.606 secs)
+[1A[2KChrome 56.0.2924 (Linux 0.0.0): Executed 3 of 11 SUCCESS (0 secs / 0.781 secs)
+[1A[2KChrome 56.0.2924 (Linux 0.0.0): Executed 4 of 11 SUCCESS (0 secs / 0.793 secs)
+[1A[2KChrome 56.0.2924 (Linux 0.0.0) ProductDlgComponent should create FAILED
+	Error: Error in ./ProductDlgComponent class ProductDlgComponent - inline template:9:11 caused by: Cannot read property 'name' of undefined
+	    at ViewWrappedError.ZoneAwareError (webpack:///~/zone.js/dist/zone.js:992:0 <- src/test.ts:113619:33)
+	    at ViewWrappedError.BaseError [as constructor] (webpack:///~/@angular/core/src/facade/errors.js:22:0 <- src/test.ts:31046:16)
+	    at ViewWrappedError.WrappedError [as constructor] (webpack:///~/@angular/core/src/facade/errors.js:87:0 <- src/test.ts:31111:16)
+	    at new ViewWrappedError (webpack:///~/@angular/core/src/linker/errors.js:77:0 <- src/test.ts:63299:16)
+	    at CompiledTemplate.proxyViewClass.DebugAppView._rethrowWithContext (webpack:///~/@angular/core/src/linker/view.js:650:0 <- src/test.ts:90596:23)
+	    at CompiledTemplate.proxyViewClass.DebugAppView.detectChanges (webpack:///~/@angular/core/src/linker/view.js:623:0 <- src/test.ts:90569:18)
+	    at CompiledTemplate.proxyViewClass.AppView.internalDetectChanges (webpack:///~/@angular/core/src/linker/view.js:410:0 <- src/test.ts:90356:18)
+	    at CompiledTemplate.proxyViewClass.View_ProductDlgComponent_Host0.detectChangesInternal (/DynamicTestModule/ProductDlgComponent/host.ngfactory.js:29:19)
+	    at CompiledTemplate.proxyViewClass.AppView.detectChanges (webpack:///~/@angular/core/src/linker/view.js:425:0 <- src/test.ts:90371:14)
+	    at CompiledTemplate.proxyViewClass.DebugAppView.detectChanges (webpack:///~/@angular/core/src/linker/view.js:620:0 <- src/test.ts:90566:44)
+	    at ViewRef_.detectChanges (webpack:///~/@angular/core/src/linker/view_ref.js:170:0 <- src/test.ts:64226:20)
+	    at ComponentFixture._tick (webpack:///~/@angular/core/bundles/core-testing.umd.js:196:0 <- src/test.ts:8693:36)
+	    at webpack:///~/@angular/core/bundles/core-testing.umd.js:210:45 <- src/test.ts:8707:53
+	    at ZoneDelegate.invoke (webpack:///~/zone.js/dist/zone.js:334:0 <- src/test.ts:112961:26)
+	    at ProxyZoneSpec.onInvoke (webpack:///~/zone.js/dist/proxy.js:79:0 <- src/test.ts:78380:39)
+	    at ZoneDelegate.invoke (webpack:///~/zone.js/dist/zone.js:333:0 <- src/test.ts:112960:32)
+Chrome 56.0.2924 (Linux 0.0.0): Executed 5 of 11 (1 FAILED) (0 secs / 0.924 secs)
+Chrome 56.0.2924 (Linux 0.0.0) ProductDlgComponent should create FAILED
+	Error: Error in ./ProductDlgComponent class ProductDlgComponent - inline template:9:11 caused by: Cannot read property 'name' of undefined
+	    at ViewWrappedError.ZoneAwareError (webpack:///~/zone.js/dist/zone.js:992:0 <- src/test.ts:113619:33)
+	    at ViewWrappedError.BaseError [as constructor] (webpack:///~/@angular/core/src/facade/errors.js:22:0 <- src/test.ts:31046:16)
+	    at ViewWrappedError.WrappedError [as constructor] (webpack:///~/@angular/core/src/facade/errors.js:87:0 <- src/test.ts:31111:16)
+	    at new ViewWrappedError (webpack:///~/@angular/core/src/linker/errors.js:77:0 <- src/test.ts:63299:16)
+	    at CompiledTemplate.proxyViewClass.DebugAppView._rethrowWithContext (webpack:///~/@angular/core/src/linker/view.js:650:0 <- src/test.ts:90596:23)
+	    at CompiledTemplate.proxyViewClass.DebugAppView.detectChanges (webpack:///~/@angular/core/src/linker/view.js:623:0 <- src/test.ts:90569:18)
+	    at CompiledTemplate.proxyViewClass.AppView.internalDetectChanges (webpack:///~/@angular/core/src/linker/view.js:410:0 <- src/test.ts:90356:18)
+	    at CompiledTemplate.proxyViewClass.View_ProductDlgComponent_Host0.detectChangesInternal (/DynamicTestModule/ProductDlgComponent/host.ngfactory.js:29:19)
+	    at CompiledTemplate.proxyViewClass.AppView.detectChanges (webpack:///~/@angular/core/src/linker/view.js:425:0 <- src/test.ts:90371:14)
+	    at CompiledTemplate.proxyViewClass.DebugAppView.detectChanges (webpack:///~/@angular/core/src/linker/view.js:620:0 <- src/test.ts:90566:44)
+	    at ViewRef_.detectChanges (webpack:///~/@angular/core/src/linker/view_ref.js:170:0 <- src/test.ts:64226:20)
+	    at ComponentFixture._tick (webpack:///~/@angular/core/bundles/core-testing.umd.js:196:0 <- src/test.ts:8693:36)
+	    at webpack:///~/@angular/core/bundles/core-testing.umd.js:210:45 <- src/test.ts:8707:53
+	    at ZoneDelegate.invoke (webpack:///~/zone.js/dist/zone.js:334:0 <- src/test.ts:112961:26)
+	    at ProxyZoneSpec.onInvoke (webpack:///~/zone.js/dist/proxy.js:79:0 <- src/test.ts:78380:39)
+	    at ZoneDelegate.invoke (webpack:///~/zone.js/dist/zone.js:333:0 <- src/test.ts:112960:32)
+[33m11 03 2017 17:16:34.647:WARN [web-server]: [39m404: /witchlogo3.png
+[33m11 03 2017 17:16:34.647:WARN [web-server]: [39m404: /NightWindSentSample.ttf
+[1A[2KChrome 56.0.2924 (Linux 0.0.0): Executed 6 of 11 (1 FAILED) (0 secs / 0.943 secs)
+[1A[2KChrome 56.0.2924 (Linux 0.0.0): Executed 7 of 11 (1 FAILED) (0 secs / 1.003 secs)
+[1A[2KChrome 56.0.2924 (Linux 0.0.0): Executed 8 of 11 (1 FAILED) (0 secs / 1.109 secs)
+[1A[2KChrome 56.0.2924 (Linux 0.0.0): Executed 9 of 11 (1 FAILED) (0 secs / 1.181 secs)
+[1A[2KChrome 56.0.2924 (Linux 0.0.0): Executed 10 of 11 (1 FAILED) (0 secs / 1.27 secs)
+[1A[2KChrome 56.0.2924 (Linux 0.0.0): Executed 11 of 11 (1 FAILED) (0 secs / 1.283 secs)
+[1A[2KChrome 56.0.2924 (Linux 0.0.0): Executed 11 of 11 (1 FAILED) (1.453 secs / 1.283 secs)
+[33m11 03 2017 17:18:02.396:WARN [watcher]: [39mPattern "/home/jojo/WebstormProjects/Vefforritun/skilaverkefni3/client/src/assets/**" does not match any file.
+Chrome 56.0.2924 (Linux 0.0.0): Executed 0 of 11 SUCCESS (0 secs / 0 secs)
+[33m11 03 2017 17:18:03.596:WARN [web-server]: [39m404: /witchlogo3.png
+[1A[2KChrome 56.0.2924 (Linux 0.0.0): Executed 1 of 11 SUCCESS (0 secs / 0.372 secs)
+[33m11 03 2017 17:18:03.952:WARN [web-server]: [39m404: /witchlogo3.png
+[1A[2KChrome 56.0.2924 (Linux 0.0.0): Executed 2 of 11 SUCCESS (0 secs / 0.55 secs)
+[33m11 03 2017 17:18:03.956:WARN [web-server]: [39m404: /NightWindSentSample.ttf
+[1A[2KChrome 56.0.2924 (Linux 0.0.0): Executed 3 of 11 SUCCESS (0 secs / 0.728 secs)
+[1A[2KChrome 56.0.2924 (Linux 0.0.0): Executed 4 of 11 SUCCESS (0 secs / 0.752 secs)
+[1A[2KChrome 56.0.2924 (Linux 0.0.0) ProductDlgComponent should create FAILED
+	Error: Error in ./ProductDlgComponent class ProductDlgComponent - inline template:9:11 caused by: Cannot read property 'name' of undefined
+	    at ViewWrappedError.ZoneAwareError (webpack:///~/zone.js/dist/zone.js:992:0 <- src/test.ts:113619:33)
+	    at ViewWrappedError.BaseError [as constructor] (webpack:///~/@angular/core/src/facade/errors.js:22:0 <- src/test.ts:31046:16)
+	    at ViewWrappedError.WrappedError [as constructor] (webpack:///~/@angular/core/src/facade/errors.js:87:0 <- src/test.ts:31111:16)
+	    at new ViewWrappedError (webpack:///~/@angular/core/src/linker/errors.js:77:0 <- src/test.ts:63299:16)
+	    at CompiledTemplate.proxyViewClass.DebugAppView._rethrowWithContext (webpack:///~/@angular/core/src/linker/view.js:650:0 <- src/test.ts:90596:23)
+	    at CompiledTemplate.proxyViewClass.DebugAppView.detectChanges (webpack:///~/@angular/core/src/linker/view.js:623:0 <- src/test.ts:90569:18)
+	    at CompiledTemplate.proxyViewClass.AppView.internalDetectChanges (webpack:///~/@angular/core/src/linker/view.js:410:0 <- src/test.ts:90356:18)
+	    at CompiledTemplate.proxyViewClass.View_ProductDlgComponent_Host0.detectChangesInternal (/DynamicTestModule/ProductDlgComponent/host.ngfactory.js:29:19)
+	    at CompiledTemplate.proxyViewClass.AppView.detectChanges (webpack:///~/@angular/core/src/linker/view.js:425:0 <- src/test.ts:90371:14)
+	    at CompiledTemplate.proxyViewClass.DebugAppView.detectChanges (webpack:///~/@angular/core/src/linker/view.js:620:0 <- src/test.ts:90566:44)
+	    at ViewRef_.detectChanges (webpack:///~/@angular/core/src/linker/view_ref.js:170:0 <- src/test.ts:64226:20)
+	    at ComponentFixture._tick (webpack:///~/@angular/core/bundles/core-testing.umd.js:196:0 <- src/test.ts:8693:36)
+	    at webpack:///~/@angular/core/bundles/core-testing.umd.js:210:45 <- src/test.ts:8707:53
+	    at ZoneDelegate.invoke (webpack:///~/zone.js/dist/zone.js:334:0 <- src/test.ts:112961:26)
+	    at ProxyZoneSpec.onInvoke (webpack:///~/zone.js/dist/proxy.js:79:0 <- src/test.ts:78380:39)
+	    at ZoneDelegate.invoke (webpack:///~/zone.js/dist/zone.js:333:0 <- src/test.ts:112960:32)
+Chrome 56.0.2924 (Linux 0.0.0): Executed 5 of 11 (1 FAILED) (0 secs / 0.929 secs)
+Chrome 56.0.2924 (Linux 0.0.0) ProductDlgComponent should create FAILED
+	Error: Error in ./ProductDlgComponent class ProductDlgComponent - inline template:9:11 caused by: Cannot read property 'name' of undefined
+	    at ViewWrappedError.ZoneAwareError (webpack:///~/zone.js/dist/zone.js:992:0 <- src/test.ts:113619:33)
+	    at ViewWrappedError.BaseError [as constructor] (webpack:///~/@angular/core/src/facade/errors.js:22:0 <- src/test.ts:31046:16)
+	    at ViewWrappedError.WrappedError [as constructor] (webpack:///~/@angular/core/src/facade/errors.js:87:0 <- src/test.ts:31111:16)
+	    at new ViewWrappedError (webpack:///~/@angular/core/src/linker/errors.js:77:0 <- src/test.ts:63299:16)
+	    at CompiledTemplate.proxyViewClass.DebugAppView._rethrowWithContext (webpack:///~/@angular/core/src/linker/view.js:650:0 <- src/test.ts:90596:23)
+	    at CompiledTemplate.proxyViewClass.DebugAppView.detectChanges (webpack:///~/@angular/core/src/linker/view.js:623:0 <- src/test.ts:90569:18)
+	    at CompiledTemplate.proxyViewClass.AppView.internalDetectChanges (webpack:///~/@angular/core/src/linker/view.js:410:0 <- src/test.ts:90356:18)
+	    at CompiledTemplate.proxyViewClass.View_ProductDlgComponent_Host0.detectChangesInternal (/DynamicTestModule/ProductDlgComponent/host.ngfactory.js:29:19)
+	    at CompiledTemplate.proxyViewClass.AppView.detectChanges (webpack:///~/@angular/core/src/linker/view.js:425:0 <- src/test.ts:90371:14)
+	    at CompiledTemplate.proxyViewClass.DebugAppView.detectChanges (webpack:///~/@angular/core/src/linker/view.js:620:0 <- src/test.ts:90566:44)
+	    at ViewRef_.detectChanges (webpack:///~/@angular/core/src/linker/view_ref.js:170:0 <- src/test.ts:64226:20)
+	    at ComponentFixture._tick (webpack:///~/@angular/core/bundles/core-testing.umd.js:196:0 <- src/test.ts:8693:36)
+	    at webpack:///~/@angular/core/bundles/core-testing.umd.js:210:45 <- src/test.ts:8707:53
+	    at ZoneDelegate.invoke (webpack:///~/zone.js/dist/zone.js:334:0 <- src/test.ts:112961:26)
+	    at ProxyZoneSpec.onInvoke (webpack:///~/zone.js/dist/proxy.js:79:0 <- src/test.ts:78380:39)
+	    at ZoneDelegate.invoke (webpack:///~/zone.js/dist/zone.js:333:0 <- src/test.ts:112960:32)
+[33m11 03 2017 17:18:05.025:WARN [web-server]: [39m404: /witchlogo3.png
+[33m11 03 2017 17:18:05.026:WARN [web-server]: [39m404: /NightWindSentSample.ttf
+[1A[2KChrome 56.0.2924 (Linux 0.0.0): Executed 6 of 11 (1 FAILED) (0 secs / 0.953 secs)
+[1A[2KChrome 56.0.2924 (Linux 0.0.0): Executed 7 of 11 (1 FAILED) (0 secs / 1.05 secs)
+[1A[2KChrome 56.0.2924 (Linux 0.0.0): Executed 8 of 11 (1 FAILED) (0 secs / 1.184 secs)
+[1A[2KChrome 56.0.2924 (Linux 0.0.0): Executed 9 of 11 (1 FAILED) (0 secs / 1.258 secs)
+[1A[2KChrome 56.0.2924 (Linux 0.0.0): Executed 10 of 11 (1 FAILED) (0 secs / 1.359 secs)
+[1A[2KChrome 56.0.2924 (Linux 0.0.0): Executed 11 of 11 (1 FAILED) (0 secs / 1.388 secs)
+[1A[2KChrome 56.0.2924 (Linux 0.0.0): Executed 11 of 11 (1 FAILED) (1.808 secs / 1.388 secs)

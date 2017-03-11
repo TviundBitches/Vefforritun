@@ -10,20 +10,20 @@
     <input [(ngModel)]="product.name" autofocus />
   </div>
   <div>
-    <label>Price</label>
-    <input [(ngModel)]="product.price"/>
+    <label for="price">Price</label>
+    <input [(ngModel)]="product.price" id="price" name="price"/>
   </div>
   <div>
-    <label>Quantity in stock</label>
-    <input [(ngModel)]="product.quantityInStock"/>
+    <label for="stock">Quantity in stock</label>
+    <input [(ngModel)]="product.quantityInStock" id="stock" name="stock"/>
   </div>
   <div>
-    <label>Quantity sold</label>
-    <input [(ngModel)]="product.quantitySold"/>
+    <label for="sold">Quantity sold</label>
+    <input [(ngModel)]="product.quantitySold" id="sold" name="sold"/>
   </div>
   <div>
-    <label>Image</label>
-    <input [(ngModel)]="product.imagePath"/>
+    <label for="image">Image</label>
+    <input [(ngModel)]="product.imagePath" id="image" name="image"/>
   </div>
 </div>
 <div class="modal-footer">
