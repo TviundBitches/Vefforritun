@@ -6,7 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { isNullOrUndefined } from 'util';
 import { isUndefined } from 'util';
 import { AppComponent } from '../app.component';
-import { SellersListComponent } from '../sellerslist/sellerslist.component';
+import { SellerslistComponent } from '../sellerslist/sellerslist.component';
 import { SellersService, Seller, SellerProduct } from '../sellers.service';
 import { ProductCard } from './productcard/productcard.component'
 

@@ -1,8 +1,9 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from '../app.component';
 import { SellersService } from '../sellers.service';
-import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import {} from 'jasmine';
+import { DebugElement, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('AppComponent', () => {
 

@@ -8,9 +8,10 @@ import { SellerDlgComponent } from './seller-dlg/seller-dlg.component';
 @Component({
   selector: 'app-sellerslist',
   templateUrl: './sellerslist.component.html',
-  styleUrls: ['./sellerslist.component.css'],
+  styleUrls: ['./sellerslist.component.css']
 })
-export class SellersListComponent implements OnInit {
+export class SellerslistComponent implements OnInit {
+
   private sellers: Seller[];
   private seller: Seller;
 
@@ -52,6 +53,7 @@ export class SellersListComponent implements OnInit {
   }
 
   onUpdateSeller(s: Seller) {
-    
+
   }
+
 }
