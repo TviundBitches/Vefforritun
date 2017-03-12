@@ -1,39 +1,33 @@
-import { TestBed, async } from '@angular/core/testing';
-import { AppComponent } from '../app.component';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { SellerslistComponent } from './sellerslist.component';
 import { SellersService } from '../sellers.service';
-import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router, ActivatedRoute } from "@angular/router";
 import {} from 'jasmine';
 import { DebugElement, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-describe('AppComponent', () => {
+describe('SellerslistComponent', () => {
 
   const mockService = {
-    successGetProducts: true,
-    productList: [{
-      id: 7,
-      name: 'ullarsokkar'
-    }],
-    getSellerProduct: function(id) {
-      return {
-        subscribe: function(fnSuccess, fnError) {
-          if (mockService.successGetProducts === true) {
-            fnSuccess(mockService.productList);
-          } else {
-            fnError();
-          }
-        }
-      }
-    }
+    open: jasmine.createSpy('open')
   };
 
   const mockModal = {
     open: jasmine.createSpy('open')
   };
 
+  const mockRouter = {
+    navigate: jasmine.createSpy('navigate')
+  };
+
+  const mockRoute = {
+    route: jasmine.createSpy('route')
+  };
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        SellerslistComponent
       ],
       providers: [{
         provide: SellersService,
@@ -41,17 +35,15 @@ describe('AppComponent', () => {
       }, {
         provide: NgbModal,
         useValue: mockModal
+      }, {
+        provide: Router,
+        useValue: mockRouter
+      }, {
+        provide: ActivatedRoute,
+        useValue: mockRoute
       }
       ],
     });
     TestBed.compileComponents();
-  });
-
-  describe('when sellers service returns empty list of products', () => {
-    mockService.successGetProducts = true;
-    mockService.productList = [];
-    it('should display a message indicating that no products are to be displayed', () => {
-
-    });
   });
 });
