@@ -13,51 +13,67 @@ import { Http } from '@angular/http';
 
 describe('SellerslistComponent', () => {
 
-  let mockService = new SellersServiceMock();
-
-  class SellersServiceMock {
-    success = false;
-    getSellers(): Observable<Seller[]>{
-      return this.http.get('http://localhost:5000/api/sellers')
-        .map(response => {
-          return <Seller[]> response.json();
-        });
+  let component: SellerslistComponent;
+  let fixture: ComponentFixture<SellerslistComponent>;
+  const mockService = {
+    successGetSellers: true,
+    sellerList: [{
+      id: 1,
+      name: 'Hannyrðaþjónusta Hannesar',
+      category: 'Fatnaður',
+      imagePath: 'http://i.imgur.com/OYVpe2W.jpg?fb'
+    }],
+    getSellers: function(id) {
+      return {
+        subscribe: function(fnSuccess) {
+          if (mockService.successGetSellers === true) {
+            fnSuccess(mockService.sellerList);
+          }
+        }
+      }
     }
-
-  }
+  };
 
   const mockModal = {
     open: jasmine.createSpy('open')
   };
 
-  let mockRouter = {
+  let mockComponent = {
     navigate: jasmine.createSpy('navigate')
   };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        SellerslistComponent,
-        SellersService,
-        AppComponent,
-        NgbModal
+        SellerslistComponent
       ],
       providers: [{
         provide: SellersService,
         useValue: mockService
       }, {
+        provide: AppComponent,
+        useValue: mockComponent
+      }, {
         provide: NgbModal,
         useValue: mockModal
-      }, {
-        provide: Router,
-        useValue: mockRouter
       }],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
       imports: [FormsModule]
-    });
-    TestBed.compileComponents();
+    })
+    .compileComponents();
   });
 
-  it('should include all sellers', async(() => {
+  beforeEach(() => {
+    fixture = TestBed.createComponent(SellerslistComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  })
 
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+  
+  it('should include id 1', async(() => {
+    // expect(mockService.getSellers).toBe('Hannyrðaþjónusta Hannesar');
   }));
 });
