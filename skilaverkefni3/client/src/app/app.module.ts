@@ -16,6 +16,7 @@ import { SellerDlgComponent } from './sellerslist/seller-dlg/seller-dlg.componen
 /* Added */
 import { ToastrModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { CommonModule } from '@angular/common';
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot([{

@@ -25,6 +25,7 @@ export class SellerComponent implements OnInit {
   onEdit() {
     // Code which displays a dialog, and if the user
     // presses the OK button we notify about it:
+    this.sellerUpdated.emit(false);
     const modalInstance = this.modalService.open(SellerDlgComponent);
     modalInstance.componentInstance.seller = this.seller;
     modalInstance.result.then(obj => {
@@ -36,6 +37,7 @@ export class SellerComponent implements OnInit {
             imagePath: obj.imagePath
           };
       this.service.updateSeller(params, this.seller.id).subscribe(result => {
+
       });
     }).catch(err => {
       console.log('Dialog was closed using cancel');
