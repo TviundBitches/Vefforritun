@@ -140,4 +140,12 @@ describe('SellerDetails', () => {
   //
   //   });
   // });
+
+  // describe('when sellers service returns empty list of products', () => {
+  //   mockService.successGetProducts = true;
+  //   mockService.productList = [];
+  //   it('should display a message indicating that no products are to be displayed', () => {
+  //
+  //   });
+  // });
 });

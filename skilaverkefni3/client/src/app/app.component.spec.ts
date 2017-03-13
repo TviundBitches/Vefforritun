@@ -77,11 +77,4 @@ describe('AppComponent', () => {
     expect(compiled.querySelector('h1').textContent).toContain('Magical Menagerie');
   }));
 
-  describe('when sellers service returns empty list of products', () => {
-    mockService.successGetProducts = true;
-    mockService.productList = [];
-    it('should display a message indicating that no products are to be displayed', () => {
-
-    });
-  });
 });
