@@ -3,6 +3,7 @@ import { Seller, SellersService } from '../../sellers.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SellerDlgComponent } from '../seller-dlg/seller-dlg.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-seller',
@@ -16,7 +17,7 @@ export class SellerComponent implements OnInit {
   @Output() sellerUpdated = new EventEmitter();
 
   constructor(private modalService: NgbModal, private router: Router,
-    private route: ActivatedRoute, private service: SellersService) { }
+    private route: ActivatedRoute, private service: SellersService, private toastrService: ToastrService) { }
 
   ngOnInit() {
 
@@ -37,11 +38,11 @@ export class SellerComponent implements OnInit {
             imagePath: obj.imagePath
           };
       this.service.updateSeller(params, this.seller.id).subscribe(result => {
-
+        this.toastrService.success('Þú hefur breytt söluaðila!');
       });
     }).catch(err => {
+      window.location.reload();
       console.log('Dialog was closed using cancel');
-      console.log(err);
     });
 
     this.sellerUpdated.emit(this.seller);

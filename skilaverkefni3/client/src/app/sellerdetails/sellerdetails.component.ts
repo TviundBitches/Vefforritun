@@ -55,12 +55,6 @@ export class SellerDetails implements OnInit {
     modalInstance.componentInstance.product = {
     };
     modalInstance.result.then(obj => {
-      console.log(obj.imagePath);
-      console.log(typeof obj.imagePath  === 'undefined')
-      if(typeof obj.imagePath  === 'undefined' || !obj.imagePath) {
-        obj.imagePath = "http://37.media.tumblr.com/2b4a169a1cf4c7b0e010b65d84f9c1d1/tumblr_mzkj7jySOu1s7k41zo1_400.jpg";
-      }
-      console.log(obj.imagePath);
       console.log('Dialog was closed using OK');
       const params = {
         id: this.seller.id,
@@ -70,8 +64,8 @@ export class SellerDetails implements OnInit {
         imagePath: obj.imagePath
       }
       this.service.addProduct(params).subscribe(result => {
-        //console.log(result);
-        this.toastrService.success('Successfully added product!');
+        this.toastrService.success('Þú hefur bætt við vöru!');
+        window.location.reload();
       });
     }).catch(err => {
       console.log('Dialog was closed using cancel');

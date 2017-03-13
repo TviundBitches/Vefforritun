@@ -4,6 +4,7 @@ import { AppComponent } from '../app.component';
 import { SellersService, Seller } from '../sellers.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SellerDlgComponent } from './seller-dlg/seller-dlg.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-sellerslist',
@@ -16,7 +17,7 @@ export class SellerslistComponent implements OnInit {
   private seller: Seller;
 
   constructor(private service: SellersService, private appComponent: AppComponent,
-      private modalService: NgbModal) {}
+      private modalService: NgbModal, private toastrService: ToastrService) {}
 
   ngOnInit() {
     // this.service.getSellerById(1).subscribe(result => {
@@ -44,6 +45,7 @@ export class SellerslistComponent implements OnInit {
         imagePath: obj.imagePath
       }
       this.service.addSeller(params).subscribe(result => {
+        this.toastrService.success('Þú hefur bætt við notanda!');
         window.location.reload();
       })
     }).catch(err => {
@@ -53,7 +55,7 @@ export class SellerslistComponent implements OnInit {
   }
 
   onUpdateSeller(s: Seller) {
-    
+
   }
 
 }

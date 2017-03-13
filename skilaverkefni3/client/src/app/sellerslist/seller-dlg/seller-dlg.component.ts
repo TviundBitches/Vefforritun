@@ -37,7 +37,6 @@ export class SellerDlgComponent implements OnInit {
     if(typeof this.seller.imagePath  === 'undefined' || !this.seller.imagePath) {
       this.seller.imagePath = "http://37.media.tumblr.com/2b4a169a1cf4c7b0e010b65d84f9c1d1/tumblr_mzkj7jySOu1s7k41zo1_400.jpg";
     }
-    this.toastrService.success('Procedure was successful!');
     this.activeModal.close(this.seller);
   }
 

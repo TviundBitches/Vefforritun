@@ -37,7 +37,7 @@ export class ProductCard implements OnInit {
           };
           console.log(this.sellerId)
       this.service.updateProduct(params, 1, id).subscribe(result => {
-        this.toastrService.success('Successfully edited product!');
+        this.toastrService.success('Þú hefur breytt vöru!');
       });
     }).catch(err => {
       console.log('Dialog was closed using cancel');

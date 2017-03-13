@@ -16,19 +16,19 @@
     <div class="form-group">
       <label for="price">Verð</label>
       <input [(ngModel)]="product.price" id="price" name="price"
-      required type="number"/>
+      required type="number" min="0"/>
     </div>
 
     <div class="form-group">
       <label for="stock">Magn á lager</label>
       <input [(ngModel)]="product.quantityInStock" id="stock" name="stock"
-      required type="number"/>
+      required type="number" min="0"/>
     </div>
 
     <div class="form-group">
       <label for="sold">Magn selt</label>
       <input [(ngModel)]="product.quantitySold" id="sold" name="sold"
-      required type="number"/>
+      required type="number" min="0"/>
     </div>
 
     <div class="form-group">
@@ -41,6 +41,6 @@
 
   <div class="modal-footer">
     <button type="button" class="btn btn-secondary" (click)="onCancel()">Hætta við</button>
-    <button type="button" class="btn btn-success">Samþykkja</button>
+    <button type="submit" class="btn btn-success">Samþykkja</button>
   </div>
 </form>
