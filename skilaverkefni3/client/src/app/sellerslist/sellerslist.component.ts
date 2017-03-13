@@ -16,17 +16,10 @@ export class SellerslistComponent implements OnInit {
   private sellers: Seller[];
   private seller: Seller;
 
-  constructor(private service: SellersService, private appComponent: AppComponent,
+  constructor(private service: SellersService,
       private modalService: NgbModal, private toastrService: ToastrService) {}
 
   ngOnInit() {
-    // this.service.getSellerById(1).subscribe(result => {
-    //   this.seller = result;
-    //   }, (err) => {
-    //   // TODO display tostr!
-    //   console.log('something failed');
-    // });
-
     this.service.getSellers().subscribe(result => {
       this.sellers = result;
     });
