@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Seller } from '../../sellers.service';
-// import { Router, ActivatedRoute } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 /* Added */
@@ -18,11 +17,11 @@ export class SellerDlgComponent implements OnInit {
 
   seller: Seller;
 
-  public sellerForm = this.fb.group({
-   name: ["", Validators.required],
-   category: ["", Validators.required],
-   imagePath: ["", Validators.required]
-  });
+  // public sellerForm = this.fb.group({
+  //  name: ["", Validators.required],
+  //  category: ["", Validators.required],
+  //  imagePath: ["", Validators.required]
+  // });
 
                                                           /* Added */
   constructor(public activeModal: NgbActiveModal, private toastrService: ToastrService, public fb: FormBuilder) { }

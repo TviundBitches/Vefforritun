@@ -21,11 +21,14 @@
     </div>
     <div class="form-group">
       <label for="imagePath">Mynd: </label>
-      <input [(ngModel)]="seller.imagePath" name="imagePath"/>
+      <input [(ngModel)]="seller.imagePath" name="imagePath"
+      placeholder="Slóð á mynd (Hlutföll 1:1)"/>
     </div>
+
   </div>
+
   <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" (click)="onCancel()">Hætta við</button>
-    <button type="submit" class="btn btn-success">Samþykkja</button>
+    <button type="button" class="btn btn-secondary butt" (click)="onCancel()">Hætta við</button>
+    <button type="submit" class="btn btn-success butt">Samþykkja</button>
   </div>
 </form>

@@ -1,32 +1,46 @@
 <div class="modal-header">
-  <h4 class="modal-title">Hi there!</h4>
+  <h4 class="modal-title">Vara</h4>
   <button type="button" class="close" aria-label="Close" (click)="onCancel()">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-<div class="modal-body">
-  <div>
-    <label>Name</label>
-    <input [(ngModel)]="product.name" autofocus />
+
+<form (ngSubmit)="onOk()">
+  <div class="modal-body">
+
+    <div class="form-group">
+      <label for="name">Nafn</label>
+      <input [(ngModel)]="product.name" autofocus name="name" required/>
+    </div>
+
+    <div class="form-group">
+      <label for="price">Verð</label>
+      <input [(ngModel)]="product.price" id="price" name="price"
+      required type="number"/>
+    </div>
+
+    <div class="form-group">
+      <label for="stock">Magn á lager</label>
+      <input [(ngModel)]="product.quantityInStock" id="stock" name="stock"
+      required type="number"/>
+    </div>
+
+    <div class="form-group">
+      <label for="sold">Magn selt</label>
+      <input [(ngModel)]="product.quantitySold" id="sold" name="sold"
+      required type="number"/>
+    </div>
+
+    <div class="form-group">
+      <label for="image">Mynd</label>
+      <input [(ngModel)]="product.imagePath" id="image" name="image"
+      placeholder="Slóð á mynd (Hlutföll 1:1)"/>
+    </div>
+
   </div>
-  <div>
-    <label for="price">Price</label>
-    <input [(ngModel)]="product.price" id="price" name="price"/>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="onCancel()">Hætta við</button>
+    <button type="button" class="btn btn-success">Samþykkja</button>
   </div>
-  <div>
-    <label for="stock">Quantity in stock</label>
-    <input [(ngModel)]="product.quantityInStock" id="stock" name="stock"/>
-  </div>
-  <div>
-    <label for="sold">Quantity sold</label>
-    <input [(ngModel)]="product.quantitySold" id="sold" name="sold"/>
-  </div>
-  <div>
-    <label for="image">Image</label>
-    <input [(ngModel)]="product.imagePath" id="image" name="image"/>
-  </div>
-</div>
-<div class="modal-footer">
-  <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
-  <button type="button" class="btn btn-success" (click)="onOk()">OK</button>
-</div>
+</form>
