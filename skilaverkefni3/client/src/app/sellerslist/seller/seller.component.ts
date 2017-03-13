@@ -44,7 +44,8 @@ export class SellerComponent implements OnInit {
 
     this.sellerUpdated.emit(this.seller);
   }
-  onVisitSellerDetails(seller) {
+
+  onVisitSellerDetails(seller: Seller) {
     this.router.navigate(['/sellerdetails/' + seller.id])
   }
 
