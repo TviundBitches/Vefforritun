@@ -1,33 +1,46 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SellerslistComponent } from './sellerslist.component';
-import { SellersService } from '../sellers.service';
+import { SellersService, Seller } from '../sellers.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Router, ActivatedRoute } from "@angular/router";
+import { Router, ActivatedRoute } from '@angular/router';
 import {} from 'jasmine';
+import { SellerDlgComponent } from './seller-dlg/seller-dlg.component';
 import { DebugElement, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { AppComponent } from '../app.component';
+import { FormsModule } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
+import { Http } from '@angular/http';
 
 describe('SellerslistComponent', () => {
 
-  const mockService = {
-    open: jasmine.createSpy('open')
-  };
+  let mockService = new SellersServiceMock();
+
+  class SellersServiceMock {
+    success = false;
+    getSellers(): Observable<Seller[]>{
+      return this.http.get('http://localhost:5000/api/sellers')
+        .map(response => {
+          return <Seller[]> response.json();
+        });
+    }
+
+  }
 
   const mockModal = {
     open: jasmine.createSpy('open')
   };
 
-  const mockRouter = {
+  let mockRouter = {
     navigate: jasmine.createSpy('navigate')
-  };
-
-  const mockRoute = {
-    route: jasmine.createSpy('route')
   };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        SellerslistComponent
+        SellerslistComponent,
+        SellersService,
+        AppComponent,
+        NgbModal
       ],
       providers: [{
         provide: SellersService,
@@ -38,12 +51,13 @@ describe('SellerslistComponent', () => {
       }, {
         provide: Router,
         useValue: mockRouter
-      }, {
-        provide: ActivatedRoute,
-        useValue: mockRoute
-      }
-      ],
+      }],
+      imports: [FormsModule]
     });
     TestBed.compileComponents();
   });
+
+  it('should include all sellers', async(() => {
+
+  }));
 });
