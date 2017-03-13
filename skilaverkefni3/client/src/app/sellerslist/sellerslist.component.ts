@@ -19,16 +19,16 @@ export class SellerslistComponent implements OnInit {
       private modalService: NgbModal) {}
 
   ngOnInit() {
-    this.service.getSellerById(1).subscribe(result => {
-      this.seller = result;
-      }, (err) => {
-      // TODO display tostr!
-      console.log('something failed');
-    });
+    // this.service.getSellerById(1).subscribe(result => {
+    //   this.seller = result;
+    //   }, (err) => {
+    //   // TODO display tostr!
+    //   console.log('something failed');
+    // });
 
     this.service.getSellers().subscribe(result => {
       this.sellers = result;
-      });
+    });
   }
 
   addSeller() {

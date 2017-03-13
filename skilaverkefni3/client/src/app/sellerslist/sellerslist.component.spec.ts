@@ -1,25 +1,33 @@
-import { TestBed, async } from '@angular/core/testing';
-import { AppComponent } from '../app.component';
-import { SellersService } from '../sellers.service';
-import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { SellerslistComponent } from './sellerslist.component';
+import { SellersService, Seller } from '../sellers.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router, ActivatedRoute } from '@angular/router';
 import {} from 'jasmine';
+import { SellerDlgComponent } from './seller-dlg/seller-dlg.component';
 import { DebugElement, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { AppComponent } from '../app.component';
+import { FormsModule } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
+import { Http } from '@angular/http';
 
-describe('AppComponent', () => {
+describe('SellerslistComponent', () => {
 
+  let component: SellerslistComponent;
+  let fixture: ComponentFixture<SellerslistComponent>;
   const mockService = {
-    successGetProducts: true,
-    productList: [{
-      id: 7,
-      name: 'ullarsokkar'
+    successGetSellers: true,
+    sellerList: [{
+      id: 1,
+      name: 'Hannyrðaþjónusta Hannesar',
+      category: 'Fatnaður',
+      imagePath: 'http://i.imgur.com/OYVpe2W.jpg?fb'
     }],
-    getSellerProduct: function(id) {
+    getSellers: function(id) {
       return {
-        subscribe: function(fnSuccess, fnError) {
-          if (mockService.successGetProducts === true) {
-            fnSuccess(mockService.productList);
-          } else {
-            fnError();
+        subscribe: function(fnSuccess) {
+          if (mockService.successGetSellers === true) {
+            fnSuccess(mockService.sellerList);
           }
         }
       }
@@ -30,28 +38,42 @@ describe('AppComponent', () => {
     open: jasmine.createSpy('open')
   };
 
+  let mockComponent = {
+    navigate: jasmine.createSpy('navigate')
+  };
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        SellerslistComponent
       ],
       providers: [{
         provide: SellersService,
         useValue: mockService
       }, {
+        provide: AppComponent,
+        useValue: mockComponent
+      }, {
         provide: NgbModal,
         useValue: mockModal
-      }
-      ],
-    });
-    TestBed.compileComponents();
+      }],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+      imports: [FormsModule]
+    })
+    .compileComponents();
   });
 
-  describe('when sellers service returns empty list of products', () => {
-    mockService.successGetProducts = true;
-    mockService.productList = [];
-    it('should display a message indicating that no products are to be displayed', () => {
+  beforeEach(() => {
+    fixture = TestBed.createComponent(SellerslistComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  })
 
-    });
+  it('should create', () => {
+    expect(component).toBeTruthy();
   });
+  
+  it('should include id 1', async(() => {
+    // expect(mockService.getSellers).toBe('Hannyrðaþjónusta Hannesar');
+  }));
 });
