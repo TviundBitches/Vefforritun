@@ -44,7 +44,7 @@ export class SellerslistComponent implements OnInit {
         imagePath: obj.imagePath
       }
       this.service.addSeller(params).subscribe(result => {
-        console.log(result);
+        window.location.reload();
       })
     }).catch(err => {
       console.log('Dialog was cancelled');
@@ -53,7 +53,7 @@ export class SellerslistComponent implements OnInit {
   }
 
   onUpdateSeller(s: Seller) {
-
+    
   }
 
 }
