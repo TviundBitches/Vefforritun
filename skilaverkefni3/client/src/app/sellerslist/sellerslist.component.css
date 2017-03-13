@@ -1,0 +1,36 @@
+.btn-primary {
+    background-color: #b388ff;
+    border-color: #b388ff;
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus {
+  background-color: #9575cd;
+  border-color: #b388ff;
+}
+
+.nav-link {
+  color: #b388ff;
+}
+
+.nav-link:hover {
+  color: #9575cd;
+}
+
+.footer {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    width: 500px;
+    font-family: header;
+}
+
+#witchLogo {
+    margin: 30px;
+    margin-left: 10px;
+}
+
+h2, button {
+  font-family: lightFont;
+}
