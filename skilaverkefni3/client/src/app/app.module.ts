@@ -37,14 +37,9 @@ import { CommonModule } from '@angular/common';
       redirectTo: 'sellerslist',
       pathMatch: 'full'
     }, {
-      path: '**',
-      redirectTo: 'sellerslist',
-      pathMatch: 'full'
-    },
-      {
       path: 'sellerslist',
       component: SellerslistComponent
-  }, {
+    }, {
       path: 'sellerdetails/:id',
       component: SellerDetails}]),
     NgbModule.forRoot(),

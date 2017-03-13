@@ -46,3 +46,7 @@ a {
 #cat {
     margin-left: 50px;
 }
+
+h5, a, button {
+  font-family: lightFont;
+}
