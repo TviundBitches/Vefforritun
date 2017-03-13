@@ -10,6 +10,7 @@ import { AppComponent } from '../app.component';
 import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { Http } from '@angular/http';
+import {ToastrService} from "ngx-toastr";
 
 describe('SellerslistComponent', () => {
 
@@ -42,6 +43,11 @@ describe('SellerslistComponent', () => {
     navigate: jasmine.createSpy('navigate')
   };
 
+  const mockToastr = {
+     error: jasmine.createSpy('error'),
+     success: jasmine.createSpy('success')
+   };
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
@@ -53,6 +59,9 @@ describe('SellerslistComponent', () => {
       }, {
         provide: NgbModal,
         useValue: mockModal
+      }, {
+         provide: ToastrService,
+         useValue: mockToastr
       }],
       schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
       imports: [FormsModule]

@@ -6,6 +6,7 @@ import { SellersService } from "../../sellers.service";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import {Router, ActivatedRoute} from "@angular/router";
 import { SellerComponent } from './seller.component';
+import {ToastrService} from "ngx-toastr";
 
 describe('SellerComponent', () => {
 
@@ -23,6 +24,11 @@ describe('SellerComponent', () => {
 
   const mockRoute = {
     route: jasmine.createSpy('route')
+  };
+
+  const mockToastr = {
+    error: jasmine.createSpy('error'),
+    success: jasmine.createSpy('success')
   };
   let component: SellerComponent;
   let fixture: ComponentFixture<SellerComponent>;
@@ -42,6 +48,9 @@ describe('SellerComponent', () => {
       }, {
         provide: ActivatedRoute,
         useValue: mockRoute
+      }, {
+        provide: ToastrService,
+        useValue: mockToastr
       }
       ]
     })
