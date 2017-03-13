@@ -15,17 +15,10 @@ export class SellerslistComponent implements OnInit {
   private sellers: Seller[];
   private seller: Seller;
 
-  constructor(private service: SellersService, private appComponent: AppComponent,
+  constructor(private service: SellersService,
       private modalService: NgbModal) {}
 
   ngOnInit() {
-    // this.service.getSellerById(1).subscribe(result => {
-    //   this.seller = result;
-    //   }, (err) => {
-    //   // TODO display tostr!
-    //   console.log('something failed');
-    // });
-
     this.service.getSellers().subscribe(result => {
       this.sellers = result;
     });
@@ -44,7 +37,7 @@ export class SellerslistComponent implements OnInit {
         imagePath: obj.imagePath
       }
       this.service.addSeller(params).subscribe(result => {
-        window.location.reload();
+        console.log(result);
       })
     }).catch(err => {
       console.log('Dialog was cancelled');
@@ -53,7 +46,7 @@ export class SellerslistComponent implements OnInit {
   }
 
   onUpdateSeller(s: Seller) {
-    
+
   }
 
 }

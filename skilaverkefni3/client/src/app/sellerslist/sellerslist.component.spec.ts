@@ -51,9 +51,6 @@ describe('SellerslistComponent', () => {
         provide: SellersService,
         useValue: mockService
       }, {
-        provide: AppComponent,
-        useValue: mockComponent
-      }, {
         provide: NgbModal,
         useValue: mockModal
       }],
@@ -72,7 +69,7 @@ describe('SellerslistComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  
+
   it('should include id 1', async(() => {
     // expect(mockService.getSellers).toBe('Hannyrðaþjónusta Hannesar');
   }));
