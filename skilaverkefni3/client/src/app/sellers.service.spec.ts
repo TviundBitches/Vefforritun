@@ -148,9 +148,4 @@ describe('SellersService', () => {
       expect(response.json()).toEqual({ success: true });
     });
   });
-
-  // it('should getSellers()', () => {
-  //   expect(subject.getSellers()).toBeTruthy();
-  // });
-
 });
