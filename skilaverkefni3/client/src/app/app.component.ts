@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-//import construct = Reflect.construct;
-//import {NgbModal, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-root',

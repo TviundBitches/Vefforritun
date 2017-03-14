@@ -108,21 +108,6 @@ describe('SellersService', () => {
     });
   });
 
-  // it('should getTopSellerProducts(1)', () => {
-  //   backend.connections.subscribe((connection: MockConnection) => {
-  //     let options = new ResponseOptions({
-  //       body: JSON.stringify({id: 1, name: 'vettlingar', price: 22})
-  //     });
-  //     connection.mockRespond(new Response(options));
-  //   });
-  //   let result;
-  //
-  //   subject.getTopSellerProducts(1).subscribe(products => {
-  //
-  //     expect(products).toEqual({id: 1, name: 'vettlingar', price: 22});
-  //   });
-  // });
-
   it('should go into addProduct()', () => {
     backend.connections.subscribe((connection: MockConnection) => {
       let options = new ResponseOptions({
