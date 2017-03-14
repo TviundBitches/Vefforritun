@@ -15,7 +15,7 @@ export class ProductDlgComponent implements OnInit {
 
   product: SellerProduct;
 
-  constructor(public activeModal: NgbActiveModal, private toastrService: ToastrService, public fb: FormBuilder) { }
+  constructor(public activeModal: NgbActiveModal, private toastrService: ToastrService) { }
 
   ngOnInit() {
   }

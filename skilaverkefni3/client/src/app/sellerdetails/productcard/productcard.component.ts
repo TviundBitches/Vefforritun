@@ -27,7 +27,6 @@ export class ProductCard implements OnInit {
     const modalInstance = this.modalService.open(ProductDlgComponent);
     modalInstance.componentInstance.product = this.product;
     modalInstance.result.then(obj => {
-      console.log('Dialog was closed using OK');
           const params = {
             id: this.sellerId,
             name: obj.name,
@@ -35,18 +34,10 @@ export class ProductCard implements OnInit {
             quantityInStock: obj.quantityInStock,
             imagePath: obj.imagePath
           };
-          console.log(this.sellerId)
       this.service.updateProduct(params, 1, id).subscribe(result => {
         this.toastrService.success('Þú hefur breytt vöru!');
       });
-    }).catch(err => {
-      console.log('Dialog was closed using cancel');
-      console.log(err);
     });
-
-    // Code which displays a dialog, and if the user
-    // presses the OK button we notify about it:
-
     this.productUpdated.emit(this.product);
   }
 
