@@ -118,6 +118,7 @@ describe('SellerDetails', () => {
     error: jasmine.createSpy('error'),
     success: jasmine.createSpy('success')
   };
+
   let component: SellerDetails;
   let fixture: ComponentFixture<SellerDetails>;
 
