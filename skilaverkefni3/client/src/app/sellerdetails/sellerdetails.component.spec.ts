@@ -157,26 +157,48 @@ describe('SellerDetails', () => {
   });
 
   describe("onAddProduct", () => {
-        it("should display toastr on success", () => {
-            // Arrange
+    it("should display toastr on success", () => {
+        // Arrange
 
-            // Act
-            component.onAddProduct();
+        // Act
+        component.onAddProduct();
 
-            // Assert
-            expect(mockToastr.success).toHaveBeenCalled();
-            expect(mockToastr.success).toHaveBeenCalledWith('Þú hefur bætt við vöru!');
+        // Assert
+        expect(mockToastr.success).toHaveBeenCalled();
+        expect(mockToastr.success).toHaveBeenCalledWith('Þú hefur bætt við vöru!');
 
-            // No need to verify getProducts in this scope, since ngOnInit tests it
-        });
     });
+  });
 
   // describe('when sellers service returns empty list of products', () => {
-  //   mockService.successGetProducts = true;
-  //   mockService.productList = [];
   //   it('should display a message indicating that no products are to be displayed', () => {
+  //     // Arrange
+  //     mockService.successGetProducts = true;
+  //     mockService.productList = [];
+  //
+  //     // Act
+  //     component.ngOnInit();
+  //
+  //     // Assert
+  //     expect(component.products).toEqual([]);
+  //     const elem = fixture.debugElement.queryAll(By.css("p"))[0];
+  //     expect(elem).toBeDefined();
+  //
   //
   //   });
   // });
+
+  describe("onGoBack", () => {
+    it("should navigate to sellerslistList", () => {
+        // Arrange
+
+        // Act
+        component.onGoBack();
+
+        // Assert
+        expect(mockRouter.navigate).toHaveBeenCalledWith(['/sellerslist']);
+
+    });
+  });
 
 });
