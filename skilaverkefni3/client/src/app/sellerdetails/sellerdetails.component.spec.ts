@@ -1,12 +1,13 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { DebugElement, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { SellersService } from "../sellers.service";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
-import { SellerDetails } from "./sellerdetails.component";
-import {Router, ActivatedRoute} from "@angular/router";
-import {ToastrService} from "ngx-toastr";
+import { SellerDetails } from './sellerdetails.component';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { FormsModule } from '@angular/forms';
 
 describe('SellerDetails', () => {
   const mockService = {
@@ -87,7 +88,11 @@ describe('SellerDetails', () => {
   };
 
   const mockRoute = {
-    route: jasmine.createSpy('route')
+    snapshot: {
+      params: {
+          id: 1
+      }
+    }
   };
 
   const mockToastr = {
@@ -117,8 +122,9 @@ describe('SellerDetails', () => {
       }, {
         provide: ToastrService,
         useValue: mockToastr
-      }
-      ]
+      }],
+        schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+        imports: [FormsModule]
     })
       .compileComponents();
   }));
@@ -129,9 +135,9 @@ describe('SellerDetails', () => {
     fixture.detectChanges();
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 
   // describe('when sellers service returns empty list of products', () => {
   //   mockService.successGetProducts = true;
