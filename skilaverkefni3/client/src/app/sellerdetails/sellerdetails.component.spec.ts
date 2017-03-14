@@ -2,14 +2,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { SellersService } from "../sellers.service";
-import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { SellersService } from '../sellers.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SellerDetails } from './sellerdetails.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 
 describe('SellerDetails', () => {
+
   const mockService = {
     successGetProducts: true,
     successAddProduct: true,
@@ -20,7 +21,7 @@ describe('SellerDetails', () => {
     }],
     seller: [{
       id: 8,
-      name: 'johanna'
+      name: 'Unnur'
     }],
     getSellerProducts: function(id) {
       return {
@@ -79,9 +80,27 @@ describe('SellerDetails', () => {
     }
   };
 
-  const mockModal = {
-    open: jasmine.createSpy('open')
-  };
+  class mockNgModal{
+    open(): any {
+      return {
+        result: {
+          then:  function (fnSuccess) {
+            fnSuccess(true);
+          }
+        },
+        componentInstance: {
+          toastr: undefined,
+          success: {
+            subscribe: function (fnSuccess) {
+              fnSuccess(true);
+            }
+          }
+        }
+      };
+    }
+  }
+
+  const mockModal = new mockNgModal();
 
   const mockRouter = {
     navigate: jasmine.createSpy('navigate')
@@ -101,8 +120,6 @@ describe('SellerDetails', () => {
   };
   let component: SellerDetails;
   let fixture: ComponentFixture<SellerDetails>;
-  // private service: SellersService, private modalService: NgbModal,
-  //   private router: Router, private route: ActivatedRoute, private toastrService: ToastrService) { }
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -139,13 +156,20 @@ describe('SellerDetails', () => {
     expect(component).toBeTruthy();
   });
 
-  // describe('when sellers service returns empty list of products', () => {
-  //   mockService.successGetProducts = true;
-  //   mockService.productList = [];
-  //   it('should display a message indicating that no products are to be displayed', () => {
-  //
-  //   });
-  // });
+  describe("onAddProduct", () => {
+        it("should display toastr on success", () => {
+            // Arrange
+
+            // Act
+            component.onAddProduct();
+
+            // Assert
+            expect(mockToastr.success).toHaveBeenCalled();
+            expect(mockToastr.success).toHaveBeenCalledWith('Þú hefur bætt við vöru!');
+
+            // No need to verify getProducts in this scope, since ngOnInit tests it
+        });
+    });
 
   // describe('when sellers service returns empty list of products', () => {
   //   mockService.successGetProducts = true;
@@ -154,4 +178,5 @@ describe('SellerDetails', () => {
   //
   //   });
   // });
+
 });

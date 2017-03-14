@@ -55,7 +55,6 @@ export class SellerDetails implements OnInit {
     modalInstance.componentInstance.product = {
     };
     modalInstance.result.then(obj => {
-      console.log('Dialog was closed using OK');
       const params = {
         id: this.seller.id,
         name: obj.name,
@@ -65,11 +64,8 @@ export class SellerDetails implements OnInit {
       }
       this.service.addProduct(params).subscribe(result => {
         this.toastrService.success('Þú hefur bætt við vöru!');
-        window.location.reload();
+        //window.location.reload();
       });
-    }).catch(err => {
-      console.log('Dialog was closed using cancel');
-      console.log(err);
     });
   }
 
