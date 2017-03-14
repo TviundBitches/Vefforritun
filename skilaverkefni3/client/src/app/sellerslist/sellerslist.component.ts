@@ -28,7 +28,7 @@ export class SellerslistComponent implements OnInit {
   addSeller() {
     const modalInstance = this.modalService.open(SellerDlgComponent);
     modalInstance.componentInstance.toastrService = this.toastrService;
-    //modalInstance.componentInstance.seller = {};
+    modalInstance.componentInstance.seller = {};
     modalInstance.result.then(obj => {
       console.log('Dialog was closed using OK');
       console.log(obj);
