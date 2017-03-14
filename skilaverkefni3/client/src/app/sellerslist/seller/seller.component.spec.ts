@@ -11,19 +11,63 @@ import {ToastrService} from "ngx-toastr";
 describe('SellerComponent', () => {
 
   const mockService = {
-    open: jasmine.createSpy('open')
+    success: true,
+    sellerId: 8,
+    seller: [{
+      id: 8,
+      name: 'johanna',
+      category: 'fun',
+      imagePath: ''
+    }],
+    sellerUpdated: [{
+      id: 8,
+      name: 'johann'
+    }],
+    updateSeller: function(id) {
+      return {
+        subscribe: function(fnSuccess, fnError) { //ut af subscribe og observable
+          if (mockService.success === true) {
+            fnSuccess(mockService.seller);
+          } else {
+            fnError();
+          }
+        }
+      }
+    }
   };
 
-  const mockModal = {
-    open: jasmine.createSpy('open')
-  };
+  class mockNgModal{
+    open(): any {
+      return {
+        result: {
+          then:  function (fnSuccess) {
+            fnSuccess(true);
+          }
+        },
+        componentInstance: {
+          toastr: undefined,
+          success: {
+            subscribe: function (fnSuccess) {
+              fnSuccess(true);
+            }
+          }
+        }
+      };
+    }
+  }
+
+  const mockModal = new mockNgModal();
 
   const mockRouter = {
     navigate: jasmine.createSpy('navigate')
   };
 
   const mockRoute = {
-    route: jasmine.createSpy('route')
+    snapshot: {
+      params: {
+          id: mockService.sellerId
+      }
+    }
   };
 
   const mockToastr = {
@@ -65,5 +109,16 @@ describe('SellerComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should show a toastrmsg on success', () => {
+    mockService.success = true;
+    component.onEdit();
+    expect(mockToastr.success).toHaveBeenCalled();
+  });
+
+  it('should navigate to sellerdetails', () => {
+    component.onVisitSellerDetails({id: 8, name: 'billy', category: 'lolly', imagePath: ''});
+    expect(mockRouter.navigate).toHaveBeenCalledWith(['/sellerdetails/' + mockService.sellerId]);
   });
 });
