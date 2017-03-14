@@ -13,7 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class SellerslistComponent implements OnInit {
 
-  sellers: Seller[];
+  private sellers: Seller[];
   private seller: Seller;
 
   constructor(private service: SellersService,
@@ -40,12 +40,9 @@ export class SellerslistComponent implements OnInit {
       }
       this.service.addSeller(params).subscribe(result => {
         this.toastrService.success('Þú hefur bætt við notanda!');
-        window.location.reload();
-      })
-    }).catch(err => {
-      console.log('Dialog was cancelled');
-      console.log(err);
-    })
+        // window.location.reload();
+      });
+    });
   }
 
   onUpdateSeller(s: Seller) {
