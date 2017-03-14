@@ -11,7 +11,27 @@ import {ToastrService} from "ngx-toastr";
 describe('SellerComponent', () => {
 
   const mockService = {
-    open: jasmine.createSpy('open')
+    success: true,
+    sellerId: 8,
+    seller: [{
+      id: 8,
+      name: 'johanna'
+    }],
+    sellerUpdated: [{
+      id: 8,
+      name: 'johann'
+    }],
+    updateSeller: function(id) {
+      return {
+        subscribe: function(fnSuccess, fnError) { //ut af subscribe og observable
+          if (mockService.success === true) {
+            fnSuccess(mockService.seller);
+          } else {
+            fnError();
+          }
+        }
+      }
+    }
   };
 
   const mockModal = {
@@ -65,5 +85,11 @@ describe('SellerComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should show a toastrmsg on success', () => {
+    // mockService.success = true;
+    // component.onEdit();
+    // expect(mockToastr.success).toHaveBeenCalled();
   });
 });
