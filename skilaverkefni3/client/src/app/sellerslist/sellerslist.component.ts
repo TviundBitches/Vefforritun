@@ -40,7 +40,6 @@ export class SellerslistComponent implements OnInit {
       }
       this.service.addSeller(params).subscribe(result => {
         this.toastrService.success('Þú hefur bætt við notanda!');
-        // window.location.reload();
       });
     });
   }

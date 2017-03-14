@@ -16,13 +16,6 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class SellerDlgComponent implements OnInit {
 
   seller: Seller;
-
-  // public sellerForm = this.fb.group({
-  //  name: ["", Validators.required],
-  //  category: ["", Validators.required],
-  //  imagePath: ["", Validators.required]
-  // });
-
                                                           /* Added */
   constructor(public activeModal: NgbActiveModal, private toastrService: ToastrService, public fb: FormBuilder) { }
   ngOnInit() {
