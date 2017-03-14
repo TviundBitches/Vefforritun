@@ -15,7 +15,9 @@ describe('SellerComponent', () => {
     sellerId: 8,
     seller: [{
       id: 8,
-      name: 'johanna'
+      name: 'johanna',
+      category: 'fun',
+      imagePath: ''
     }],
     sellerUpdated: [{
       id: 8,
@@ -34,16 +36,38 @@ describe('SellerComponent', () => {
     }
   };
 
-  const mockModal = {
-    open: jasmine.createSpy('open')
-  };
+  class mockNgModal{
+    open(): any {
+      return {
+        result: {
+          then:  function (fnSuccess) {
+            fnSuccess(true);
+          }
+        },
+        componentInstance: {
+          toastr: undefined,
+          success: {
+            subscribe: function (fnSuccess) {
+              fnSuccess(true);
+            }
+          }
+        }
+      };
+    }
+  }
+
+  const mockModal = new mockNgModal();
 
   const mockRouter = {
     navigate: jasmine.createSpy('navigate')
   };
 
   const mockRoute = {
-    route: jasmine.createSpy('route')
+    snapshot: {
+      params: {
+          id: mockService.sellerId
+      }
+    }
   };
 
   const mockToastr = {
@@ -88,8 +112,13 @@ describe('SellerComponent', () => {
   });
 
   it('should show a toastrmsg on success', () => {
-    // mockService.success = true;
-    // component.onEdit();
-    // expect(mockToastr.success).toHaveBeenCalled();
+    mockService.success = true;
+    component.onEdit();
+    expect(mockToastr.success).toHaveBeenCalled();
+  });
+
+  it('should navigate to sellerdetails', () => {
+    component.onVisitSellerDetails({id: 8, name: 'billy', category: 'lolly', imagePath: ''});
+    expect(mockRouter.navigate).toHaveBeenCalledWith(['/sellerdetails/' + mockService.sellerId]);
   });
 });

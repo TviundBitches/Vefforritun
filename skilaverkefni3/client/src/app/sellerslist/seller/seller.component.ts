@@ -19,9 +19,7 @@ export class SellerComponent implements OnInit {
   constructor(private modalService: NgbModal, private router: Router,
     private route: ActivatedRoute, private service: SellersService, private toastrService: ToastrService) { }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   onEdit() {
     // Code which displays a dialog, and if the user
@@ -37,12 +35,9 @@ export class SellerComponent implements OnInit {
             category: obj.category,
             imagePath: obj.imagePath
           };
-      this.service.updateSeller(params, this.seller.id).subscribe(result => {
+      this.service.updateSeller(params, this.sellerId).subscribe(result => {
         this.toastrService.success('Þú hefur breytt söluaðila!');
       });
-    }).catch(err => {
-      window.location.reload();
-      console.log('Dialog was closed using cancel');
     });
 
     this.sellerUpdated.emit(this.seller);
