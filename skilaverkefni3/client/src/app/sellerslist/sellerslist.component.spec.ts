@@ -83,6 +83,9 @@ describe('SellerslistComponent', () => {
       onUpdateSeller: function(seller) {
 
       },
+      modalInstance: function() {
+
+      },
       addSeller: function() {
         const modalInstance = this.modalService.open(SellerDlgComponent);
         modalInstance.componentInstance.seller = {};
@@ -126,11 +129,13 @@ describe('SellerslistComponent', () => {
   });
 
   it('should display a list of sellers if the backend returns a list', function() {
-
+    component.ngOnInit();
+    expect(component.sellers).toEqual(jasmine.objectContaining(mockService.sellerList));
   });
 
   it('should display a message if the list of sellers is empty', function() {
-
+    component.addSeller();
+    expect(mockModal.open).toHaveBeenCalled();
   });
 
   it('should display an error message if the list cannot be retrieved', function() {
@@ -138,7 +143,9 @@ describe('SellerslistComponent', () => {
   });
 
   it('should display a modal dialog if the user tries to add a new seller', function() {
-
+    // component.addSeller();
+    // expect(mockToastr.success).toHaveBeenCalled();
+    // expect(mockToastr.success).toHaveBeenCalledWith('Þú hefur bætt við notanda!');
   });
 
   it('should try to add a new seller if the modal dialog is closed using the OK button', function() {
