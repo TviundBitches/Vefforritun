@@ -2,6 +2,7 @@
 window.Game = (function() {
 	'use strict';
 
+	var Controls = window.Controls;
 	/**
 	 * Main game class.
 	 * @param {Element} el jQuery element containing the game.
@@ -10,7 +11,7 @@ window.Game = (function() {
 	var Game = function(el) {
 		this.el = el;
 		this.player = new window.Player(this.el.find('.Player'), this);
-		this.pipe = new window.Pipe(this.el.find('.Pipe'), this);
+		this.pipe = new window.Pipe(this.el.find('.Pipe'), this, this. player);
 		this.isPlaying = false;
 
 		// Cache a bound onFrame since we need it each frame.
@@ -47,9 +48,11 @@ window.Game = (function() {
 		this.reset();
 
 		// Restart the onFrame loop
-		this.lastFrame = +new Date() / 1000;
-		window.requestAnimationFrame(this.onFrame);
-		this.isPlaying = true;
+	//	if(Controls.keys.space) {
+			this.lastFrame = +new Date() / 1000;
+			window.requestAnimationFrame(this.onFrame);
+			this.isPlaying = true;
+	//	}
 	};
 
 	/**

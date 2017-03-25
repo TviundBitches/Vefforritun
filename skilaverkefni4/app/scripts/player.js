@@ -10,7 +10,7 @@ window.Player = (function() {
 	var WIDTH = 5;
 	var HEIGHT = 5;
 	var INITIAL_POSITION_X = 30;
-	var INITIAL_POSITION_Y = 25;
+	var INITIAL_POSITION_Y = 30;
 
 	var Player = function(el, game) {
 		this.el = el;
