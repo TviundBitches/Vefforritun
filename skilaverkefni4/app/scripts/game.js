@@ -19,6 +19,7 @@ window.Game = (function() {
 		this.isPlaying = false;
 		this.mute = false;
 		this.backgroundaudio = document.getElementById('elevator-music');
+		this.numberOfPipes = 0;
 
 		this.audio = document.getElementById('angry-cat');;
 
@@ -44,9 +45,12 @@ window.Game = (function() {
 		// Update game entities.
 		this.player.onFrame(delta);
 		this.pipe1.onFrame(delta);
-		//this.pipe2.onFrame(delta);
 		this.ground.onFrame(delta);
 		this.background.onFrame(delta);
+		this.score++;
+		if(this.player.pos.x <= this.pipe1.x + 8) {
+			this.score = this.numberOfPipes;
+		}
 
 		// Request next frame.
 		window.requestAnimationFrame(this.onFrame);

@@ -16,6 +16,7 @@ window.Pipe = (function() {
 		this.x = 100;
 		this.ybottomPos = Math.random() * (40 - 20) + 20;; // 20
 		this.ytopPos = this.ybottomPos-45 ; //-20
+		this.game.numberOfPipes++;
 	};
 
 	Pipe.prototype.onFrame = function(delta) {
@@ -34,12 +35,12 @@ window.Pipe = (function() {
 		// if (this.x > 50) {
 		// 	this.game.pipe2.reset();
 		// }
-		if (this.player.x >= this.x - 8 && this.player.x <= this.x + 8 &&
+		if (this.player.pos.x >= this.x - 8 && this.player.pos.x <= this.x + 8 &&
 			this.player.pos.y >= this.ybottomPos - 5 && this.player.pos.y <= this.ybottomPos + 100) {
 			return this.game.gameover();
 		}
-		if (this.player.x >= this.x - 8 && this.player.x <= this.x + 8 &&
-			this.player.pos.y <= this.ytopPos - 5 && this.player.pos.y >= this.ytopPos + 100) {
+		if (this.player.pos.x >= this.x - 8 && this.player.pos.x <= this.x + 8 &&
+			this.player.pos.y >= this.ytopPos - 100 && this.player.pos.y <= this.ytopPos + 30) {
 			return this.game.gameover();
 		}
 
