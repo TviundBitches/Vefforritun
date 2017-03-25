@@ -3,9 +3,10 @@
 	top: 0;
 	left: 0;
 	width: 10em;
-	height: 10em;
-	background: url('../pictures/cat.PNG');
-	background-size: 10em 10em;
+	height: 7.5em;
+	background: url('../pictures/onlycat.png');
+	background-repeat: no-repeat;
+	background-size: 10em;
 }
 
 .Scoreboard {
