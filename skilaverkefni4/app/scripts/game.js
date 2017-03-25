@@ -16,6 +16,7 @@ window.Game = (function() {
 		this.background = new window.Background(this.el.find('.Background'), this);
 		this.isPlaying = false;
 		this.mute = false;
+		this.backgroundaudio = document.getElementById('elevator-music');
 
 		this.audio = document.getElementById('angry-cat');;
 
@@ -53,12 +54,15 @@ window.Game = (function() {
 	 */
 	Game.prototype.start = function() {
 		this.reset();
+		if (!this.mute) {
+			this.backgroundaudio.play();
+		}
 
 		// Restart the onFrame loop
 	//	if(Controls.keys.space) {
-			this.lastFrame = +new Date() / 1000;
-			window.requestAnimationFrame(this.onFrame);
-			this.isPlaying = true;
+		this.lastFrame = +new Date() / 1000;
+		window.requestAnimationFrame(this.onFrame);
+		this.isPlaying = true;
 	//	}
 	};
 
@@ -79,6 +83,8 @@ window.Game = (function() {
 		this.isPlaying = false;
 		if (!this.mute) {
 			this.audio.play();
+			this.backgroundaudio.pause();
+			this.backgroundaudio.currentTime = 0;
 		}
 
 		// Should be refactored into a Scoreboard class.
