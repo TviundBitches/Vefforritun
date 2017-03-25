@@ -10,6 +10,17 @@
 	display:inline-block;
 }
 
+.Wing {
+	top: 0em;
+	left: 0;
+	width: 10em;
+	height: 10em;
+	background: url('../pictures/wing.png');
+	background-size: 4em;
+	background-position: 35% 55%;
+	background-repeat: no-repeat;
+}
+
 .Pipe {
 	position: absolute;
 	top: 0em;

@@ -10,10 +10,11 @@ window.Game = (function() {
 	 */
 	var Game = function(el) {
 		this.el = el;
-		this.player = new window.Player(this.el.find('.Player'), this);
+		this.player = new window.Player(this.el.find('.Player'), this.el.find('.Wing'), this);
 		this.pipe = new window.Pipe(this.el.find('.Pipe'), this, this. player);
 		this.ground = new window.Ground(this.el.find('.Ground'), this);
 		this.background = new window.Background(this.el.find('.Background'), this);
+		this.score = this.el.find('.Score');
 		this.isPlaying = false;
 		this.mute = false;
 
