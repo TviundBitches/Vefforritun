@@ -1,12 +1,23 @@
 .Player {
 	position: absolute;
-	top: 0;
+	top: 0em;
 	left: 0;
 	width: 10em;
-	height: 7.5em;
+	height: 10em;
 	background: url('../pictures/onlycat.png');
 	background-repeat: no-repeat;
 	background-size: 10em;
+}
+
+.Pipe {
+	position: absolute;
+	top: 2em;
+	left: 0;
+	width: 10em;
+	height: 30em;
+	background: url('../pictures/Pole1.PNG');
+	background-repeat: no-repeat ;
+	background-size: 100%;
 }
 
 .Scoreboard {
