@@ -11,7 +11,7 @@ window.Pipe = (function() {
 
 	Pipe.prototype.reset = function() {
 		this.pos.x = 100;
-		this.pos.y = 25;
+		this.pos.y = 19;
 	};
 
 	Pipe.prototype.onFrame = function(delta) {
