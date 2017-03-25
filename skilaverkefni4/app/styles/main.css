@@ -21,6 +21,20 @@
 	background-size: 100%;
 }
 
+.Score {
+  position: absolute;
+  font-family: 'Comic Sans MS', serif;
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-size: 360%;
+  padding-top: 20px;
+  color: #fff;
+  font-weight: 700;
+  text-shadow: 2px 2px 0 #000;
+  z-index: 4;
+}
+
 .Scoreboard {
 	position: absolute;
 	left: 50%;
