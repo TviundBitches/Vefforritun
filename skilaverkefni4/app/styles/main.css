@@ -2,9 +2,10 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 5em;
-	height: 5em;
-	background: blue;
+	width: 10em;
+	height: 10em;
+	background: url('../pictures/cat.PNG');
+	background-size: 10em 10em;
 }
 
 .Scoreboard {
@@ -60,5 +61,6 @@ height: 57.6em;
 margin-left: -51.2em;
 margin-top: -28.8em;
 overflow: hidden;
-background: red;
+background: url('../pictures/Background1.PNG');
+background-size: cover; 
 }
