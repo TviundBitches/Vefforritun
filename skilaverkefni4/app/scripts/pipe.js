@@ -1,35 +1,48 @@
 window.Pipe = (function() {
 	'use strict';
 
-    var Pipe = function(el, game, player) {
+    var Pipe = function(el, top, bottom, game, player) {
 		this.el = el;
+		this.top = top;
+		this.bottom = bottom;
 		this.game = game;
 		this.player = player;
-		this.pos = { x: 0, y: 0 };
+		this.x = 0;
+		this.ybottomPos = 0
+		this.ytopPos = 0;
 	};
 
 	Pipe.prototype.reset = function() {
-		this.pos.x = 100;
-		this.pos.y = 20 ;
+		this.x = 100;
+		this.ybottomPos = Math.random() * (40 - 20) + 20;; // 20
+		this.ytopPos = this.ybottomPos-45 ; //-20
 	};
 
 	Pipe.prototype.onFrame = function(delta) {
-
-		this.pos.x -= delta * 20;
+		this.x -= delta * 20;
 		this.checkCollisionWithBounds();
 
 		// Update UI
-		this.el.css('transform', 'translate(' + this.pos.x + 'em, ' + this.pos.y + 'em)');
+		this.top.css('transform', 'translate(' + this.x + 'em, ' + this.ytopPos + 'em)');
+		this.bottom.css('transform', 'translate(' + this.x + 'em, ' + this.ybottomPos + 'em)');
 	};
 
 	Pipe.prototype.checkCollisionWithBounds = function() {
-		if (this.pos.x < 0) {
-			this.game.pipe.reset();
+		if (this.x < 0) {
+			this.game.pipe1.reset();
 		}
-		if (this.player.pos.x >= this.pos.x - 8 && this.player.pos.x <= this.pos.x + 8
-		 	&& this.player.pos.y >= this.pos.y - 5 && this.player.pos.y <= this.pos.y + 100 ) {
+		// if (this.x > 50) {
+		// 	this.game.pipe2.reset();
+		// }
+		if (this.player.x >= this.x - 8 && this.player.x <= this.x + 8 &&
+			this.player.pos.y >= this.ybottomPos - 5 && this.player.pos.y <= this.ybottomPos + 100) {
 			return this.game.gameover();
 		}
+		if (this.player.x >= this.x - 8 && this.player.x <= this.x + 8 &&
+			this.player.pos.y <= this.ytopPos - 5 && this.player.pos.y >= this.ytopPos + 100) {
+			return this.game.gameover();
+		}
+
 	};
 
 	return Pipe;

@@ -22,12 +22,28 @@
 }
 
 .Pipe {
+
+	height: 57;
+}
+
+.PipeBottom {
+	position: absolute;
+	top: 1em;
+	left: 0;
+	width: 10em;
+	height: 30em;
+	background: url('../pictures/Pole1.PNG');
+	background-repeat: no-repeat ;
+	background-size: 100%;
+}
+
+.PipeTop {
 	position: absolute;
 	top: 0em;
 	left: 0;
 	width: 10em;
 	height: 30em;
-	background: url('../pictures/Pole1.PNG');
+	background: url('../pictures/Pole2.PNG');
 	background-repeat: no-repeat ;
 	background-size: 100%;
 }
