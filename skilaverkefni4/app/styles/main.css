@@ -7,11 +7,12 @@
 	background: url('../pictures/onlycat.png');
 	background-repeat: no-repeat;
 	background-size: 10em;
+	display:inline-block;
 }
 
 .Pipe {
 	position: absolute;
-	top: 2em;
+	top: 0em;
 	left: 0;
 	width: 10em;
 	height: 30em;

@@ -5,7 +5,7 @@ window.Player = (function() {
 
 	// All these constants are in em's, multiply by 10 pixels
 	// for 1024x576px canvas.
-	var SPEED = 30; // * 10 pixels per second
+	var SPEED = 20; // * 10 pixels per second
 	var JUMP = 50;
 	var WIDTH = 5;
 	var HEIGHT = 5;
@@ -18,6 +18,7 @@ window.Player = (function() {
 		this.pos = { x: 0, y: 0 };
 		this.audio = document.getElementById('cat-meow');
 		this.mute = false;
+		this.down = 0;
 	};
 
 	/**
@@ -26,6 +27,7 @@ window.Player = (function() {
 	Player.prototype.reset = function() {
 		this.pos.x = INITIAL_POSITION_X;
 		this.pos.y = INITIAL_POSITION_Y;
+		this.down=this.down = 0;
 	};
 
 	Player.prototype.onFrame = function(delta) {
@@ -43,19 +45,26 @@ window.Player = (function() {
 		// }
 
 		if (Controls.keys.space) {
+			this.el.css('transform', 'translate(' + this.pos.x + 'em, ' + this.pos.y + 'em) rotate(-30deg) ');
 			this.pos.y -= delta * JUMP;
+
 			if (!this.mute) {
 				this.audio.play();
 			}
+
+			this.down = 0;
 		}
 		else {
 			this.pos.y += delta *  SPEED;
+			this.down=this.down+0.3;
+			this.el.css('transform', 'translate(' + this.pos.x + 'em, ' + this.pos.y + 'em) rotate(' + this.down + 'deg)');
 		}
 
 		this.checkCollisionWithBounds();
 
 		// Update UI
-		this.el.css('transform', 'translate(' + this.pos.x + 'em, ' + this.pos.y + 'em)');
+
+
 	};
 
 	Player.prototype.checkCollisionWithBounds = function() {
