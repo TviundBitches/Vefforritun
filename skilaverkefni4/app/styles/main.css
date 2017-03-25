@@ -29,9 +29,9 @@
 	margin-left: -20em;
 	box-sizing: border-box;
 	border: 5px solid;
-	border-color: #009688;
+	border-color: #d500f9;
 	border-radius: 9px;
-	background: #4db6ac;
+	background: #ea80fc;
 	text-align: center;
 	-webkit-transform: translate(0, -40em);
 	-webkit-transition: -webkit-transform 0.5s;
@@ -54,20 +54,20 @@
 	margin-top: 1em;
 	font-size: inherit;
 	padding: 0.4em 1.5em;
-	border: 0.2em solid #e0f2f1;
+	border: 0.2em solid #f3e5f5;
 	border-radius: 9px;
 	background: none;
 	cursor: pointer;
 }
 
 .Scoreboard-restart:hover {
-	border: 0.4em solid #e0f2f1;
+	border: 0.4em solid #f3e5f5;
 }
 
 .Scoreboard-restartText {
 	font-family: 'Comic Sans MS', serif;
 	font-size: 2.4em;
-	color: #e0f2f1;
+	color: #f3e5f5;
 }
 
 body {
@@ -79,6 +79,7 @@ body {
 	color: #000;
 	padding: 0.2em 0;
 }
+
 .GameCanvas {
 	font-size: 10px;
 	position: absolute;
@@ -89,10 +90,24 @@ body {
 	margin-left: -51.2em;
 	margin-top: -28.8em;
 	overflow: hidden;
-	background: url('../pictures/Background2.PNG'),
-							url('../pictures/Background1.PNG');
+	background:  url('../pictures/Background1.PNG');
 	background-size: cover;
 }
+
+.Background {
+	font-size: 10px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 102.4em;
+	height: 57.6em;
+	margin-left: -51.2em;
+	margin-top: -28.8em;
+	overflow: hidden;
+	background: url('../pictures/Background2.PNG');
+	background-size: cover;
+}
+
 .Ground {
 	font-size: 10px;
 	position: absolute;
