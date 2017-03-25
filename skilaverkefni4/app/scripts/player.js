@@ -5,12 +5,12 @@ window.Player = (function() {
 
 	// All these constants are in em's, multiply by 10 pixels
 	// for 1024x576px canvas.
-	var SPEED = 30; // * 10 pixels per second
+	var SPEED = 20; // * 10 pixels per second
 	var JUMP = 50;
 	var WIDTH = 5;
 	var HEIGHT = 5;
 	var INITIAL_POSITION_X = 30;
-	var INITIAL_POSITION_Y = 30;
+	var INITIAL_POSITION_Y = 25;
 
 	var Player = function(el, game) {
 		this.el = el;
@@ -42,6 +42,7 @@ window.Player = (function() {
 
 		if (Controls.keys.space) {
 			this.pos.y -= delta * JUMP;
+			this.el.css('transform', 'rotate(90deg)');
 		}
 		else {
 			this.pos.y += delta *  SPEED;

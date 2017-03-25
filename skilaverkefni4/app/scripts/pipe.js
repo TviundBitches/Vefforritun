@@ -26,8 +26,8 @@ window.Pipe = (function() {
 		if (this.pos.x < 0) {
 			this.game.pipe.reset();
 		}
-		if (this.pos.x >= this.player.pos.x - 5 && this.pos.x <= this.player.pos.x + 5
-		 	&& this.pos.y >= this.player.pos.y - 10 && this.pos.y <= this.player.pos.y + 10) {
+		if (this.player.pos.x >= this.pos.x - 8 && this.player.pos.x <= this.pos.x + 8
+		 	&& this.player.pos.y >= this.pos.y - 5 && this.player.pos.y <= this.pos.y + 100 ) {
 			return this.game.gameover();
 		}
 	};
