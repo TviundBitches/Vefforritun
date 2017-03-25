@@ -1,9 +1,9 @@
 # Vefforritun
 * Hér verða skilaverkefnin okkar í vefforritun 2 *
 #### Höfundar ####
-Jóhanna María Svövudóttir
-Sigrún Tinna Gissurardóttir
-Unnur Sól Ingimarsdóttir
+* Jóhanna María Svövudóttir
+* Sigrún Tinna Gissurardóttir
+* Unnur Sól Ingimarsdóttir
 
 ## Skilaverkefni 1 - The most awesome canvas in the world!
 Drawing app.
