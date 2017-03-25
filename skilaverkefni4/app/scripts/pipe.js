@@ -16,7 +16,7 @@ window.Pipe = (function() {
 
 	Pipe.prototype.onFrame = function(delta) {
 
-		this.pos.x -= delta * 30;
+		this.pos.x -= delta * 20;
 		// Update UI
 		this.el.css('transform', 'translate(' + this.pos.x + 'em, ' + this.pos.y + 'em)');
 	};
