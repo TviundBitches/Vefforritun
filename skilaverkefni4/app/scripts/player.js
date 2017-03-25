@@ -53,6 +53,16 @@ window.Player = (function() {
 		this.el.css('transform', 'translate(' + this.pos.x + 'em, ' + this.pos.y + 'em)');
 	};
 
+	function moveGround() {
+		$('.Ground').each(function(){
+			animate({
+				right: '+=160px'
+			},
+			1300,
+			'linear');
+		});
+	}
+
 	Player.prototype.checkCollisionWithBounds = function() {
 		if (this.pos.x < 0 ||
 			this.pos.x + WIDTH > this.game.WORLD_WIDTH ||
