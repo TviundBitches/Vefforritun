@@ -16,6 +16,8 @@ window.Player = (function() {
 		this.el = el;
 		this.game = game;
 		this.pos = { x: 0, y: 0 };
+		this.audio = document.getElementById('cat-meow');
+		this.mute = false;
 	};
 
 	/**
@@ -42,6 +44,9 @@ window.Player = (function() {
 
 		if (Controls.keys.space) {
 			this.pos.y -= delta * JUMP;
+			if (!this.mute) {
+				this.audio.play();
+			}
 		}
 		else {
 			this.pos.y += delta *  SPEED;
