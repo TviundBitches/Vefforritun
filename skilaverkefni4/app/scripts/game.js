@@ -32,8 +32,6 @@ window.Game = (function() {
 				delta = now - this.lastFrame;
 		this.lastFrame = now;
 
-		console.log(delta);
-
 		// Update game entities.
 		this.player.onFrame(delta);
 		this.pipe.onFrame(delta);
