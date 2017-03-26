@@ -47,7 +47,7 @@
 	background-size: 100%;
 }
 
-.Score {
+#Score {
   position: absolute;
   font-family: 'Comic Sans MS', serif;
   width: 100%;

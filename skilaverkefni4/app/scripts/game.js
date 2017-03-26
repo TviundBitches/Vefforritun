@@ -15,7 +15,7 @@ window.Game = (function() {
 		this.pipe2 = new window.Pipe(this.el.find('.Pipe'), this.el.find('.PipeTop'), this.el.find('.PipeBottom'), this, this. player);
 		this.ground = new window.Ground(this.el.find('.Ground'), this);
 		this.background = new window.Background(this.el.find('.Background'), this);
-		this.score = this.el.find('.Score');
+		this.score = document.getElementById('Score');
 		this.isPlaying = false;
 		this.mute = false;
 		this.backgroundaudio = document.getElementById('elevator-music');
@@ -47,9 +47,8 @@ window.Game = (function() {
 		this.pipe1.onFrame(delta);
 		this.ground.onFrame(delta);
 		this.background.onFrame(delta);
-		this.score++;
-		if(this.player.pos.x <= this.pipe1.x + 8) {
-			this.score = this.numberOfPipes;
+		if(this.player.pos.x >= this.pipe1.x) {
+			this.score.innerHTML = this.numberOfPipes;
 		}
 
 		// Request next frame.
@@ -93,7 +92,8 @@ window.Game = (function() {
 			this.backgroundaudio.pause();
 			this.backgroundaudio.currentTime = 0;
 		}
-
+		var lastScore = this.numberOfPipes;
+		this.numberOfPipes = 0;
 		// Should be refactored into a Scoreboard class.
 		var that = this;
 		var scoreboardEl = this.el.find('.Scoreboard');

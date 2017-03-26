@@ -17,6 +17,7 @@ window.Pipe = (function() {
 		this.ybottomPos = Math.random() * (40 - 20) + 20;; // 20
 		this.ytopPos = this.ybottomPos-45 ; //-20
 		this.game.numberOfPipes++;
+		console.log(this.game.numberOfPipes);
 	};
 
 	Pipe.prototype.onFrame = function(delta) {
