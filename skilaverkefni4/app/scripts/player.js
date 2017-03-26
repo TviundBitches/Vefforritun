@@ -35,7 +35,7 @@ window.Player = (function() {
 			this.pos.y -= delta * JUMP;
 			this.el.css('transform', 'translate(' + this.pos.x + 'em, ' + this.pos.y + 'em) rotate(-30deg) ');
 
-			this.wing.css('transform', 'matrix(1, 0.3, 0, -1, 0, 0)');
+			this.wing.css('transform', 'scale(-1, -1)');
 
 
 			this.audio.play();
