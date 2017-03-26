@@ -10,6 +10,7 @@ window.Game = (function() {
 	 * @constructor
 	 */
 	var Game = function(el) {
+		// Elements in the game
 		this.el = el;
 		this.player = new window.Player(this.el.find('.Player'), this.el.find('.Wing'), this);
 		this.pipe1 = new window.Pipe(this.el.find('.Pipe'), this.el.find('.PipeTop'), this.el.find('.PipeBottom'), this, this. player);
@@ -17,10 +18,13 @@ window.Game = (function() {
 		this.ground = new window.Ground(this.el.find('.Ground'), this);
 		this.background = new window.Background(this.el.find('.Background'), this);
 		this.score = document.getElementById('Score');
+
+		// Counters and other helper variables
 		this.isPlaying = false;
 		this.numberOfPipes = 0;
 		this.acceleration = 20;
 		this.bkgrAcceleration = 10;
+		this.started = false;
 
 		// Audio
 		this.backgroundaudio = document.getElementById("elevator");
@@ -50,6 +54,8 @@ window.Game = (function() {
 		this.pipe1.onFrame(delta);
 		this.ground.onFrame(delta);
 		this.background.onFrame(delta);
+
+
 		if(this.player.pos.x >= this.pipe1.x) {
 			this.score.innerHTML = this.numberOfPipes;
 			lastScore = this.numberOfPipes;
@@ -91,16 +97,19 @@ window.Game = (function() {
 	Game.prototype.gameover = function() {
 		this.isPlaying = false;
 
+		// Audio
 		this.audio.play();
 		this.backgroundaudio.pause();
 		this.backgroundaudio.currentTime = 0;
 
-		// var lastScore = this.numberOfPipes;
+		// Reset everything and print out score
 		document.getElementById('message').innerHTML = 'You scored: ' + (lastScore);
 		this.numberOfPipes = 0;
+
 		this.acceleration = 20;
 		this.bkgrAcceleration = 10;
-		// Should be refactored into a Scoreboard class.
+		lastScore = 0;
+
 		var that = this;
 		var scoreboardEl = this.el.find('.Scoreboard');
 		scoreboardEl
@@ -108,8 +117,10 @@ window.Game = (function() {
 			.find('.Scoreboard-restart')
 				.one('click', function() {
 					scoreboardEl.removeClass('is-visible');
+					that.score.innerHTML = that.numberOfPipes;
 					that.start();
 				});
+
 	};
 
 	/**
