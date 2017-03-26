@@ -28,24 +28,31 @@ window.Player = (function() {
 		this.pos.x = INITIAL_POSITION_X;
 		this.pos.y = INITIAL_POSITION_Y;
 		this.down=this.down = 0;
+		this.wing.css('transform', ' matrix(1, 0, 0, 1, 0, 0)');
 	};
 
 	Player.prototype.onFrame = function(delta) {
-		if (Controls.keys.space) {
-			this.pos.y -= delta * JUMP;
-			this.el.css('transform', 'translate(' + this.pos.x + 'em, ' + this.pos.y + 'em) rotate(-30deg) ');
+		if(Controls.keys.space) {
+			this.game.started = true;
+		}
+		if(this.game.started == true) {
+			if (Controls.keys.space) {
+				this.pos.y -= delta * JUMP;
+				this.el.css('transform', 'translate(' + this.pos.x + 'em, ' + this.pos.y + 'em) rotate(-30deg) ');
+				this.wing.css('transform', 'scale(-1, -1)');
 
-			this.wing.css('transform', 'scale(-1, -1)');
-
-
-			this.audio.play();
-			this.down = 0;
+				this.audio.play();
+				this.down = 0;
+			}
+			else {
+				this.pos.y += delta *  SPEED;
+				this.down=this.down+0.3;
+				this.el.css('transform', 'translate(' + this.pos.x + 'em, ' + this.pos.y + 'em) rotate(' + this.down + 'deg)');
+				this.wing.css('transform', ' matrix(1, 0, 0, 1, 0, 0)');
+			}
 		}
 		else {
-			this.pos.y += delta *  SPEED;
-			this.down=this.down+0.3;
-			this.el.css('transform', 'translate(' + this.pos.x + 'em, ' + this.pos.y + 'em) rotate(' + this.down + 'deg)');
-			this.wing.css('transform', ' matrix(1, 0, 0, 1, 0, 0)');
+			this.el.css('transform', 'translate(' + this.pos.x + 'em, ' + this.pos.y + 'em)');
 		}
 
 		this.checkCollisionWithBounds();

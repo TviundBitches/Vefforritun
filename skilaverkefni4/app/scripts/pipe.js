@@ -13,7 +13,7 @@ window.Pipe = (function() {
 	};
 
 	Pipe.prototype.reset = function() {
-		this.x = 100;
+		this.x = 103;
 		this.ybottomPos = Math.random() * (40 - 20) + 20;; // 20
 		this.ytopPos = this.ybottomPos-45 ; //-20
 		this.game.numberOfPipes++;
@@ -21,9 +21,10 @@ window.Pipe = (function() {
 	};
 
 	Pipe.prototype.onFrame = function(delta) {
-		this.x -= delta * this.game.acceleration;
-		this.checkCollisionWithBounds();
-
+		if(this.game.started == true) {
+			this.x -= delta * this.game.acceleration;
+			this.checkCollisionWithBounds();
+		}
 		// Update UI
 		this.top.css('transform', 'translate(' + this.x + 'em, ' + this.ytopPos + 'em)');
 		this.bottom.css('transform', 'translate(' + this.x + 'em, ' + this.ybottomPos + 'em)');

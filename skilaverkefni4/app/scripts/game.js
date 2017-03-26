@@ -49,6 +49,7 @@ window.Game = (function() {
 				delta = now - this.lastFrame;
 		this.lastFrame = now;
 
+
 		// Update game entities.
 		this.player.onFrame(delta);
 		this.pipe1.onFrame(delta);
@@ -96,6 +97,7 @@ window.Game = (function() {
 	 */
 	Game.prototype.gameover = function() {
 		this.isPlaying = false;
+		this.started = false;
 
 		// Audio
 		this.audio.play();
