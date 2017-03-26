@@ -18,6 +18,8 @@ window.Game = (function() {
 		this.score = document.getElementById('Score');
 		this.isPlaying = false;
 		this.numberOfPipes = 0;
+		this.acceleration = 20;
+		this.bkgrAcceleration = 10;
 
 		// Audio
 		this.backgroundaudio = document.getElementById("elevator");
@@ -49,6 +51,8 @@ window.Game = (function() {
 		this.background.onFrame(delta);
 		if(this.player.pos.x >= this.pipe1.x) {
 			this.score.innerHTML = this.numberOfPipes;
+			this.acceleration = this.acceleration + 0.1;
+			this.bkgrAcceleration = this.bkgrAcceleration + 0.1;
 		}
 
 		// Request next frame.
@@ -93,6 +97,7 @@ window.Game = (function() {
 		var lastScore = this.numberOfPipes;
 		document.getElementById('message').innerHTML = 'You scored: ' + lastScore;
 		this.numberOfPipes = 0;
+		this.acceleration = 20;
 		// Should be refactored into a Scoreboard class.
 		var that = this;
 		var scoreboardEl = this.el.find('.Scoreboard');

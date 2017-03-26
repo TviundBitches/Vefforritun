@@ -16,7 +16,7 @@ window.Background = (function() {
 
 	Background.prototype.onFrame = function(delta) {
 
-		this.pos.x -= delta * 10;
+		this.pos.x -= delta * this.game.bkgrAcceleration;
 		// Update UI
 		this.el.css('background-position', this.pos.x + 'em 0');
 	};
