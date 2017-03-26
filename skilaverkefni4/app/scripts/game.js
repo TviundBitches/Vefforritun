@@ -97,6 +97,7 @@ window.Game = (function() {
 		var lastScore = this.numberOfPipes;
 		this.numberOfPipes = 0;
 		this.acceleration = 20;
+		this.bkgrAcceleration = 10;
 		// Should be refactored into a Scoreboard class.
 		var that = this;
 		var scoreboardEl = this.el.find('.Scoreboard');
