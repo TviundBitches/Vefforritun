@@ -21,7 +21,7 @@ window.Pipe = (function() {
 	};
 
 	Pipe.prototype.onFrame = function(delta) {
-		this.x -= delta * 20;
+		this.x -= delta * this.game.acceleration;
 		this.checkCollisionWithBounds();
 
 		// Update UI
