@@ -111,6 +111,10 @@
 	color: #f3e5f5;
 }
 
+.volume {
+	cursor: pointer;
+}
+
 body {
 	background: black;
 }

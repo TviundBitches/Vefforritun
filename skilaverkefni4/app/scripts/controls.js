@@ -25,6 +25,7 @@ window.Controls = (function() {
         $(window)
             .on('keydown', this._onKeyDown.bind(this))
             .on('keyup', this._onKeyUp.bind(this));
+        var that = this;
     };
 
     Controls.prototype._onKeyDown = function(e) {
@@ -57,7 +58,7 @@ window.Controls = (function() {
         this._didJump = false;
         return answer;
     };
-    
+
     // Export singleton.
     return new Controls();
 })();

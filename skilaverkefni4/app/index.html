@@ -56,13 +56,16 @@
             </div>
           </div>
         </div>
-        <i class="material-icons md-18" style="color: white;">volume_up</i>
-        <audio controls loop id="elevator-music" style="display:none;">
-          <source src="../sound/Elevator-music.mp3" type="audio/mpeg">
-        </audio>
-        <audio id="angry-cat" src="../sound/Angry-cat.mp3" style="display:none;"></audio>
-        <audio id="cat-meow" src="../sound/Cat-meow-mp3.mp3" style="display:none;">/audio>
-
+        <button id="volume" class="volumeOn" onclick="volume();">
+          <i id="volume-button" class="material-icons md-18">
+            volume_up
+          </i>
+        </button>
+        <div class="volume">
+          <audio controls loop id="elevator" src="../sound/Elevator-music.mp3" style="display: none;"/>
+          <audio id="angry-cat" src="../sound/Angry-cat.mp3" style="display: none;"/>
+          <audio id="meow-cat" src="../sound/Cat-meow-mp3.mp3" style="display: none;"/>
+        </div>
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
         <script src="bower_components/jquery/dist/jquery.js"></script>

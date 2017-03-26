@@ -17,12 +17,12 @@ window.Game = (function() {
 		this.background = new window.Background(this.el.find('.Background'), this);
 		this.score = document.getElementById('Score');
 		this.isPlaying = false;
-		this.mute = false;
-		this.backgroundaudio = document.getElementById('elevator-music');
 		this.numberOfPipes = 0;
 		this.acceleration = 20;
 
-		this.audio = document.getElementById('angry-cat');;
+		// Audio
+		this.backgroundaudio = document.getElementById("elevator");
+		this.audio = document.getElementById("angry-cat");
 
 		// Cache a bound onFrame since we need it each frame.
 		this.onFrame = this.onFrame.bind(this);
@@ -62,9 +62,7 @@ window.Game = (function() {
 	 */
 	Game.prototype.start = function() {
 		this.reset();
-		if (!this.mute) {
-			this.backgroundaudio.play();
-		}
+		this.backgroundaudio.play();
 
 		// Restart the onFrame loop
 	//	if(Controls.keys.space) {
@@ -89,11 +87,11 @@ window.Game = (function() {
 	 */
 	Game.prototype.gameover = function() {
 		this.isPlaying = false;
-		if (!this.mute) {
-			this.audio.play();
-			this.backgroundaudio.pause();
-			this.backgroundaudio.currentTime = 0;
-		}
+
+		this.audio.play();
+		this.backgroundaudio.pause();
+		this.backgroundaudio.currentTime = 0;
+
 		var lastScore = this.numberOfPipes;
 		this.numberOfPipes = 0;
 		this.acceleration = 20;

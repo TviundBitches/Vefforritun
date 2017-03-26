@@ -17,8 +17,7 @@ window.Player = (function() {
 		this.wing = wing;
 		this.game = game;
 		this.pos = { x: 0, y: 0 };
-		this.audio = document.getElementById('cat-meow');
-		this.mute = false;
+		this.audio = document.getElementById("meow-cat");
 		this.down = 0;
 	};
 
@@ -39,10 +38,7 @@ window.Player = (function() {
 			this.wing.css('transform', 'matrix(1, 0.3, 0, -1, 0, 0)');
 
 
-			if (!this.mute) {
-				this.audio.play();
-			}
-
+			this.audio.play();
 			this.down = 0;
 		}
 		else {
