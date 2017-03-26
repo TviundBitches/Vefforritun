@@ -78,6 +78,11 @@
 	-webkit-transition: -webkit-transform 0.5s;
 }
 
+.Scoreboard-img {
+	height: 60%;
+	width: 60%;
+}
+
 /**
 * Reset transform to animate it into the correct spot on the screen.
 */
@@ -85,14 +90,14 @@
 	-webkit-transform: none;
 }
 
-/*.Scoreboard-text {
+#message {
 	font-family: 'Comic Sans MS', serif;
 	font-size: 2em;
 	color: #e0f2f1;
-}*/
+}
 
 .Scoreboard-restart {
-	margin-top: 1em;
+	margin-top: 2em;
 	font-size: inherit;
 	padding: 0.4em 1.5em;
 	border: 0.2em solid #f3e5f5;

@@ -91,6 +91,7 @@ window.Game = (function() {
 		this.backgroundaudio.currentTime = 0;
 
 		var lastScore = this.numberOfPipes;
+		document.getElementById('message').innerHTML = 'You scored: ' + lastScore;
 		this.numberOfPipes = 0;
 		// Should be refactored into a Scoreboard class.
 		var that = this;
