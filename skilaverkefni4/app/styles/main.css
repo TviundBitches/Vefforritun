@@ -73,6 +73,32 @@
   z-index: 4;
 }
 
+.Startboard {
+	position: absolute;
+	left: 45%;
+	top: 15em;
+	height: 5em;
+	width: 50em;
+	margin-left: -20em;
+	box-sizing: border-box;
+	border: 1em solid;
+	border-radius: 2em;
+	border-color: #e0f2f1;
+	text-align: center;
+	-webkit-transform: translate(0, -40em);
+	-webkit-transition: -webkit-transform 0.5s;
+}
+
+.Startboard.is-visible {
+	-webkit-transform: none;
+}
+
+#start-message {
+	font-family: 'Comic Sans MS', serif;
+	font-size: 2em;
+	color: #e0f2f1;
+}
+
 .Scoreboard {
 	position: absolute;
 	left: 50%;

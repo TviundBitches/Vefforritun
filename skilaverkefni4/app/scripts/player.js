@@ -34,6 +34,7 @@ window.Player = (function() {
 	Player.prototype.onFrame = function(delta) {
 		if(Controls.keys.space) {
 			this.game.started = true;
+			this.game.startboardEl.removeClass('is-visible');
 		}
 		if(this.game.started == true) {
 			if (Controls.keys.space) {
@@ -53,6 +54,7 @@ window.Player = (function() {
 		}
 		else {
 			this.el.css('transform', 'translate(' + this.pos.x + 'em, ' + this.pos.y + 'em)');
+
 		}
 
 		this.checkCollisionWithBounds();

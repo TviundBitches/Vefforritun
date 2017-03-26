@@ -18,6 +18,7 @@ window.Game = (function() {
 		this.ground = new window.Ground(this.el.find('.Ground'), this);
 		this.background = new window.Background(this.el.find('.Background'), this);
 		this.score = document.getElementById('Score');
+		this.startboardEl;
 
 		// Counters and other helper variables
 		this.isPlaying = false;
@@ -79,6 +80,10 @@ window.Game = (function() {
 		this.lastFrame = +new Date() / 1000;
 		window.requestAnimationFrame(this.onFrame);
 		this.isPlaying = true;
+
+		this.startboardEl = this.el.find('.Startboard');
+		this.startboardEl
+			.addClass('is-visible')
 
 	};
 
