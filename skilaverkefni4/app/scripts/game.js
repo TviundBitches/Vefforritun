@@ -19,6 +19,7 @@ window.Game = (function() {
 		this.isPlaying = false;
 		this.numberOfPipes = 0;
 		this.acceleration = 20;
+		this.bkgrAcceleration = 10;
 
 		// Audio
 		this.backgroundaudio = document.getElementById("elevator");
@@ -51,6 +52,7 @@ window.Game = (function() {
 		if(this.player.pos.x >= this.pipe1.x) {
 			this.score.innerHTML = this.numberOfPipes;
 			this.acceleration = this.acceleration + 0.1;
+			this.bkgrAcceleration = this.bkgrAcceleration + 0.1;
 		}
 
 		// Request next frame.
