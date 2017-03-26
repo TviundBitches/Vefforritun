@@ -12,8 +12,9 @@ window.Player = (function() {
 	var INITIAL_POSITION_X = 30;
 	var INITIAL_POSITION_Y = 25;
 
-	var Player = function(el, game) {
+	var Player = function(el, wing, game) {
 		this.el = el;
+		this.wing = wing;
 		this.game = game;
 		this.pos = { x: 0, y: 0 };
 		this.audio = document.getElementById("meow-cat");
@@ -30,22 +31,12 @@ window.Player = (function() {
 	};
 
 	Player.prototype.onFrame = function(delta) {
-		// if (Controls.keys.right) {
-		// 	this.pos.x += delta * SPEED;
-		// }
-		// if (Controls.keys.left) {
-		// 	this.pos.x -= delta * SPEED;
-		// }
-		// if (Controls.keys.down) {
-		// 	this.pos.y += delta * SPEED;
-		// }
-		// if (Controls.keys.up) {
-		// 	this.pos.y -= delta * SPEED;
-		// }
-
 		if (Controls.keys.space) {
-			this.el.css('transform', 'translate(' + this.pos.x + 'em, ' + this.pos.y + 'em) rotate(-30deg) ');
 			this.pos.y -= delta * JUMP;
+			this.el.css('transform', 'translate(' + this.pos.x + 'em, ' + this.pos.y + 'em) rotate(-30deg) ');
+
+			this.wing.css('transform', 'matrix(1, 0.3, 0, -1, 0, 0)');
+
 
 			this.audio.play();
 			this.down = 0;
@@ -54,11 +45,10 @@ window.Player = (function() {
 			this.pos.y += delta *  SPEED;
 			this.down=this.down+0.3;
 			this.el.css('transform', 'translate(' + this.pos.x + 'em, ' + this.pos.y + 'em) rotate(' + this.down + 'deg)');
+			this.wing.css('transform', ' matrix(1, 0, 0, 1, 0, 0)');
 		}
 
 		this.checkCollisionWithBounds();
-
-		// Update UI
 
 
 	};

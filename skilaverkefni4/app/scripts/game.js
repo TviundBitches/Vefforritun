@@ -10,11 +10,14 @@ window.Game = (function() {
 	 */
 	var Game = function(el) {
 		this.el = el;
-		this.player = new window.Player(this.el.find('.Player'), this);
-		this.pipe = new window.Pipe(this.el.find('.Pipe'), this, this. player);
+		this.player = new window.Player(this.el.find('.Player'), this.el.find('.Wing'), this);
+		this.pipe1 = new window.Pipe(this.el.find('.Pipe'), this.el.find('.PipeTop'), this.el.find('.PipeBottom'), this, this. player);
+		this.pipe2 = new window.Pipe(this.el.find('.Pipe'), this.el.find('.PipeTop'), this.el.find('.PipeBottom'), this, this. player);
 		this.ground = new window.Ground(this.el.find('.Ground'), this);
 		this.background = new window.Background(this.el.find('.Background'), this);
+		this.score = document.getElementById('Score');
 		this.isPlaying = false;
+		this.numberOfPipes = 0;
 
 		// Audio
 		this.backgroundaudio = document.getElementById("elevator");
@@ -41,9 +44,12 @@ window.Game = (function() {
 
 		// Update game entities.
 		this.player.onFrame(delta);
-		this.pipe.onFrame(delta);
+		this.pipe1.onFrame(delta);
 		this.ground.onFrame(delta);
 		this.background.onFrame(delta);
+		if(this.player.pos.x >= this.pipe1.x) {
+			this.score.innerHTML = this.numberOfPipes;
+		}
 
 		// Request next frame.
 		window.requestAnimationFrame(this.onFrame);
@@ -69,7 +75,7 @@ window.Game = (function() {
 	 */
 	Game.prototype.reset = function() {
 		this.player.reset();
-		this.pipe.reset();
+		this.pipe1.reset();
 		this.ground.reset();
 		this.background.reset();
 	};
@@ -79,10 +85,13 @@ window.Game = (function() {
 	 */
 	Game.prototype.gameover = function() {
 		this.isPlaying = false;
+
 		this.audio.play();
 		this.backgroundaudio.pause();
 		this.backgroundaudio.currentTime = 0;
 
+		var lastScore = this.numberOfPipes;
+		this.numberOfPipes = 0;
 		// Should be refactored into a Scoreboard class.
 		var that = this;
 		var scoreboardEl = this.el.find('.Scoreboard');

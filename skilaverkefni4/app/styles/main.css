@@ -10,9 +10,24 @@
 	display:inline-block;
 }
 
-.Pipe {
-	position: absolute;
+.Wing {
 	top: 0em;
+	left: 0;
+	width: 10em;
+	height: 10em;
+	background: url('../pictures/wing.png');
+	background-size: 4em;
+	background-position: 35% 55%;
+	background-repeat: no-repeat;
+}
+
+.Pipe {
+	height: 57;
+}
+
+.PipeBottom {
+	position: absolute;
+	top: 1em;
 	left: 0;
 	width: 10em;
 	height: 30em;
@@ -21,7 +36,18 @@
 	background-size: 100%;
 }
 
-.Score {
+.PipeTop {
+	position: absolute;
+	top: 0em;
+	left: 0;
+	width: 10em;
+	height: 30em;
+	background: url('../pictures/Pole2.PNG');
+	background-repeat: no-repeat ;
+	background-size: 100%;
+}
+
+#Score {
   position: absolute;
   font-family: 'Comic Sans MS', serif;
   width: 100%;
