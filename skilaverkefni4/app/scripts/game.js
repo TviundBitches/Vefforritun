@@ -15,10 +15,10 @@ window.Game = (function() {
 		this.ground = new window.Ground(this.el.find('.Ground'), this);
 		this.background = new window.Background(this.el.find('.Background'), this);
 		this.isPlaying = false;
-		this.mute = false;
-		this.backgroundaudio = document.getElementById('elevator-music');
 
-		this.audio = document.getElementById('angry-cat');;
+		// Audio
+		this.backgroundaudio = document.getElementById("elevator");
+		this.audio = document.getElementById("angry-cat");
 
 		// Cache a bound onFrame since we need it each frame.
 		this.onFrame = this.onFrame.bind(this);
@@ -54,9 +54,7 @@ window.Game = (function() {
 	 */
 	Game.prototype.start = function() {
 		this.reset();
-		if (!this.mute) {
-			this.backgroundaudio.play();
-		}
+		this.backgroundaudio.play();
 
 		// Restart the onFrame loop
 	//	if(Controls.keys.space) {
@@ -81,11 +79,9 @@ window.Game = (function() {
 	 */
 	Game.prototype.gameover = function() {
 		this.isPlaying = false;
-		if (!this.mute) {
-			this.audio.play();
-			this.backgroundaudio.pause();
-			this.backgroundaudio.currentTime = 0;
-		}
+		this.audio.play();
+		this.backgroundaudio.pause();
+		this.backgroundaudio.currentTime = 0;
 
 		// Should be refactored into a Scoreboard class.
 		var that = this;
