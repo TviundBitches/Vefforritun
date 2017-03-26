@@ -7,6 +7,7 @@ $(function() {
     var Controls = window.Controls;
     var game = new window.Game($('.GameCanvas'));
     game.start();
+
 });
 
 function volume() {
