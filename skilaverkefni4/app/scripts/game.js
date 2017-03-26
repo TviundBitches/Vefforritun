@@ -3,6 +3,7 @@ window.Game = (function() {
 	'use strict';
 
 	var Controls = window.Controls;
+	var lastScore = 0;
 	/**
 	 * Main game class.
 	 * @param {Element} el jQuery element containing the game.
@@ -51,6 +52,7 @@ window.Game = (function() {
 		this.background.onFrame(delta);
 		if(this.player.pos.x >= this.pipe1.x) {
 			this.score.innerHTML = this.numberOfPipes;
+			lastScore = this.numberOfPipes;
 			this.acceleration = this.acceleration + 0.1;
 			this.bkgrAcceleration = this.bkgrAcceleration + 0.1;
 		}
@@ -94,8 +96,8 @@ window.Game = (function() {
 		this.backgroundaudio.pause();
 		this.backgroundaudio.currentTime = 0;
 
-		var lastScore = this.numberOfPipes;
-		document.getElementById('message').innerHTML = 'You scored: ' + lastScore;
+		// var lastScore = this.numberOfPipes;
+		document.getElementById('message').innerHTML = 'You scored: ' + (lastScore);
 		this.numberOfPipes = 0;
 		this.acceleration = 20;
 		// Should be refactored into a Scoreboard class.
